@@ -1,0 +1,83 @@
+.sectionRegister {
+  display: flex;
+  justify-content: end;
+  padding: 50px 50px;
+}
+
+.register {
+  width: 50%;
+}
+
+.register__title {
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.register__title h2 {
+  color: var(--dark-blue-100);
+  font-size: var(--txt-8);
+}
+
+.register__title p {
+  color: var(--dark-grey-500);
+  text-transform: uppercase;
+}
+
+.register__input {
+  gap: 25px;
+}
+
+.register__input label span {
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: var(--txt-1);
+}
+
+.register__input label {
+  gap: 5px;
+}
+
+.register__input label input {
+  border: 1px solid var(--ligth-grey-100);
+  border-radius: var(--radius-5);
+  height: 43px;
+  width: 75%;
+  padding: 15px;
+}
+.register__input label input::placeholder {
+  color: var(--dark-grey-500);
+
+  font-size: var(--txt-1);
+}
+
+.register__button {
+  padding: 30px 0;
+  gap: 20px;
+}
+
+.register__button--submit {
+  width: fit-content;
+  padding: 15px 40px;
+  border-radius: var(--radius-2);
+  background-color: var(--dark-blue-100);
+  color: var(--ligth-grey-500);
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: var(--txt-1);
+  font-weight: 400;
+  transition: box-shadow 0.3s;
+}
+
+.register__button--submit:hover {
+  box-shadow: 7px 7px 19px 0px rgba(0, 0, 0, 0.1);
+}
+
+.register__button--newUser a {
+  font-size: var(--txt-9);
+  color: var(--dark-grey-500);
+  text-transform: uppercase;
+}
+
+.register__button--newUser a strong {
+  color: var(--dark-blue-100);
+}

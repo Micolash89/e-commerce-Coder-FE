@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap");
+/*header*/
+
+body {
+  font-family: "Hanken Grotesk", sans-serif;
+}
+
+button {
+  font-family: "Hanken Grotesk", sans-serif;
+  background-color: var(--ligth-grey-500);
+}
+
+.header__section1 {
+  justify-content: space-between;
+  line-height: var(--txt-1);
+  padding: 15px 10%;
+  background-color: var(--ligth-grey-200);
+  color: var(--dark-grey-100);
+  font-size: var(--txt-1);
+}
+
+.header__section1--span {
+  font-weight: 300;
+}
+
+.hsDescription__span {
+  padding: 0 10px;
+  font-weight: 300;
+}
+
+.hsDescription__span:not(:first-child) {
+  border-left: 1px solid var(--ligth-grey-600);
+  /* border-left: 1px solid black; */
+}
+
+.hsDescription__span i {
+  color: var(--dark-blue-100);
+}
+
+/*menu*/
+.header__section2 {
+  justify-content: space-between;
+  padding: 20px 10%;
+}
+
+.menu {
+  position: relative;
+}
+
+.menu__list {
+  display: flex;
+  position: absolute;
+  flex-direction: column !important;
+  align-items: center;
+  top: 30px;
+
+  background-color: rgba(255, 255, 255, 0.192);
+  backdrop-filter: blur(10px);
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.1);
+  height: max-content;
+  width: 250px;
+  z-index: 999;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 30px;
+  padding: 30px 0;
+  color: var(--dark-black-100);
+  left: -1100px;
+  transition: top 0.2s;
+}
+
+.menu__button {
+  font-size: var(--txt-3);
+  color: var(--dark-blue-100);
+}
+
+.menu__button i {
+  background-color: var(--ligth-grey-400);
+  padding: 5px;
+  border-radius: var(--radius-2);
+}
+
+/*search*/
+
+.header__search {
+  align-items: center;
+  gap: 7px;
+}
+
+.header__search--label {
+  /* padding: 15px; */
+  display: flex;
+  padding: 10px;
+  border-radius: var(--radius-3);
+  min-width: 507px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--txt-1);
+  gap: 10px;
+}
+
+.header__search--label,
+.header__search--label input {
+  background-color: var(--ligth-grey-400);
+}
+
+.header__search--label input {
+  font-size: var(--txt-1);
+  width: 100%;
+}
+
+.header__search--label i {
+  color: var(--dark-blue-100);
+  font-size: var(--txt-2);
+}
+
+.header__search a {
+  font-size: var(--txt-4);
+  font-weight: 600;
+  color: var(--dark-grey-100);
+}
+
+.header__search a i {
+  color: var(--dark-blue-100);
+  font-size: var(--txt-2);
+  font-weight: 400;
+}

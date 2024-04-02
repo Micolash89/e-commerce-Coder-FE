@@ -1,0 +1,53 @@
+:root {
+  --dark-blue-100: #008ecc; /*primary*/
+  --dark-blue-200: #212844; /*bg*/
+  --dark-blue-300: #05abf3;
+
+  --dark-black-100: #000000;
+  --dark-black-200: rgba(0, 0, 0, 0.459);
+  --dark-black-300: #222222;
+
+  --dark-grey-100: #666666; /*text*/
+  --dark-grey-200: #888888;
+  --dark-grey-300: #414141;
+  --dark-grey-400: #494949;
+  --dark-grey-500: #999999;
+  --dark-grey-600: #efefef;
+  --dark-grey-700: #cccccc;
+
+  --ligth-grey-100: #ededed; /*border*/
+  --ligth-grey-200: #f5f5f5; /*1*/
+  --ligth-grey-300: #f6f6fc; /*2*/
+  --ligth-grey-400: #f3f9fb; /*3*/
+  --ligth-grey-500: #ffffff;
+  --ligth-grey-600: #d9d9d9;
+  --ligth-grey-700: #fafafa;
+
+  --ligth-yellow-100: #e3bc01;
+  --ligth-yellow-200: #e3bc01;
+
+  --dark-green-100: #249b3e;
+  --dark-green-200: #eff7ef;
+
+  --dark-red-100: rgb(255, 0, 0);
+  --dark-red-200: #faf0f0;
+
+  --txt-1: 0.875rem; /*14 px*/
+  --txt-2: 1.25rem; /*20px*/
+  --txt-3: 2rem; /*32px*/
+  --txt-4: 1rem; /*16px*/
+  --txt-5: 3.938rem; /*63px*/
+  --txt-6: 1.875rem; /*30px*/
+  --txt-7: 1.5rem; /*24px*/
+  --txt-8: 1.75rem; /*28px*/
+  --txt-9: 0.813rem; /*13px*/
+  --txt-10: 1.125rem; /*18px*/
+  --txt-11: 0.625rem; /*10px*/
+  --txt-12: 0.75rem; /*12px*/
+
+  --radius-1: 16px;
+  --radius-2: 10px;
+  --radius-3: 7px;
+  --radius-4: 8px;
+  --radius-5: 6px;
+}

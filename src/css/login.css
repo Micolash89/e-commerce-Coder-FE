@@ -1,0 +1,90 @@
+.sectionLogin {
+  display: flex;
+  justify-content: end;
+  padding: 150px 150px;
+}
+
+.login {
+  width: 50%;
+}
+
+.login__title {
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.login__title h2 {
+  color: var(--dark-blue-100);
+  font-size: var(--txt-8);
+}
+
+.login__title p {
+  color: var(--dark-grey-500);
+}
+
+.login__input {
+  gap: 25px;
+}
+
+.login__input label span {
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: var(--txt-1);
+}
+
+.login__input label {
+  gap: 5px;
+}
+
+.login__input label input {
+  border: 1px solid var(--ligth-grey-100);
+  border-radius: var(--radius-5);
+  height: 43px;
+  width: 75%;
+  padding: 15px;
+}
+.login__input label input::placeholder {
+  color: var(--dark-grey-500);
+
+  font-size: var(--txt-1);
+}
+
+.login__a {
+  margin: 10px 0;
+  font-size: var(--txt-9);
+  color: var(--dark-grey-500);
+  text-decoration: underline;
+  text-decoration-color: var(--dark-grey-500);
+}
+
+.login__button {
+  padding: 30px 0;
+  gap: 20px;
+}
+
+.login__button--submit {
+  width: fit-content;
+  padding: 15px 40px;
+  border-radius: var(--radius-2);
+  background-color: var(--dark-blue-100);
+  color: var(--ligth-grey-500);
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: var(--txt-1);
+  font-weight: 400;
+  transition: box-shadow 0.3s;
+}
+
+.login__button--submit:hover {
+  box-shadow: 7px 7px 19px 0px rgba(0, 0, 0, 0.1);
+}
+
+.login__button--newUser a {
+  font-size: var(--txt-9);
+  color: var(--dark-grey-500);
+  text-transform: uppercase;
+}
+
+.login__button--newUser a strong {
+  color: var(--dark-blue-100);
+}
