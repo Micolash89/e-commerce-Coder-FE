@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../css/login.css";
 import axios from "axios";
+import { END_POINTS } from "./endPoints";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -21,7 +22,7 @@ function Login() {
     console.log("entre al handle submit");
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/sessions/login",
+        `${END_POINTS.URL()}/api/sessions/login`,
         formData
       );
       const token = response.data.token;

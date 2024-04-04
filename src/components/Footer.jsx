@@ -1,6 +1,10 @@
 import "../css/footer.css";
 
 function Footer() {
+  let year = new Date().getFullYear();
+
+  console.log(year);
+
   return (
     <>
       <footer className="footer flexcolum">
@@ -58,7 +62,7 @@ function Footer() {
           </section>
         </section>
         <span className="footer__span">
-          © 2022 All rights reserved. Reliance Retail Ltd.
+          © {year} All rights reserved. Reliance Retail Ltd.
         </span>
       </footer>
     </>

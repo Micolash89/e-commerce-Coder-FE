@@ -1,7 +1,18 @@
 import { Link } from "react-router-dom";
 import "../css/header.css";
+import { useEffect, useState } from "react";
+import HeaderLi from "./HeaderLi";
 
 function Header() {
+  const [show, setShow] = useState(false);
+
+  let rutas = [
+    { url: "/", text: "Home" },
+    { url: "/", text: "Home" },
+    { url: "/", text: "Home" },
+    { url: "/registerProduct", text: "Registrar Producto" },
+  ];
+
   return (
     <>
       <header className="header flexcolum">
@@ -25,37 +36,20 @@ function Header() {
         </section>
         <section className="header__section2 flexrow">
           <div className="header__section2--div menu">
-            <ul className="menu__list">
-              <li className="menu__item">
-                <a href="#" className="menu__item--link">
-                  Home
-                </a>
-              </li>
-              <li className="menu__item">
-                <a href="#" className="menu__item--link">
-                  Home
-                </a>
-              </li>
-              <li className="menu__item">
-                <a href="#" className="menu__item--link">
-                  Home
-                </a>
-              </li>
-              <li className="menu__item">
-                <a href="#" className="menu__item--link">
-                  Home
-                </a>
-              </li>
-              <li className="menu__item">
-                <a href="#" className="menu__item--link">
-                  Home
-                </a>
-              </li>
+            <ul
+              className={`menu__list  ${show ? "showMenu" : "showHidde"}`}
+              onMouseLeave={() => setShow(false)}
+            >
+              {rutas.map((item, index) => (
+                <HeaderLi key={`${item.text} ${index}`} item={item} />
+              ))}
             </ul>
             <h1 className="menu__button ">
               {" "}
-              <i className="ri-menu-line"></i>
-              <strong>MegaMart</strong>
+              <i className="ri-menu-line" onMouseOver={() => setShow(true)}></i>
+              <Link to={"/"}>
+                <strong>MegaMart</strong>
+              </Link>
             </h1>
           </div>
           <div className="header__search flexrow">

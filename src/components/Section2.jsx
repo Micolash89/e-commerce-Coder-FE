@@ -3,6 +3,7 @@ import "../css/section2.css";
 import { useEffect, useState } from "react";
 import Loader from "./Loader";
 import Error from "./Error";
+import { END_POINTS } from "./endPoints";
 
 function Section2() {
   const [productos, setProductos] = useState();
@@ -11,7 +12,7 @@ function Section2() {
 
   useEffect(() => {
     setError(false);
-    fetch("http://localhost:8080/api/products")
+    fetch(`${END_POINTS.URL()}/api/products`)
       .then((response) => response.json())
       .then((data) => {
         setProductos(data.payload.docs);

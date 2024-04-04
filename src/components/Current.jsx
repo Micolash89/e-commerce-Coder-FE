@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { END_POINTS } from "./endPoints";
 
 function Dashboard() {
   const [user, setUser] = useState(null);
@@ -9,8 +10,9 @@ function Dashboard() {
 
     const getSession = async () => {
       try {
+        console.log(document.cookie);
         const response = await axios.get(
-          "http://localhost:8080/api/sessions/current",
+          `${END_POINTS.URL()}/api/sessions/current`,
           {
             withCredentials: true,
           }
