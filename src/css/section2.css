@@ -1,106 +1,89 @@
-@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap");
+/*section2*/
 
 .main__section2 {
-  display: flex;
-  flex-direction: column;
-  font-family: "Hanken Grotesk", sans-serif;
-}
-
-.main__section2--h3 {
-  padding-bottom: 10px;
-  width: fit-content;
-  border-bottom: 1px solid var(--dark-blue-100);
-}
-
-.section2Container {
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  margin-top: 40px;
 }
 
-/*loader*/
-.lds-default {
-  display: inline-block;
+.main__section2--h3,
+.main__section3--h3,
+.main__section4--h3,
+.main__section5--h3 {
+  font-size: var(--txt-7);
+  color: var(--dark-grey-100);
+  font-weight: 600;
+  width: fit-content;
+  padding: 15px 0;
+  border-bottom: 5px solid var(--dark-blue-100);
+}
+
+.main__section2--h3 strong,
+.main__section3--h3 strong,
+.main__section4--h3 strong,
+.main__section5--h3 strong {
+  color: var(--dark-blue-100);
+}
+
+.ms2Cards {
+  display: flex;
+  border-top: 1px solid var(--ligth-grey-100);
+  justify-content: space-between;
+  height: 100%;
+  padding: 40px 0;
+  flex-wrap: wrap;
+}
+
+.ms2Cards__card {
+  max-width: 227px;
+  max-height: 295px;
+  border: 1px solid var(--ligth-grey-100);
+  width: 227px;
+  height: 295px;
+  border-radius: var(--radius-1);
+  justify-content: space-between;
   position: relative;
-  width: 80px;
-  height: 80px;
+  margin-bottom: 10px;
 }
-.lds-default div {
+
+.ms2Cards__card p {
+  background-color: var(--dark-blue-100);
+  width: 51px;
+  height: 51px;
+  text-align: center;
+  color: var(--ligth-grey-500);
+  font-weight: 500;
+  padding: 5px;
+  border-radius: 0 var(--radius-1) 0 var(--radius-1);
+  font-size: var(--txt-1);
   position: absolute;
-  width: 6px;
-  height: 6px;
-  background: #000000;
-  border-radius: 50%;
-  animation: lds-default 1.2s linear infinite;
+  right: 0;
 }
-.lds-default div:nth-child(1) {
-  animation-delay: 0s;
-  top: 37px;
-  left: 66px;
+
+.ms2Cards__card--div:first-child {
+  display: flex;
+  justify-content: center;
+  border: 1px solid var(--ligth-grey-100);
+  background-color: var(--ligth-grey-200);
+  border-radius: var(--radius-1) var(--radius-1) 0 0;
+  padding: 7px 0;
 }
-.lds-default div:nth-child(2) {
-  animation-delay: -0.1s;
-  top: 22px;
-  left: 62px;
+
+.ms2Cards__card--div:nth-child(2) {
+  gap: 5px;
+  padding: 0 10px;
 }
-.lds-default div:nth-child(3) {
-  animation-delay: -0.2s;
-  top: 11px;
-  left: 52px;
+
+.ms2Cards__card--div:nth-child(2) span {
+  display: flex;
+  gap: 10px;
 }
-.lds-default div:nth-child(4) {
-  animation-delay: -0.3s;
-  top: 7px;
-  left: 37px;
-}
-.lds-default div:nth-child(5) {
-  animation-delay: -0.4s;
-  top: 11px;
-  left: 22px;
-}
-.lds-default div:nth-child(6) {
-  animation-delay: -0.5s;
-  top: 22px;
-  left: 11px;
-}
-.lds-default div:nth-child(7) {
-  animation-delay: -0.6s;
-  top: 37px;
-  left: 7px;
-}
-.lds-default div:nth-child(8) {
-  animation-delay: -0.7s;
-  top: 52px;
-  left: 11px;
-}
-.lds-default div:nth-child(9) {
-  animation-delay: -0.8s;
-  top: 62px;
-  left: 22px;
-}
-.lds-default div:nth-child(10) {
-  animation-delay: -0.9s;
-  top: 66px;
-  left: 37px;
-}
-.lds-default div:nth-child(11) {
-  animation-delay: -1s;
-  top: 62px;
-  left: 52px;
-}
-.lds-default div:nth-child(12) {
-  animation-delay: -1.1s;
-  top: 52px;
-  left: 62px;
-}
-@keyframes lds-default {
-  0%,
-  20%,
-  80%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.5);
-  }
+
+.ms2Cards__card--span {
+  /* padding: 0 10px; */
+  padding: 10px 0 0 0;
+  margin: 0 10px;
+  color: var(--dark-green-100);
+  font-weight: 600;
+  padding-bottom: 15px;
+  border-top: 1px solid var(--ligth-grey-100);
 }

@@ -3,17 +3,25 @@ import phone from "../assets/image_3.png";
 function CardProduct({ data: { title, price, category } }) {
   return (
     <>
-      <div className="section2Container__card">
-        <img className="section2Container__card--img" src={phone} alt="" />
-        <div className="section2Container__card--div">
-          <span>nombre: {title}</span>
-          <br />
-          <span>precio: $ {price}</span>
+      <a href="#" className="ms2Cards__card flexcolum">
+        <div className="ms2Cards__card--div">
+          <img src={phone} alt="producto" />
         </div>
-        <span className="section2Container__card--span">
-          categoria: {category}
-        </span>
-      </div>
+
+        <div className="ms2Cards__card--div  flexcolum">
+          <span>{title}</span>
+          <span>
+            {" "}
+            <strong> {price}</strong>
+            ₹74999
+          </span>
+        </div>
+        <p>
+          56% <br />
+          OFF{" "}
+        </p>
+        <span className="ms2Cards__card--span">{category}</span>
+      </a>
     </>
   );
 }

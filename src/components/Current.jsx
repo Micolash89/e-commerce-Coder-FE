@@ -2,19 +2,26 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { END_POINTS } from "./endPoints";
 
+import Cookies from "js-cookie";
+
 function Dashboard() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const TokenCookie = localStorage.getItem("token");
-
+    // const TokenCookie = localStorage.getItem("token");
+    const TokenCookie = Cookies.get("coderCookieToken");
+    // console.log(TokenCookie);
     const getSession = async () => {
       try {
-        console.log(document.cookie);
+        console.log(TokenCookie);
+
         const response = await axios.get(
           `${END_POINTS.URL()}/api/sessions/current`,
           {
             withCredentials: true,
+            headers: {
+              Authorization: `coderCookieToken=${TokenCookie}`,
+            },
           }
         );
         console.log("response: ", response.data);

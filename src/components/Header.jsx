@@ -8,8 +8,8 @@ function Header() {
 
   let rutas = [
     { url: "/", text: "Home" },
-    { url: "/", text: "Home" },
-    { url: "/", text: "Home" },
+    { url: "/current", text: "Dashboard" },
+    { url: "/cart", text: "Cart" },
     { url: "/registerProduct", text: "Registrar Producto" },
   ];
 
@@ -61,17 +61,18 @@ function Header() {
               />
               <i className="ri-list-check"></i>
             </label>
-            <a className="header__search--login login">
+            <div className="header__search--login login">
               <i className="ri-user-3-line"></i>
               <strong>
                 <Link to={"/register"}>Sign Up</Link>/
                 <Link to={"/login"}>Sign In</Link>
               </strong>{" "}
-            </a>
-            <a href="#" className="header__search--cart cart">
+            </div>
+            {/* solucionar error de la etiqueta a */}
+            <Link to={"cart"} className="header__search--cart cart">
               <i className="ri-shopping-cart-line"></i>
               <strong>Cart</strong>
-            </a>
+            </Link>
           </div>
         </section>
       </header>

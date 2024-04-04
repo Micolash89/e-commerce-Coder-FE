@@ -2,12 +2,18 @@ import { useState } from "react";
 import "../css/login.css";
 import axios from "axios";
 import { END_POINTS } from "./endPoints";
+import Loader from "./Loader";
+import Error from "./Error";
 
 function Login() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const [token, setToken] = useState(null);
 
   const handleInputChange = (event) => {
@@ -19,6 +25,8 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError(false);
     console.log("entre al handle submit");
     try {
       const response = await axios.post(
@@ -27,17 +35,25 @@ function Login() {
       );
       const token = response.data.token;
       console.log(token);
-      document.cookie = `coderCookieToken=${token}; path=/`;
+      document.cookie = `coderCookieToken=${token}; path=/; secure; SameSite=Lax`;
       setToken(token);
       localStorage.setItem("token", token);
     } catch (error) {
+      setError(true);
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
-      <section className="sectionLogin">
+      <section className="sectionLogin flexrow">
+        <div className="sectionLogin__status">
+          {loading && <Loader />}
+          {error && <Error />}
+        </div>
+
         <form className="login" onSubmit={handleSubmit}>
           <div className="login__title flexcolum">
             <h2>Welcome Back</h2>

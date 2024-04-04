@@ -28,17 +28,21 @@ function Section2() {
   }, []);
 
   return (
-    <section className="main__section2">
-      <h3 className="main__section2--h3">Grab the best deal on Smartphones</h3>
-      <div className="main__section2--container section2Container">
+    <>
+      <section className="main__section2 flexcolum">
+        <h3 className="main__section2--h3">
+          Grab the best deal on <strong>Smartphones</strong>
+        </h3>
         {error && <Error />}
         {loading && <Loader />}
-        {productos &&
-          productos.map((e, i) => {
-            return <CardProduct key={`${i} ${e.title}`} data={e} />;
-          })}
-      </div>
-    </section>
+        <div className="main__section2--cards ms2Cards">
+          {productos &&
+            productos.map((e, i) => {
+              return <CardProduct key={`${i} ${e.title}`} data={e} />;
+            })}
+        </div>
+      </section>
+    </>
   );
 }
 
