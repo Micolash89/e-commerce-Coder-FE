@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
 import phone from "../assets/image_3.png";
 
-function CardProduct({ data: { title, price, category } }) {
+function CardProduct({ data: { _id, title, price, category } }) {
+  console.log("id", _id);
+
   return (
     <>
-      <a href="#" className="ms2Cards__card flexcolum">
+      <Link to={`/details/${_id}`} className="ms2Cards__card flexcolum">
         <div className="ms2Cards__card--div">
           <img src={phone} alt="producto" />
         </div>
@@ -21,7 +24,7 @@ function CardProduct({ data: { title, price, category } }) {
           OFF{" "}
         </p>
         <span className="ms2Cards__card--span">{category}</span>
-      </a>
+      </Link>
     </>
   );
 }

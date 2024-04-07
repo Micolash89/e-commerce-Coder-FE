@@ -7,6 +7,7 @@ import Dashboard from "./components/Current";
 import Register from "./components/Register";
 import RegisterProduct from "./components/RegisterProduct";
 import Cart from "./components/Cart";
+import Product from "./components/Product";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/registerproduct" element={<RegisterProduct />} />
         <Route path="/cart" element={<Cart />} />
+        <Route exact path="/details/:id" element={<Product />} />
 
         <Route path="/*" element={<Main />} />
       </Routes>

@@ -1,5 +1,5 @@
 export const END_POINTS = {
-  NODE_ENV: "production",
+  NODE_ENV: "env",
   // PROD: "https://e-commerce-nodejs-2-4qw3.onrender.com",
   PROD: "https://e-commerce-nodejs-2-4qw3.onrender.com",
   DEV: "http://localhost:8080",

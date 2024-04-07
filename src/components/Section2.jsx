@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Loader from "./Loader";
 import Error from "./Error";
 import { END_POINTS } from "./endPoints";
+import { Link } from "react-router-dom";
 
 function Section2() {
   const [productos, setProductos] = useState();

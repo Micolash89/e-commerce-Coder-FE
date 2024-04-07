@@ -9,6 +9,26 @@ function Cart() {
   const [products, setProducts] = useState(null);
   const [subtotal, setSubtotal] = useState(0);
 
+  const placeOrder = async () => {
+    const TokenCookie = Cookies.get("coderCookieToken");
+
+    try {
+      const response = await axios.post(
+        `${END_POINTS.URL()}/api/carts/purchase`,
+        {},
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `coderCookieToken=${TokenCookie}`,
+          },
+        }
+      );
+      console.log("response", response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const getCart = async () => {
     const TokenCookie = Cookies.get("coderCookieToken");
 
@@ -84,7 +104,9 @@ function Cart() {
                 {<span>${subtotal}</span>}
               </div>
             </section>
-            <button className="orderSummary__button">Place Order</button>
+            <button className="orderSummary__button" onClick={placeOrder}>
+              Place Order
+            </button>
           </section>
         </section>
       }
