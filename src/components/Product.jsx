@@ -93,7 +93,16 @@ function Product() {
           <span className="sps2__shipping">free shipping</span>
 
           <span className="sps2__stock">
-            <i className="ri-check-line"></i>in stock: {producto.stock}
+            {producto.stock != 0 ? (
+              <>
+                <i className="ri-check-line"></i>in stock {producto.stock}
+              </>
+            ) : (
+              <>
+                <i className="ri-close-line sps2__stock--iconClose"></i>no stock{" "}
+                {producto.stock}
+              </>
+            )}
           </span>
 
           <div className="sps2__addcart flexrow">
@@ -109,7 +118,7 @@ function Product() {
               <button
                 className="nextbtn"
                 onClick={() => setCant(cant + 1)}
-                disabled={cant === producto.stock}
+                disabled={cant === producto.stock || producto.stock === 0}
               >
                 +
               </button>

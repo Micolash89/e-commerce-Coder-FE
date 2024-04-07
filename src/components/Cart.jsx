@@ -83,6 +83,8 @@ function Cart() {
                   title={product.product.title}
                   price={product.product.price}
                   quantity={product.quantity}
+                  stock={product.product.stock}
+                  id={product.product._id}
                 />
               ))}
           </section>

@@ -72,11 +72,16 @@
   font-size: var(--txt-1);
 }
 
+.sps2__stock > .sps2__stock--iconClose {
+  background-color: var(--dark-red-100);
+}
+
 .sps2__stock {
   padding: 25px 0;
   border-top: 1px solid var(--dark-grey-800);
   border-bottom: 1px solid var(--dark-grey-800);
   width: 95%;
+  text-transform: capitalize;
 }
 
 .sps2__addcart > div > button:hover {
@@ -142,6 +147,9 @@
 
 .sps3__button {
   gap: 15px;
+}
+
+.sps2__stock {
 }
 
 .sps3__button button {

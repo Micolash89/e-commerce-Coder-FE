@@ -1,6 +1,29 @@
-import React from "react";
+import axios from "axios";
+import { END_POINTS } from "./endPoints";
+import Cookies from "js-cookie";
 
-function CartItem({ title, price, quantity }) {
+function CartItem({ title, price, quantity, stock, id }) {
+  const removeProduct = async () => {
+    const TokenCookie = Cookies.get("coderCookieToken");
+    console.log("dentre");
+    try {
+      const response = await axios.delete(
+        `${END_POINTS.URL()}/api/carts/products/${id}`,
+
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `coderCookieToken=${TokenCookie}`,
+          },
+        }
+      );
+
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <section className="cart__card flexrow">
@@ -12,6 +35,10 @@ function CartItem({ title, price, quantity }) {
             SAVE
             <strong>$199.00</strong>
           </p>
+        </div>
+
+        <div className="cart__card--remove" onClick={removeProduct}>
+          <i className="ri-close-line "></i>
         </div>
 
         <div className="cart__card--info cci flexcolum">
@@ -33,8 +60,17 @@ function CartItem({ title, price, quantity }) {
             </span>
           </div>
           <span className="inStock">
-            <i className="ri-check-line"></i>
-            in stock
+            {stock != 0 ? (
+              <>
+                <i className="ri-check-line"></i>
+                in stock : {stock}
+              </>
+            ) : (
+              <>
+                <i className="ri-close-line noStock"></i>
+                no stock : {stock}
+              </>
+            )}
           </span>
         </div>
       </section>
