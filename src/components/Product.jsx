@@ -6,11 +6,13 @@ import "../css/product.css";
 import Cookies from "js-cookie";
 import Loader from "./Loader";
 import Loading2H from "./Loading2H";
+import Notification from "./Notification";
 
 function Product() {
   const [producto, setProduct] = useState({});
   //const [producto, setProduct] = useState({});
   const [cant, setCant] = useState(1);
+  const [notificacion, setNotificacion] = useState(false);
   const { id } = useParams();
 
   const [loading, setLoading] = useState(false);
@@ -36,6 +38,8 @@ function Product() {
     const TokenCookie = Cookies.get("coderCookieToken");
     setLoading(true);
     setError(false);
+
+    console.log("cantidad: ", cant);
     try {
       const response = await axios.post(
         `${END_POINTS.URL()}/api/carts/products/${id}`,
@@ -50,7 +54,12 @@ function Product() {
       console.log("response: ", response.data);
       // setUser(response.data.payload.user);
       // console.log("user: ", user);
-      setCant(1);
+      setNotificacion(true);
+
+      setTimeout(() => {
+        setNotificacion(false);
+        setCant(1);
+      }, 3000);
     } catch (error) {
       console.log(error);
       setError(true);
@@ -128,6 +137,7 @@ function Product() {
                 loading ? "sps2__sendCart--loader" : ""
               } `}
               onClick={addToCart}
+              disabled={producto.stock == 0}
             >
               {loading && <Loading2H className="sps2__loading " />}
               {!loading && <span>Add To Cart</span>}
@@ -163,6 +173,7 @@ function Product() {
           </div>
         </section>
       </section>
+      {notificacion && <Notification msj={`se agrego ${cant} producto`} />}
     </>
   );
 }

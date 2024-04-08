@@ -8,10 +8,12 @@ import Register from "./components/Register";
 import RegisterProduct from "./components/RegisterProduct";
 import Cart from "./components/Cart";
 import Product from "./components/Product";
+import PreLoading from "./components/PreLoading";
 
 function App() {
   return (
     <>
+      <PreLoading />
       <Header />
 
       <Routes>

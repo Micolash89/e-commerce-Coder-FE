@@ -1,8 +1,9 @@
 import axios from "axios";
 import { END_POINTS } from "./endPoints";
 import Cookies from "js-cookie";
+import Notification from "./Notification";
 
-function CartItem({ title, price, quantity, stock, id }) {
+function CartItem({ title, price, quantity, stock, id, setDeleteButton }) {
   const removeProduct = async () => {
     const TokenCookie = Cookies.get("coderCookieToken");
     console.log("dentre");
@@ -19,6 +20,7 @@ function CartItem({ title, price, quantity, stock, id }) {
       );
 
       console.log(response.data);
+      setDeleteButton(true);
     } catch (error) {
       console.log(error);
     }

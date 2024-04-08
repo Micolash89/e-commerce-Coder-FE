@@ -53,4 +53,9 @@
   --radius-3: 7px;
   --radius-4: 8px;
   --radius-5: 6px;
+
+  /*notificacion*/
+  --notification-background: #313e2c;
+  --notification-primary: #aaec8a;
+  --background: #faf9ff;
 }

@@ -8,6 +8,7 @@ import axios from "axios";
 function Cart() {
   const [products, setProducts] = useState(null);
   const [subtotal, setSubtotal] = useState(0);
+  const [deleteButton, setDeleteButton] = useState(false);
 
   const placeOrder = async () => {
     const TokenCookie = Cookies.get("coderCookieToken");
@@ -65,7 +66,8 @@ function Cart() {
     if (!TokenCookie) return;
 
     getCart();
-  }, []);
+    setDeleteButton(false);
+  }, [deleteButton]);
 
   useEffect(() => {
     if (products) getSubtotal();
@@ -85,6 +87,7 @@ function Cart() {
                   quantity={product.quantity}
                   stock={product.product.stock}
                   id={product.product._id}
+                  setDeleteButton={setDeleteButton}
                 />
               ))}
           </section>
