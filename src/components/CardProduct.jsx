@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import phone from "../assets/image_3.png";
 
-function CardProduct({ data: { _id, title, price, category } }) {
-  console.log("id", _id);
-
+function CardProduct({ data: { _id, title, price, category }, url }) {
   return (
     <>
-      <Link to={`/details/${_id}`} className="ms2Cards__card flexcolum">
+      <Link to={`/${url}/${_id}`} className="ms2Cards__card flexcolum">
         <div className="ms2Cards__card--div">
           <img src={phone} alt="producto" />
         </div>

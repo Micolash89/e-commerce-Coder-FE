@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "../css/header.css";
 import { useEffect, useState } from "react";
 import HeaderLi from "./HeaderLi";
+import Cookies from "js-cookie";
 
 function Header() {
   const [show, setShow] = useState(false);
@@ -11,6 +12,7 @@ function Header() {
     { url: "/current", text: "Dashboard" },
     { url: "/cart", text: "Cart" },
     { url: "/registerProduct", text: "Registrar Producto" },
+    { url: "/myproducts", text: "Mis Productos" },
   ];
 
   return (

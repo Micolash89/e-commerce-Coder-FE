@@ -39,7 +39,9 @@ function Section2() {
         <div className="main__section2--cards ms2Cards">
           {productos &&
             productos.map((e, i) => {
-              return <CardProduct key={`${i} ${e.title}`} data={e} />;
+              return (
+                <CardProduct key={`${i} ${e.title}`} data={e} url="details" />
+              );
             })}
         </div>
       </section>

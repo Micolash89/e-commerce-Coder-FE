@@ -37,7 +37,7 @@ function Login() {
       console.log(token);
       document.cookie = `coderCookieToken=${token}; path=/; secure; SameSite=Lax`;
       setToken(token);
-      localStorage.setItem("token", token);
+      // localStorage.setItem("token", token);
     } catch (error) {
       setError(true);
       console.log(error);

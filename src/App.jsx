@@ -9,6 +9,8 @@ import RegisterProduct from "./components/RegisterProduct";
 import Cart from "./components/Cart";
 import Product from "./components/Product";
 import PreLoading from "./components/PreLoading";
+import MyProducts from "./components/MyProducts";
+import ModificarProducts from "./components/ModificarProducts";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         <Route path="/registerproduct" element={<RegisterProduct />} />
         <Route path="/cart" element={<Cart />} />
         <Route exact path="/details/:id" element={<Product />} />
+        <Route exact path="/myproducts" element={<MyProducts />} />
+        <Route exact path="/modificar/:id" element={<ModificarProducts />} />
 
         <Route path="/*" element={<Main />} />
       </Routes>
