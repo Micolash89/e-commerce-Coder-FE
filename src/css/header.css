@@ -17,6 +17,8 @@ button {
   background-color: var(--ligth-grey-200);
   color: var(--dark-grey-100);
   font-size: var(--txt-1);
+
+  transition: background-color 0.4s, color 0.4s;
 }
 
 .header__section1--span {
@@ -42,6 +44,7 @@ button {
   justify-content: space-between;
   padding: 20px 10%;
   background-color: var(--ligth-grey-500);
+  transition: background-color 0.4s, color 0.4s;
 }
 
 .menu {
@@ -91,6 +94,9 @@ button {
 .menu__button {
   font-size: var(--txt-3);
   color: var(--dark-blue-100);
+}
+.menu__button > a > strong {
+  color: var(--dark-black-100);
 }
 
 .menu__button i {

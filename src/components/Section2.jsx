@@ -1,15 +1,17 @@
 import CardProduct from "./CardProduct";
 import "../css/section2.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Loader from "./Loader";
 import Error from "./Error";
 import { END_POINTS } from "./endPoints";
 import { Link } from "react-router-dom";
+import { ThemeContext } from "./context/ThemeContext";
 
 function Section2() {
   const [productos, setProductos] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     setError(false);
@@ -30,7 +32,7 @@ function Section2() {
 
   return (
     <>
-      <section className="main__section2 flexcolum">
+      <section className={`main__section2 flexcolum  ${theme}`}>
         <h3 className="main__section2--h3">
           Grab the best deal on <strong>Smartphones</strong>
         </h3>

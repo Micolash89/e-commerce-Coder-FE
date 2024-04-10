@@ -63,7 +63,7 @@
 
 body .dark {
   --ligth-grey-500: black !important;
-  --ligth-grey-200: #0e0d0d !important;
+  --ligth-grey-200: #5e5c5ca4 !important;
   --dark-black-100: #ffffff !important;
   --ligth-grey-400: rgb(45, 46, 46) b;
 }
