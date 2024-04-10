@@ -4,6 +4,7 @@ import axios from "axios";
 import { END_POINTS } from "./endPoints";
 import Loader from "./Loader";
 import Error from "./Error";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -80,9 +81,9 @@ function Login() {
             </label>
           </div>
 
-          <a className="login__a" href="">
+          <Link to={"/restorepassword"} className="login__a" href="">
             Forget Password ?
-          </a>
+          </Link>
 
           <div className="login__button flexcolum">
             <button className="login__button--submit" type="submit">

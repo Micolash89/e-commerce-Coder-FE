@@ -31,6 +31,7 @@ img {
 body {
   width: 100%;
   height: 100vh;
+  background-color: var(--ligth-grey-500);
 }
 
 .flexrow {
@@ -41,3 +42,9 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* .ligth {
+  --ligth-grey-500: #ffffff;
+
+  --dark-black-100: #000000;
+} */

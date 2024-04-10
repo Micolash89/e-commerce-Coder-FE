@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import "../css/header.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import HeaderLi from "./HeaderLi";
 import Cookies from "js-cookie";
+import { ThemeContext } from "./context/ThemeContext";
 
 function Header() {
   const [show, setShow] = useState(false);
+  const [themeMenu, setThemeMenu] = useState(true);
+
+  const { theme, handleTheme } = useContext(ThemeContext);
 
   let rutas = [
     { url: "/", text: "Home" },
@@ -15,10 +19,19 @@ function Header() {
     { url: "/myproducts", text: "Mis Productos" },
   ];
 
+  const handleLightDarkMode = () => {
+    setThemeMenu(!themeMenu);
+
+    handleTheme(!themeMenu ? "ligth" : "dark");
+  };
+
   return (
     <>
-      <header className="header flexcolum">
-        <section className="header__section1 flexrow">
+      <header
+        className={`header flexcolum  ${theme} `}
+        // style={{ backgroundColor: "black" }}
+      >
+        <section className={`header__section1 flexrow ${theme}`}>
           <span className="header__section1--span">
             {" "}
             Welcome to worldwide Megamart!
@@ -77,8 +90,12 @@ function Header() {
             </Link>
 
             <div className="header__search--theme">
-              <i className="ri-sun-line"></i>
-              <i className="ri-moon-line"></i>
+              <button>
+                <i
+                  className={` ${themeMenu ? "ri-sun-line" : "ri-moon-line"}`}
+                  onClick={handleLightDarkMode}
+                ></i>
+              </button>
             </div>
           </div>
         </section>

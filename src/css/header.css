@@ -41,6 +41,7 @@ button {
 .header__section2 {
   justify-content: space-between;
   padding: 20px 10%;
+  background-color: var(--ligth-grey-500);
 }
 
 .menu {
@@ -152,7 +153,15 @@ button {
   left: -1000px;
 }
 
-.header__search--theme i {
+.header__search--theme > button > i {
   font-size: var(--txt-7);
   color: var(--dark-grey-200);
+  cursor: pointer;
+}
+
+.showThemeButton {
+  display: inline;
+}
+.hideThemeButton {
+  display: none;
 }

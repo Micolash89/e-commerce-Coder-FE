@@ -35,20 +35,6 @@ function MyProducts() {
       .finally(() => {
         setLoading(false);
       });
-
-    // fetch(`${END_POINTS.URL()}/api/products`)
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     setProductos(data.payload.docs);
-    //     console.log(data);
-    //   })
-    //   .catch((error) => {
-    //     setError(true);
-    //     console.log(error);
-    //   })
-    //   .finally(() => {
-    //     setLoading(false);
-    //   });
   }, []);
 
   return (
@@ -63,13 +49,7 @@ function MyProducts() {
           {productos &&
             productos.map((e, i) => {
               return (
-                <>
-                  <CardProduct
-                    key={`${i} ${e.title}`}
-                    data={e}
-                    url="modificar"
-                  />
-                </>
+                <CardProduct key={`${e.title} ${i}`} data={e} url="modify" />
               );
             })}
         </div>

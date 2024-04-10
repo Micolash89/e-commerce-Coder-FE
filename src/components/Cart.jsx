@@ -81,7 +81,7 @@ function Cart() {
             {products &&
               products.map((product, index) => (
                 <CartItem
-                  key={index}
+                  key={index + product.product.title}
                   title={product.product.title}
                   price={product.product.price}
                   quantity={product.quantity}
