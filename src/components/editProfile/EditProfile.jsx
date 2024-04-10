@@ -1,15 +1,14 @@
 import axios from "axios";
+import "../css/register.css";
 import { useState } from "react";
-import { END_POINTS } from "./endPoints";
 
-function RegisterProduct() {
+function EditProfile() {
   const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    code: "",
-    price: 0,
-    category: "",
-    stock: 0,
+    first_name: "",
+    last_name: "",
+    age: "",
+    email: "",
+    password: "",
   });
 
   const handleInputChange = (event) => {
@@ -23,11 +22,8 @@ function RegisterProduct() {
     e.preventDefault();
     try {
       console.log("entré en el handleSubmit");
-      console.log(formData);
-      await axios
-        .post(`${END_POINTS.URL()}/api/products`, formData, {
-          withCredentials: true,
-        })
+      const response = await axios
+        .post("http://localhost:8080/api/sessions/registrar", formData)
         .then((response) => {
           console.log(response.data);
         })
@@ -44,62 +40,58 @@ function RegisterProduct() {
       <section className="sectionRegister">
         <form className="register" onSubmit={handleSubmit}>
           <div className="register__title flexcolum">
-            <h2>Register Product</h2>
+            <h2>Register</h2>
+            <p>join to us</p>
           </div>
           <div className="register__input flexcolum">
             <label className="register__input--username flexcolum">
-              <span>nombre del producto</span>
+              <span>First Name</span>
               <input
                 onChange={handleInputChange}
                 type="text"
-                name="title"
-                placeholder="xxxx"
+                name="first_name"
+                placeholder="Jhon Deo"
               />
             </label>
             <label className="register__input--lastName flexcolum">
-              <span>description</span>
+              <span>Last Name</span>
               <input
                 onChange={handleInputChange}
                 type="text"
-                name="description"
-                placeholder="xxxx"
+                name="last_name"
+                placeholder="Lock"
               />
             </label>
             <label className="register__input--age flexcolum">
-              <span>code</span>
+              <span>age</span>
               <input
                 onChange={handleInputChange}
-                type="string"
-                name="code"
-                placeholder="#####"
+                type="number"
+                name="age"
+                placeholder="##"
               />
             </label>
             <label className="register__input--email flexcolum">
-              <span>price</span>
+              <span>email</span>
               <input
                 onChange={handleInputChange}
-                type="number"
-                name="price"
-                placeholder="$$$$$$"
+                type="email"
+                name="email"
+                placeholder="example@gmail.com"
               />
             </label>
             <label className="register__input--password flexcolum">
-              <span>category</span>
+              <span>password</span>
               <input
                 onChange={handleInputChange}
-                name="category"
+                name="password"
                 placeholder="******"
-                type="string"
+                type="password"
               />
             </label>
             <label className="register__input--password flexcolum">
-              <span>stock</span>
-              <input
-                onChange={handleInputChange}
-                name="stock"
-                placeholder="******"
-                type="number"
-              />
+              <span>Confirm password</span>
+              <input name="password2" placeholder="******" type="password" />
             </label>
           </div>
 
@@ -107,6 +99,12 @@ function RegisterProduct() {
             <button className="register__button--submit" type="submit">
               register
             </button>
+            <div className="register__button--newUser">
+              <a href="">
+                {" "}
+                Alredy User ? <strong>Login</strong>
+              </a>
+            </div>
           </div>
         </form>
       </section>
@@ -114,4 +112,4 @@ function RegisterProduct() {
   );
 }
 
-export default RegisterProduct;
+export default EditProfile;

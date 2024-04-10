@@ -75,6 +75,11 @@ function Header() {
               <i className="ri-shopping-cart-line"></i>
               <strong>Cart</strong>
             </Link>
+
+            <div className="header__search--theme">
+              <i className="ri-sun-line"></i>
+              <i className="ri-moon-line"></i>
+            </div>
           </div>
         </section>
       </header>

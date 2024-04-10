@@ -27,17 +27,19 @@
 .ms2Cards {
   display: flex;
   border-top: 1px solid var(--ligth-grey-100);
-  justify-content: space-between;
+  justify-content: left;
   height: 100%;
   padding: 40px 0;
   flex-wrap: wrap;
+  gap: 10px;
+  justify-content: left;
 }
 
 .ms2Cards__card {
   max-width: 227px;
   max-height: 295px;
   border: 1px solid var(--ligth-grey-100);
-  width: 227px;
+  width: 200px;
   height: 295px;
   border-radius: var(--radius-1);
   justify-content: space-between;
@@ -86,4 +88,8 @@
   font-weight: 600;
   padding-bottom: 15px;
   border-top: 1px solid var(--ligth-grey-100);
+}
+
+.ms2Cards__card:hover {
+  outline: 1px solid var(--dark-blue-100);
 }

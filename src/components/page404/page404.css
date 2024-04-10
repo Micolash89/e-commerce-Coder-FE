@@ -1,0 +1,48 @@
+.page404 {
+  margin: 5% auto;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid var(--dark-blue-100);
+  padding: 30px;
+  border-radius: var(--radius-1);
+  box-shadow: 3px 3px 10px 2px rgba(0, 0, 0, 0.1);
+}
+
+.page404__h2 {
+  font-size: var(--txt-5);
+  color: var(--dark-blue-100);
+  font-weight: 900;
+}
+
+.page404__h3 {
+  text-transform: uppercase;
+  font-size: var(--txt-3);
+  font-weight: 800;
+}
+
+.page404__p {
+  padding: 20px 0;
+}
+
+.page404__link {
+  background-color: var(--dark-blue-100);
+  padding: 10px 20px;
+  border-radius: var(--radius-5);
+  color: var(--ligth-grey-500);
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 600;
+  transition: box-shadow 0.4s;
+}
+
+.page404__link:hover {
+  box-shadow: 7px 7px 16px 0px rgba(0, 0, 0, 0.1);
+  background-color: var(--dark-blue-400);
+}
+
+.page404__link:active {
+  color: var(--ligth-grey-500);
+  background-color: var(--dark-blue-100);
+}

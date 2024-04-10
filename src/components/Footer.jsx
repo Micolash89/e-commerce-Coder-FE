@@ -3,8 +3,6 @@ import "../css/footer.css";
 function Footer() {
   let year = new Date().getFullYear();
 
-  console.log(year);
-
   return (
     <>
       <footer className="footer flexcolum">

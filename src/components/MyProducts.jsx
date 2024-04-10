@@ -19,16 +19,12 @@ function MyProducts() {
     const tokenCookie = Cookies.get("coderCookieToken");
 
     axios
-      .get(
-        `${END_POINTS.URL()}/api/products/user/myproducts`,
-
-        {
-          withCredentials: true,
-          headers: {
-            Authorization: `coderCookieToken=${tokenCookie}`,
-          },
-        }
-      )
+      .get(`${END_POINTS.URL()}/api/products/user/myproducts`, {
+        withCredentials: true,
+        headers: {
+          Authorization: `coderCookieToken=${tokenCookie}`,
+        },
+      })
       .then((response) => {
         console.log(response.data);
         setProductos(response.data.payload);
@@ -73,7 +69,6 @@ function MyProducts() {
                     data={e}
                     url="modificar"
                   />
-                  ;
                 </>
               );
             })}

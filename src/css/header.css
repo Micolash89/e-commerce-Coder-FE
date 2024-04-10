@@ -151,3 +151,8 @@ button {
 .showHidde {
   left: -1000px;
 }
+
+.header__search--theme i {
+  font-size: var(--txt-7);
+  color: var(--dark-grey-200);
+}

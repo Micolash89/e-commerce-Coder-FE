@@ -69,7 +69,7 @@ function ModificarProducts() {
       <section className="sectionRegister">
         <form className="register" onSubmit={handleSubmit}>
           <div className="register__title flexcolum">
-            <h2>Register Product</h2>
+            <h2>Modificar Producto</h2>
           </div>
           <div className="register__input flexcolum">
             <label className="register__input--username flexcolum">
