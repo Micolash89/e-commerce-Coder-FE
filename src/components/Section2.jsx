@@ -4,8 +4,8 @@ import { useContext, useEffect, useState } from "react";
 import Loader from "./Loader";
 import Error from "./Error";
 import { END_POINTS } from "./endPoints";
-import { Link } from "react-router-dom";
 import { ThemeContext } from "./context/ThemeContext";
+import Cookies from "js-cookie";
 
 function Section2() {
   const [productos, setProductos] = useState();

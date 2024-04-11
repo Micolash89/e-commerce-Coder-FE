@@ -7,7 +7,17 @@ import { ThemeContext } from "./context/ThemeContext";
 
 function Header() {
   const [show, setShow] = useState(false);
-  const [themeMenu, setThemeMenu] = useState(true);
+
+  let cookieTheme = Cookies.get("theme");
+
+  if (cookieTheme == undefined) {
+    Cookies.set("theme", "true", { expires: 7 });
+    cookieTheme = "true";
+  }
+
+  const cookieValue = cookieTheme.includes("true");
+
+  const [themeMenu, setThemeMenu] = useState(cookieValue);
 
   const { theme, handleTheme } = useContext(ThemeContext);
 
@@ -21,6 +31,7 @@ function Header() {
 
   const handleLightDarkMode = () => {
     setThemeMenu(!themeMenu);
+    Cookies.set("theme", !themeMenu, { expires: 7 });
 
     handleTheme(!themeMenu ? "ligth" : "dark");
   };

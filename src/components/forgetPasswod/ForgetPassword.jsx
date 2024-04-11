@@ -22,8 +22,6 @@ function ForgetPassword() {
     axios
       .post(`${END_POINTS.URL()}/api/sessions/restorepassword`, {
         email,
-        //   url: `${END_POINTS.URL()}/e-commerce-Coder-FrontEnd/#`,
-        url: `http://localhost:5173/e-commerce-Coder-FrontEnd/#`,
       })
       .then((response) => {
         console.log(response.data);
@@ -47,7 +45,7 @@ function ForgetPassword() {
               <input
                 onChange={handleInputChange}
                 name="email"
-                placeholder="******"
+                placeholder="example@example"
                 type="email"
               />
             </label>
