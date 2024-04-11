@@ -1,6 +1,7 @@
 import axios from "axios";
 import "../css/register.css";
 import { useState } from "react";
+import { END_POINTS } from "./endPoints";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -20,19 +21,16 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      console.log("entré en el handleSubmit");
-      const response = await axios
-        .post("http://localhost:8080/api/sessions/registrar", formData)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .then((error) => {
-          console.log(error);
-        });
-    } catch (error) {
-      console.log(error);
-    }
+
+    console.log("entré en el handleSubmit");
+    axios
+      .post(`${END_POINTS.URL()}/api/sessions/registrar`, formData)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

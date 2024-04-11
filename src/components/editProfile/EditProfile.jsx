@@ -20,19 +20,16 @@ function EditProfile() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      console.log("entré en el handleSubmit");
-      const response = await axios
-        .post("http://localhost:8080/api/sessions/registrar", formData)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .then((error) => {
-          console.log(error);
-        });
-    } catch (error) {
-      console.log(error);
-    }
+
+    console.log("entré en el handleSubmit");
+    axios
+      .post("http://localhost:8080/api/sessions/registrar", formData)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

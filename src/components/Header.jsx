@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "../css/header.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import HeaderLi from "./HeaderLi";
 import Cookies from "js-cookie";
 import { ThemeContext } from "./context/ThemeContext";
@@ -27,10 +27,7 @@ function Header() {
 
   return (
     <>
-      <header
-        className={`header flexcolum  ${theme} `}
-        // style={{ backgroundColor: "black" }}
-      >
+      <header className={`header flexcolum  ${theme} `}>
         <section className={`header__section1 flexrow ${theme}`}>
           <span className="header__section1--span">
             {" "}
@@ -79,7 +76,8 @@ function Header() {
             <div className="header__search--login login">
               <i className="ri-user-3-line"></i>
               <strong>
-                <Link to={"/register"}>Sign Up</Link>/
+                <Link to={"/register"}>Sign Up</Link>
+                <span> / </span>
                 <Link to={"/login"}>Sign In</Link>
               </strong>{" "}
             </div>

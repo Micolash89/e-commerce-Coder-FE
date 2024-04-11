@@ -13,8 +13,8 @@ function Cart() {
   const placeOrder = async () => {
     const TokenCookie = Cookies.get("coderCookieToken");
 
-    try {
-      const response = await axios.post(
+    axios
+      .post(
         `${END_POINTS.URL()}/api/carts/purchase`,
         {},
         {
@@ -23,11 +23,13 @@ function Cart() {
             Authorization: `coderCookieToken=${TokenCookie}`,
           },
         }
-      );
-      console.log("response", response);
-    } catch (error) {
-      console.log(error);
-    }
+      )
+      .then((response) => {
+        console.log("response", response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const getCart = async () => {

@@ -1,14 +1,11 @@
-import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import { END_POINTS } from "../endPoints";
 
 function ResetPassword() {
   const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
-    age: "",
-    email: "",
     password: "",
+    confirm_password: "",
   });
 
   const handleInputChange = (event) => {
@@ -20,19 +17,16 @@ function ResetPassword() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      console.log("entré en el handleSubmit");
-      const response = await axios
-        .post("http://localhost:8080/api/sessions/registrar", formData)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .then((error) => {
-          console.log(error);
-        });
-    } catch (error) {
-      console.log(error);
-    }
+
+    console.log("entré en el handleSubmit");
+    axios
+      .post(`${END_POINTS.URL()}/api/sessions/restorepassword/:token`, formData)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -55,7 +49,11 @@ function ResetPassword() {
             </label>
             <label className="register__input--password flexcolum">
               <span>Confirm password</span>
-              <input name="password2" placeholder="******" type="password" />
+              <input
+                name=" confirm_password"
+                placeholder="******"
+                type="password"
+              />
             </label>
           </div>
 

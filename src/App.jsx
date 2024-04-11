@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-
 import Login from "./components/Login";
 import Dashboard from "./components/Current";
 import Register from "./components/Register";
@@ -13,11 +12,12 @@ import PreLoading from "./components/PreLoading";
 import MyProducts from "./components/MyProducts";
 import ModificarProducts from "./components/ModificarProducts";
 import Page404 from "./components/page404/Page404";
-import "./css/main.css";
 import Section2 from "./components/Section2";
-import { ThemeProvider } from "./components/context/ThemeContext";
+import { ThemeContext, ThemeProvider } from "./components/context/ThemeContext";
 import ForgetPassword from "./components/forgetPasswod/ForgetPassword";
 import ResetPassword from "./components/resetPassword/ResetPassword";
+import Main from "./components/main/Main";
+import "./css/breakpoints.css";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
       <ThemeProvider>
         <PreLoading />
         <Header />
-        <main className="main">
+        <Main>
           <Routes>
             <Route path="/" element={<Section2 />} />
             <Route path="/login" element={<Login />} />
@@ -45,7 +45,7 @@ function App() {
 
             <Route path="/*" element={<Page404 />} />
           </Routes>
-        </main>
+        </Main>
         <Footer />
       </ThemeProvider>
     </>

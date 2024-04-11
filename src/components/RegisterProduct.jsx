@@ -21,22 +21,19 @@ function RegisterProduct() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      console.log("entré en el handleSubmit");
-      console.log(formData);
-      await axios
-        .post(`${END_POINTS.URL()}/api/products`, formData, {
-          withCredentials: true,
-        })
-        .then((response) => {
-          console.log(response.data);
-        })
-        .then((error) => {
-          console.log(error);
-        });
-    } catch (error) {
-      console.log(error);
-    }
+
+    console.log("entré en el handleSubmit");
+    console.log(formData);
+    await axios
+      .post(`${END_POINTS.URL()}/api/products`, formData, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

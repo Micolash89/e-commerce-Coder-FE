@@ -17,23 +17,20 @@ function ForgetPassword() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      console.log("entré en el handleSubmit");
-      axios
-        .post(`${END_POINTS.URL()}/api/sessions/restorepassword`, {
-          email,
-          //   url: `${END_POINTS.URL()}/e-commerce-Coder-FrontEnd/#`,
-          url: `http://localhost:5173/e-commerce-Coder-FrontEnd/#`,
-        })
-        .then((response) => {
-          console.log(response.data);
-        })
-        .then((error) => {
-          console.log(error);
-        });
-    } catch (error) {
-      console.log(error);
-    }
+
+    console.log("entré en el handleSubmit");
+    axios
+      .post(`${END_POINTS.URL()}/api/sessions/restorepassword`, {
+        email,
+        //   url: `${END_POINTS.URL()}/e-commerce-Coder-FrontEnd/#`,
+        url: `http://localhost:5173/e-commerce-Coder-FrontEnd/#`,
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
