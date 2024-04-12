@@ -73,6 +73,7 @@
   font-size: var(--txt-1);
   font-weight: 400;
   transition: box-shadow 0.3s;
+  font-weight: 700;
 }
 
 .login__button--submit:hover {

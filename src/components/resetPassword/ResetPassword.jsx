@@ -1,8 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import { END_POINTS } from "../endPoints";
+import { useParams } from "react-router-dom";
 
 function ResetPassword() {
+  const { token } = useParams();
+
   const [formData, setFormData] = useState({
     password: "",
     confirm_password: "",
@@ -17,10 +20,13 @@ function ResetPassword() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     console.log("entré en el handleSubmit");
+    console.log(formData);
     axios
-      .post(`${END_POINTS.URL()}/api/sessions/restorepassword/:token`, formData)
+      .post(
+        `${END_POINTS.URL()}/api/sessions/restorepassword/${token}`,
+        formData
+      )
       .then((response) => {
         console.log(response.data);
       })
@@ -50,7 +56,8 @@ function ResetPassword() {
             <label className="register__input--password flexcolum">
               <span>Confirm password</span>
               <input
-                name=" confirm_password"
+                onChange={handleInputChange}
+                name="confirm_password"
                 placeholder="******"
                 type="password"
               />

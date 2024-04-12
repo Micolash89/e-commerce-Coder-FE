@@ -84,17 +84,21 @@ function Header() {
               />
               <i className="ri-list-check"></i>
             </label>
-            <div className="header__search--login login">
+            <div className="header__search--login login hslogin flexrow">
               <i className="ri-user-3-line"></i>
-              <strong>
+              <strong className="flexrow">
                 <Link to={"/register"}>Sign Up</Link>
                 <span> / </span>
                 <Link to={"/login"}>Sign In</Link>
-              </strong>{" "}
+              </strong>
+              <div className="flexrow">
+                <i className="ri-logout-box-r-line"></i>
+                <strong>logout</strong>
+              </div>
             </div>
             {/* solucionar error de la etiqueta a */}
-            <Link to={"cart"} className="header__search--cart cart">
-              <i className="ri-shopping-cart-line"></i>
+            <Link to={"cart"} className="header__search--cart hsc">
+              <i className="ri-shopping-cart-line hsc__icon"></i>
               <strong>Cart</strong>
             </Link>
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "../css/preLoading.css";
 import axios from "axios";
 import { END_POINTS } from "./endPoints";

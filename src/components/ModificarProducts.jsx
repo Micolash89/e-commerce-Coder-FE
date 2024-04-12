@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { END_POINTS } from "./endPoints";
 import { useParams } from "react-router-dom";
 import Cookies from "js-cookie";
 
 function ModificarProducts() {
+  const { id } = useParams();
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -13,8 +15,6 @@ function ModificarProducts() {
     category: "",
     stock: 0,
   });
-
-  const { id } = useParams();
 
   const handleInputChange = (event) => {
     setFormData({
