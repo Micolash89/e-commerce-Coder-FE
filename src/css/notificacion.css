@@ -10,7 +10,7 @@
   /* background-color: var(--notification-background); */
   background-color: var(--ligth-grey-500);
   color: var(--dark-blue-100);
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 10px var(--box-shadow);
   transform: translateY(1.875rem);
   opacity: 0;
   visibility: hidden;

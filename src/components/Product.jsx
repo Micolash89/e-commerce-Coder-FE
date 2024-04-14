@@ -1,25 +1,21 @@
 import { useEffect, useState } from "react";
-import { useParams, useLocation, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { END_POINTS } from "./endPoints";
 import axios from "axios";
 import "../css/product.css";
 import Cookies from "js-cookie";
-import Loader from "./Loader";
 import Loading2H from "./Loading2H";
 import Notification from "./Notification";
+import PathLocation from "./PathLocation/PathLocation";
 
 function Product() {
   const [producto, setProduct] = useState({});
-  //const [producto, setProduct] = useState({});
   const [cant, setCant] = useState(1);
   const [notificacion, setNotificacion] = useState(false);
   const { id } = useParams();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
-  // const {id}  = useSearchParams();
-  const { pathname } = useLocation();
 
   const getProductById = async () => {
     try {
@@ -71,7 +67,6 @@ function Product() {
   //h47rfce
   useEffect(() => {
     getProductById();
-    console.log("path" + pathname);
   }, []);
 
   return (

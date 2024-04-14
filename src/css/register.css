@@ -69,7 +69,7 @@
 }
 
 .register__button--submit:hover {
-  box-shadow: 7px 7px 19px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 7px 7px 19px 0px var(--box-shadow);
 }
 
 .register__button--newUser a {

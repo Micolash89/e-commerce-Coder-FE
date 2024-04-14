@@ -34,6 +34,8 @@
   --dark-red-100: rgb(255, 0, 0);
   --dark-red-200: #faf0f0;
 
+  --box-shadow: rgba(0, 0, 0, 0.1);
+
   --txt-1: 0.875rem; /*14 px*/
   --txt-2: 1.25rem; /*20px*/
   --txt-3: 2rem; /*32px*/

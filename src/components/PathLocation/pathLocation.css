@@ -1,0 +1,5 @@
+.location {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--ligth-grey-100);
+  text-transform: capitalize;
+}

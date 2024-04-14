@@ -10,6 +10,10 @@ button {
   background-color: var(--ligth-grey-500);
 }
 
+.header {
+  border-bottom: 1px solid var(--ligth-grey-100);
+}
+
 .header__section1 {
   justify-content: space-between;
   line-height: var(--txt-1);
@@ -60,7 +64,7 @@ button {
 
   background-color: rgba(255, 255, 255, 0.192);
   backdrop-filter: blur(10px);
-  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 5px 10px var(--box-shadow);
   height: max-content;
   width: 250px;
   z-index: 999;
@@ -80,7 +84,8 @@ button {
   padding: 15px 0;
   width: 100%;
   text-align: center;
-  box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 10px 0px var(--box-shadow);
+  color: var(--dark-black-100);
 }
 
 .menu__item:hover {
