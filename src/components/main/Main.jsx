@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
-import "../../css/main.css";
+import "../main/main.css";
 
 function Main({ children }) {
   const { theme } = useContext(ThemeContext);

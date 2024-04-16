@@ -1,10 +1,8 @@
 import "../PathLocation/pathLocation.css";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function PathLocation({ children }) {
   const { pathname } = useLocation();
-
-  console.log("pathName " + typeof pathname);
 
   let arrRutas = pathname.split("/");
 
@@ -16,9 +14,13 @@ function PathLocation({ children }) {
         <section className={`location `}>
           <div className="location__urls">
             <span className="location__urls--ruta">
-              Home
+              <Link to="/">Home</Link>
               {arrRutas.map((ruta, index) => {
-                return <strong key={ruta + index}>{` / ${ruta}`}</strong>;
+                return (
+                  <strong key={ruta + index}>
+                    <Link to={`/${ruta}`}>{` / ${ruta}`}</Link>
+                  </strong>
+                );
               })}
             </span>
           </div>

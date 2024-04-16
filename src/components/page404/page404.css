@@ -1,5 +1,13 @@
 .page404 {
-  margin: 5% auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5% 0;
+}
+
+.page404__div {
+  /* padding: 50px auto; */
+
   width: fit-content;
   align-items: center;
   justify-content: center;

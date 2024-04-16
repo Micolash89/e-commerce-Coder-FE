@@ -60,16 +60,19 @@
   padding: 15px 40px;
   border-radius: var(--radius-2);
   background-color: var(--dark-blue-100);
-  color: var(--ligth-grey-500);
+  /* color: var(--ligth-grey-500); */
+  color: white;
   cursor: pointer;
   text-transform: uppercase;
   font-size: var(--txt-1);
   font-weight: 400;
   transition: box-shadow 0.3s;
+  font-weight: 700;
 }
 
 .register__button--submit:hover {
   box-shadow: 7px 7px 19px 0px var(--box-shadow);
+  background-color: var(--dark-blue-400);
 }
 
 .register__button--newUser a {
@@ -80,4 +83,22 @@
 
 .register__button--newUser a strong {
   color: var(--dark-blue-100);
+}
+
+/*delete button*/
+
+.register__button--deleted {
+  background-color: var(--dark-red-100);
+}
+.register__button--deleted:hover {
+  background-color: var(--dark-red-300);
+}
+
+.rbd {
+  width: 143px;
+  height: 50px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

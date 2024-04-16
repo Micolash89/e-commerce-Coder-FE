@@ -4,16 +4,16 @@ import { END_POINTS } from "./endPoints";
 import axios from "axios";
 import "../css/product.css";
 import Cookies from "js-cookie";
-import Loading2H from "./Loading2H";
-import Notification from "./Notification";
-import PathLocation from "./PathLocation/PathLocation";
+import Loading2H from "./loaders/Loading2H";
+import Notification from "./notification/Notification";
 
 function Product() {
   const [producto, setProduct] = useState({});
   const [cant, setCant] = useState(1);
   const [notificacion, setNotificacion] = useState(false);
   const { id } = useParams();
-
+  const [products, setProducts] = useState(null);
+  const [subtotal, setSubtotal] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -63,11 +63,45 @@ function Product() {
       setLoading(false);
     }
   };
-  //w115
-  //h47rfce
+
+  const getCart = async () => {
+    const TokenCookie = Cookies.get("coderCookieToken");
+
+    try {
+      const response = await axios.get(`${END_POINTS.URL()}/api/carts/`, {
+        withCredentials: true,
+        headers: {
+          Authorization: `coderCookieToken=${TokenCookie}`,
+        },
+      });
+      console.log("response: ", response.data);
+      setProducts(response.data.payload.products);
+      setSubtotal(0);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getSubtotal = async () => {
+    let sub = 0;
+    products.forEach(
+      (product) => (sub += product.quantity * product.product.price)
+    );
+
+    setSubtotal(sub);
+  };
+
   useEffect(() => {
     getProductById();
   }, []);
+
+  useEffect(() => {
+    getCart();
+  }, [loading]);
+
+  useEffect(() => {
+    if (products) getSubtotal();
+  }, [products]);
 
   return (
     <>
@@ -145,16 +179,25 @@ function Product() {
 
           <section className="orderSummary__description flexcolum">
             <div className="flexcolum">
-              <img src="" alt="" />
-              <div>
-                <p></p>
+              {/* <img src="" alt="" /> */}
+              {/* <div>
+                <span></span>
                 <span></span>
               </div>
-              <i className="ri-close-line"></i>
+              <i className="ri-close-line"></i> */}
+              {products &&
+                products.map((product, index) => (
+                  <div key={`${index}-items`} className="flexrow">
+                    <span>
+                      {product.product.title} x {product.quantity}
+                    </span>
+                    <span>$ {product.quantity * product.product.price}</span>
+                  </div>
+                ))}
             </div>
             <div className="flexrow">
               <span>Sub Total:</span>
-              <span>$1,000.00</span>
+              <span>$ {subtotal}</span>
             </div>
           </section>
 

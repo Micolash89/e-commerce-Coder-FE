@@ -1,7 +1,7 @@
 import axios from "axios";
-import { END_POINTS } from "./endPoints";
+import { END_POINTS } from "../endPoints";
 import Cookies from "js-cookie";
-import Notification from "./Notification";
+import Notification from "../notification/Notification";
 
 function CartItem({ title, price, quantity, stock, id, setDeleteButton }) {
   const removeProduct = async () => {

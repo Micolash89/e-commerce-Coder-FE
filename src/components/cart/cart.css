@@ -132,9 +132,10 @@
   gap: 15px;
 }
 
-.orderSummary__description > div > span {
+.orderSummary__description > div > div > span {
   color: var(--dark-grey-100);
 }
+.orderSummary__description > div > div,
 .orderSummary__description > div {
   justify-content: space-between;
   padding: 10px 0;
@@ -143,7 +144,7 @@
 .orderSummary__description > div:not(:last-child) {
   border-bottom: 1px solid var(--dark-grey-700);
 }
-.orderSummary__description > div > span:last-child {
+.orderSummary__description > div > div > span:last-child {
   color: var(--dark-black-100);
   font-weight: 800;
 }
@@ -164,6 +165,7 @@
   margin-top: 10px;
   transition: box-shadow 0.3s;
   cursor: pointer;
+  font-weight: 800;
 }
 
 .orderSummary__button:hover {

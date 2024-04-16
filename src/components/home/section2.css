@@ -100,3 +100,24 @@ body {
 .ms2Cards__card:hover {
   outline: 1px solid var(--dark-blue-100);
 }
+
+/*my products*/
+
+.ms2Cards__noItems {
+  width: 100%;
+  display: block;
+  height: 100%;
+  text-align: center;
+  font-weight: 600;
+  font-size: var(--txt-6);
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.ms2Cards__noItems > i {
+  font-size: var(--txt-5);
+  color: var(--dark-red-100);
+}

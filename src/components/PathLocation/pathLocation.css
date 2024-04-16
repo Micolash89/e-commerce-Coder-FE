@@ -3,3 +3,11 @@
   border-bottom: 1px solid var(--ligth-grey-100);
   text-transform: capitalize;
 }
+
+.location__urls--ruta a {
+  color: var(--dark-black-100);
+}
+
+.location__urls--ruta a:active {
+  color: var(--dark-blue-100);
+}

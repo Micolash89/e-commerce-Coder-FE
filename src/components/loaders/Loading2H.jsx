@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/loader2h.css";
+import "../loaders/loader2h.css";
 
 function Loading2H() {
   return (

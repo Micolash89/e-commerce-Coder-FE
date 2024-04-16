@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../css/login.css";
 import axios from "axios";
 import { END_POINTS } from "./endPoints";
-import Loader from "./Loader";
+import Loader from "./loaders/Loader";
 import Error from "./Error";
 import { Link } from "react-router-dom";
 

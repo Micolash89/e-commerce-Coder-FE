@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { END_POINTS } from "./endPoints";
+import { END_POINTS } from "../endPoints";
 
 import Cookies from "js-cookie";
 

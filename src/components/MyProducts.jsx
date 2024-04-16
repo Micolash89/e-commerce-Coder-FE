@@ -1,7 +1,7 @@
 import CardProduct from "./CardProduct";
-import "../css/section2.css";
+import "../components/home/section2.css";
 import { useEffect, useState } from "react";
-import Loader from "./Loader";
+import Loader from "./loaders/Loader";
 import Error from "./Error";
 import { END_POINTS } from "./endPoints";
 import axios from "axios";
@@ -51,6 +51,13 @@ function MyProducts() {
                 <CardProduct key={`${e.title} ${i}`} data={e} url="modify" />
               );
             })}
+          {productos && productos.length == 0 && (
+            <span className="ms2Cards__noItems">
+              No tienes productos registrados
+              <i className="ri-spam-3-line"></i>
+            </span>
+          )}
+          {/* si da error colocar un mensaje de no autorizado o no esta loqueado depende si hago el redux de login */}
         </div>
       </section>
     </>

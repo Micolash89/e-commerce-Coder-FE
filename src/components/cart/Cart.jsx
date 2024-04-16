@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import "../css/cart.css";
+import { useEffect, useState } from "react";
+import "../cart/cart.css";
 import CartItem from "./CartItem";
 import Cookies from "js-cookie";
-import { END_POINTS } from "./endPoints";
+import { END_POINTS } from "../endPoints";
 import axios from "axios";
 
 function Cart() {
@@ -36,8 +36,6 @@ function Cart() {
     const TokenCookie = Cookies.get("coderCookieToken");
 
     try {
-      console.log(TokenCookie);
-
       const response = await axios.get(`${END_POINTS.URL()}/api/carts/`, {
         withCredentials: true,
         headers: {
@@ -61,7 +59,6 @@ function Cart() {
     setSubtotal(sub);
   };
 
-  console.log("products: ", products);
   useEffect(() => {
     const TokenCookie = Cookies.get("coderCookieToken");
 
@@ -97,15 +94,15 @@ function Cart() {
           <section className="orderSummary flexcolum">
             <h4 className="orderSummary__title">Order Summary</h4>
             <section className="orderSummary__description flexcolum">
-              {/* <div className="flexrow">
-              {products.map((product, index) => (
-                <>
-                  {}
-                  <span>Sub Total:</span>
-                  <span>${product.quantity * product.product.price}</span>
-                </>
-              ))}
-            </div> */}
+              <div className="flexcolum">
+                {products &&
+                  products.map((product, index) => (
+                    <div key={`${index}-items`} className="flexrow">
+                      <span>Sub Total:</span>
+                      <span>${product.quantity * product.product.price}</span>
+                    </div>
+                  ))}
+              </div>
               <div className="flexrow">
                 <span>order Total:</span>
                 {<span>${subtotal}</span>}

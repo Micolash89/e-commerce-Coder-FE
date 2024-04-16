@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { END_POINTS } from "./endPoints";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Cookies from "js-cookie";
+import Loading2H from "./loaders/Loading2H";
 
 function ModificarProducts() {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -24,6 +27,7 @@ function ModificarProducts() {
   };
 
   useEffect(() => {
+    /*la eliminacion tiene que ser una baja logica, verificar en el backeend que el carrito no me den los que tienen baja logica*/
     axios.get(`${END_POINTS.URL()}/api/products/${id}`).then((response) => {
       console.log("datos del producto", response.data);
       setFormData({
@@ -37,31 +41,52 @@ function ModificarProducts() {
     });
   }, [id]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      console.log("entré en el handleSubmit");
-      console.log(formData);
 
-      const tokenCookie = Cookies.get("coderCookieToken");
+    console.log("entré en el handleSubmit");
+    console.log(formData);
 
-      await axios
-        .put(`${END_POINTS.URL()}/api/products/${id}`, formData, {
-          withCredentials: true,
+    const tokenCookie = Cookies.get("coderCookieToken");
 
-          headers: {
-            Authorization: `coderCookieToken=${tokenCookie}`,
-          },
-        })
-        .then((response) => {
-          console.log(response.data);
-        })
-        .then((error) => {
-          console.log(error);
-        });
-    } catch (error) {
-      console.log(error);
-    }
+    axios
+      .put(`${END_POINTS.URL()}/api/products/${id}`, formData, {
+        withCredentials: true,
+
+        headers: {
+          Authorization: `coderCookieToken=${tokenCookie}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const deleteProduct = (e) => {
+    const tokenCookie = Cookies.get("coderCookieToken");
+    e.preventDefault();
+    setLoading(true);
+    axios
+      .delete(`${END_POINTS.URL()}/api/products/${id}`, {
+        withCredentials: true,
+        headers: {
+          Authorization: `coderCookieToken=${tokenCookie}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+
+        navigate("/myproducts");
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -135,9 +160,19 @@ function ModificarProducts() {
             </label>
           </div>
 
-          <div className="register__button flexcolum">
+          <div className={`register__button  flexrow `}>
             <button className="register__button--submit" type="submit">
               Modificar
+            </button>
+            {/* cambiar que cambie de alta o baja dependiendo del estado del producto */}
+            <button
+              className={`register__button--submit register__button--deleted ${
+                loading ? "rbd" : ""
+              }`}
+              onClick={deleteProduct}
+            >
+              {!loading && <span>Eliminar</span>}
+              {loading && <Loading2H className="rbd__loading" />}
             </button>
           </div>
         </form>
