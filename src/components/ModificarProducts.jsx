@@ -45,7 +45,6 @@ function ModificarProducts() {
     e.preventDefault();
 
     console.log("entré en el handleSubmit");
-    console.log(formData);
 
     const tokenCookie = Cookies.get("coderCookieToken");
 
@@ -78,7 +77,6 @@ function ModificarProducts() {
       })
       .then((response) => {
         console.log(response.data);
-
         navigate("/myproducts");
       })
       .catch((error) => {

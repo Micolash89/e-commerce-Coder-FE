@@ -4,7 +4,8 @@ import axios from "axios";
 import { END_POINTS } from "./endPoints";
 import Loader from "./loaders/Loader";
 import Error from "./Error";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -14,8 +15,8 @@ function Login() {
 
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const [token, setToken] = useState(null);
+  const navigate = useNavigate();
+  //const [token, setToken] = useState(null);
 
   const handleInputChange = (event) => {
     setFormData({
@@ -35,10 +36,8 @@ function Login() {
         formData
       );
       const token = response.data.token;
-      console.log(token);
-      document.cookie = `coderCookieToken=${token}; path=/; secure; SameSite=Lax`;
-      setToken(token);
-      // localStorage.setItem("token", token);
+      Cookies.set("coderCookieToken", token);
+      navigate("/");
     } catch (error) {
       setError(true);
       console.log(error);
@@ -90,10 +89,10 @@ function Login() {
               Login
             </button>
             <div className="login__button--newUser">
-              <a href="">
+              <Link to={"/register"}>
                 {" "}
                 New User ? <strong>SING UP</strong>
-              </a>
+              </Link>
             </div>
           </div>
         </form>

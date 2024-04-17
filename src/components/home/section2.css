@@ -121,3 +121,16 @@ body {
   font-size: var(--txt-5);
   color: var(--dark-red-100);
 }
+
+/*botones*/
+
+.ms2Cards > button > i {
+  color: var(--dark-black-100);
+  font-size: var(--txt-5);
+  transition: color 0.6s;
+}
+
+.ms2Cards > button :hover {
+  cursor: pointer;
+  color: var(--dark-blue-100);
+}

@@ -36,6 +36,11 @@ function Header() {
     handleTheme(!themeMenu ? "ligth" : "dark");
   };
 
+  const handleLogout = () => {
+    ////////////////////me quede aca
+    Cookies.remove("");
+  };
+
   return (
     <>
       <header className={`header flexcolum  ${theme} `}>
@@ -102,7 +107,7 @@ function Header() {
               <strong>Cart</strong>
             </Link>
 
-            <div className="header__search--theme">
+            <div className="header__search--theme" onClick={handleLogout}>
               <button>
                 <i
                   className={` ${themeMenu ? "ri-sun-line" : "ri-moon-line"}`}
