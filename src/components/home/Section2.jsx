@@ -87,7 +87,9 @@ function Section2() {
 
           <div className="main__section2--cards ms2Cards">
             <button
-              className="previewUrl"
+              className={` previewUrl ${
+                productos.hasPrevPage ? "" : "haspage"
+              }`}
               onClick={() => {
                 setPage("preview");
               }}
@@ -103,7 +105,7 @@ function Section2() {
               })}
 
             <button
-              className="nextUrl"
+              className={`nextUrl ${productos.hasNextPage ? "" : "haspage"}`}
               onClick={() => {
                 setPage("next");
               }}

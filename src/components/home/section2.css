@@ -134,3 +134,8 @@ body {
   cursor: pointer;
   color: var(--dark-blue-100);
 }
+.ms2Cards > .haspage:hover,
+.ms2Cards > .haspage:hover > i {
+  color: var(--dark-black-100);
+  cursor: default;
+}

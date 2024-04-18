@@ -37,6 +37,7 @@ function App() {
               <Route exact path="/details/:id" element={<Product />} />
               <Route exact path="/myproducts" element={<MyProducts />} />
               <Route exact path="/modify/:id" element={<ModificarProducts />} />
+              {/* <Route exact path="/search/?query" element={<ModificarProducts />} /> */}
               <Route
                 exact
                 path="/restorepassword"

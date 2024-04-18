@@ -24,6 +24,7 @@
   --ligth-grey-500: #ffffff;
   --ligth-grey-600: #d9d9d9;
   --ligth-grey-700: #fafafa;
+  --ligth-grey-800: #eeeff6;
 
   --ligth-yellow-100: #e3bc01;
   --ligth-yellow-200: #e3bc01;
@@ -57,7 +58,7 @@
   --radius-4: 8px;
   --radius-5: 6px;
   --radius-6: 4px;
-
+  --radius-7: 5px;
   /*notificacion*/
   --notification-background: #000000;
   --notification-primary: #008ecc;

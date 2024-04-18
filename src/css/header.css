@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap");
 /*header*/
 
-body {
+body.select {
   font-family: "Hanken Grotesk", sans-serif;
 }
 
@@ -192,10 +192,10 @@ button {
   align-items: center;
 }
 
-.hslogin > div > strong {
+.hslogin > div > button > strong {
   color: var(--dark-grey-100);
 }
-.hslogin > div > i {
+.hslogin > div > button > i {
   color: var(--dark-blue-100);
   font-size: var(--txt-7);
 }
@@ -207,6 +207,11 @@ button {
   transition: background-color 0.6s, color 0.6s;
   background-color: var(--ligth-grey-500);
   height: 100%;
+}
+
+.hslogin > div > button {
+  align-items: center;
+  font-size: var(--txt-4);
 }
 
 .header__search--theme > button {
@@ -223,4 +228,12 @@ button {
 
 .hsc__icon {
   font-size: var(--txt-7) !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.show {
+  display: flex;
 }

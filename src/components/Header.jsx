@@ -4,9 +4,14 @@ import { useContext, useState } from "react";
 import HeaderLi from "./HeaderLi";
 import Cookies from "js-cookie";
 import { ThemeContext } from "./context/ThemeContext";
+import { useDispatch, useSelector } from "react-redux";
+import { logOutSession } from "../redux/features/UserSlice";
+import axios from "axios";
+import { END_POINTS } from "./endPoints";
 
 function Header() {
   const [show, setShow] = useState(false);
+  const [query, setQuery] = useState("");
 
   let cookieTheme = Cookies.get("theme");
 
@@ -14,6 +19,10 @@ function Header() {
     Cookies.set("theme", "true", { expires: 7 });
     cookieTheme = "true";
   }
+
+  const session = useSelector((state) => state.user.session);
+  console.log("session del header", session);
+  const dispatch = useDispatch();
 
   const cookieValue = cookieTheme.includes("true");
 
@@ -38,7 +47,22 @@ function Header() {
 
   const handleLogout = () => {
     ////////////////////me quede aca
-    Cookies.remove("");
+    /*hacer fetch*/
+    dispatch(logOutSession());
+    Cookies.remove("coderCookieToken");
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    axios
+      .get(`${END_POINTS.URL()}/api/products/custom/search?search=${query}`)
+      .then((response) => {
+        console.log(response.data);
+        /*redux el array*/
+        /*link*/
+        /*trdirect*/
+      });
   };
 
   return (
@@ -81,24 +105,43 @@ function Header() {
             </h1>
           </div>
           <div className="header__search flexrow">
-            <label className="header__search--label">
-              <i className="ri-search-line"></i>
-              <input
-                type="search"
-                placeholder="Search essentials, groceries and more..."
-              />
-              <i className="ri-list-check"></i>
-            </label>
+            <form onSubmit={handleSearch}>
+              <label className="header__search--label">
+                <i className="ri-search-line"></i>
+                <input
+                  type="search"
+                  placeholder="Search essentials, groceries and more..."
+                  name="search"
+                  // value={(e) => setQuery(e.target.value)}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+                <i className="ri-list-check"></i>
+                {/* <input type="submit" hidden={true}></input> */}
+                {/* <label htmlFor="">
+
+<input type="checkbox" />
+<input type="checkbox" />
+<input type="checkbox" />
+<input type="checkbox" />
+</label> */}
+              </label>
+            </form>
             <div className="header__search--login login hslogin flexrow">
               <i className="ri-user-3-line"></i>
-              <strong className="flexrow">
+              <strong className={`flexrow ${session ? "hidden" : " "}`}>
                 <Link to={"/register"}>Sign Up</Link>
                 <span> / </span>
                 <Link to={"/login"}>Sign In</Link>
               </strong>
-              <div className="flexrow">
-                <i className="ri-logout-box-r-line"></i>
-                <strong>logout</strong>
+              <div className={`flexrow ${session ? " " : "hidden"}`}>
+                <button
+                  type="button"
+                  className={`flexrow`}
+                  onClick={handleLogout}
+                >
+                  <i className="ri-logout-box-r-line"></i>
+                  <strong>logout</strong>
+                </button>
               </div>
             </div>
             {/* solucionar error de la etiqueta a */}
@@ -107,8 +150,8 @@ function Header() {
               <strong>Cart</strong>
             </Link>
 
-            <div className="header__search--theme" onClick={handleLogout}>
-              <button>
+            <div className="header__search--theme">
+              <button type="button">
                 <i
                   className={` ${themeMenu ? "ri-sun-line" : "ri-moon-line"}`}
                   onClick={handleLightDarkMode}
