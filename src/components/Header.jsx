@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/header.css";
 import { useContext, useState } from "react";
 import HeaderLi from "./HeaderLi";
@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logOutSession } from "../redux/features/UserSlice";
 import axios from "axios";
 import { END_POINTS } from "./endPoints";
+import { setProducts } from "../redux/features/SearchResult";
 
 function Header() {
   const [show, setShow] = useState(false);
@@ -23,6 +24,7 @@ function Header() {
   const session = useSelector((state) => state.user.session);
   console.log("session del header", session);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const cookieValue = cookieTheme.includes("true");
 
@@ -59,6 +61,8 @@ function Header() {
       .get(`${END_POINTS.URL()}/api/products/custom/search?search=${query}`)
       .then((response) => {
         console.log(response.data);
+        dispatch(setProducts(response.data.payload));
+        navigate(`/search/${query}`);
         /*redux el array*/
         /*link*/
         /*trdirect*/
@@ -112,18 +116,9 @@ function Header() {
                   type="search"
                   placeholder="Search essentials, groceries and more..."
                   name="search"
-                  // value={(e) => setQuery(e.target.value)}
                   onChange={(e) => setQuery(e.target.value)}
                 />
                 <i className="ri-list-check"></i>
-                {/* <input type="submit" hidden={true}></input> */}
-                {/* <label htmlFor="">
-
-<input type="checkbox" />
-<input type="checkbox" />
-<input type="checkbox" />
-<input type="checkbox" />
-</label> */}
               </label>
             </form>
             <div className="header__search--login login hslogin flexrow">

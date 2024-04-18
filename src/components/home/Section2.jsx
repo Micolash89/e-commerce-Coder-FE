@@ -9,6 +9,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useSelector, useDispatch } from "react-redux";
 import { setSession } from "../../redux/features/UserSlice";
+import SearchResult from "../searchResult/SearchResult";
 
 function Section2() {
   const [productos, setProductos] = useState(false);

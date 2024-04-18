@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap");
 /*header*/
 
-body.select {
+body,
+.select {
   font-family: "Hanken Grotesk", sans-serif;
 }
 

@@ -18,6 +18,7 @@ import ResetPassword from "./components/resetPassword/ResetPassword";
 import Main from "./components/main/Main";
 import "./css/breakpoints.css";
 import PathLocation from "./components/PathLocation/PathLocation";
+import SearchResult from "./components/searchResult/SearchResult";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
               <Route exact path="/details/:id" element={<Product />} />
               <Route exact path="/myproducts" element={<MyProducts />} />
               <Route exact path="/modify/:id" element={<ModificarProducts />} />
+              <Route exact path="/search/:query" element={<SearchResult />} />
               {/* <Route exact path="/search/?query" element={<ModificarProducts />} /> */}
               <Route
                 exact

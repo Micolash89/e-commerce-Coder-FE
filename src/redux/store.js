@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./features/UserSlice";
+import searchReducer from "./features/SearchResult";
 
 /*
 colocar una variable para las notificaciones cuando redireciona
@@ -8,6 +9,7 @@ colocar una variable para el login y poder llamarlo en varios componentes donde 
 
 export const store = configureStore({
     reducer: {
-        user: userReducer
+        user: userReducer,
+        search: searchReducer,
     }
 });
