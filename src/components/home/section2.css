@@ -23,6 +23,10 @@ body {
   border-bottom: 5px solid var(--dark-blue-100);
 }
 
+.main__section2--h3 {
+  padding: 0;
+}
+
 .main__section2--h3 strong,
 .main__section3--h3 strong,
 .main__section4--h3 strong,

@@ -1,4 +1,5 @@
 .main__section1 {
+  padding-top: 10px;
   position: relative;
   height: 100%;
   width: 100%;
@@ -10,9 +11,6 @@
   overflow: hidden;
   width: 100%;
 }
-/* .main__section1 > div > img {
-  height: ;
-} */
 
 .main__section1:first-child {
   width: 100%;
