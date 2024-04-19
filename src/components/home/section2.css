@@ -39,6 +39,7 @@ body {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: left;
+  position: relative;
 }
 
 .ms2Cards__card {
@@ -138,4 +139,27 @@ body {
 .ms2Cards > .haspage:hover > i {
   color: var(--dark-black-100);
   cursor: default;
+}
+
+.previewUrl,
+.nextUrl {
+  position: absolute;
+  z-index: 9999;
+  border-radius: 50%;
+
+  box-shadow: 3px 3px 5px var(--box-shadow);
+}
+
+.nextUrl {
+  right: -10%;
+  bottom: 50%;
+}
+
+.previewUrl {
+  left: -10%;
+  bottom: 50%;
+}
+
+.main__section2--home {
+  justify-content: space-evenly;
 }

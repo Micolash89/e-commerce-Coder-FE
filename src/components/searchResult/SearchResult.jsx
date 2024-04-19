@@ -21,7 +21,6 @@ function SearchResult() {
 
   const handleView = (env) => {
     setCantPaginate(env.target.value);
-    console.log(env.target.value);
     setPage(1);
   };
 
@@ -52,9 +51,11 @@ function SearchResult() {
                   hidden
                   name="opcion"
                   value={`5`}
+                  // checked={cantPaginas == 5}
                   onClick={handleView}
                   //   checked={cantPaginate === 3}
                   id="opcion1"
+                  defaultChecked
                 />
                 <label htmlFor="opcion1">5</label>
 
@@ -64,6 +65,7 @@ function SearchResult() {
                   name="opcion"
                   value="10"
                   id="opcion2"
+                  // checked={cantPaginas == 10}
                   onClick={handleView}
                 />
                 <label htmlFor="opcion2">10</label>
@@ -74,6 +76,7 @@ function SearchResult() {
                   name="opcion"
                   value="15"
                   id="opcion3"
+                  // checked={cantPaginas == 15}
                   onClick={handleView}
                 />
                 <label htmlFor="opcion3">15</label>

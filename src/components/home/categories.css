@@ -1,0 +1,28 @@
+.ms3Cards {
+  padding: 30px 0;
+  border-top: 1px solid var(--ligth-grey-100);
+  justify-content: space-between;
+}
+
+.ms3Cards__card {
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.ms3Cards__card--img {
+  padding: 15px;
+  border-radius: 50%;
+  background-color: var(--ligth-grey-200);
+  width: 132px;
+  height: 132px;
+  display: flex;
+  justify-content: center;
+}
+
+.ms3Cards__card--name {
+  color: var(--dark-black-100);
+  font-size: var(--txt-4);
+  font-weight: 500;
+  line-height: 20px;
+}

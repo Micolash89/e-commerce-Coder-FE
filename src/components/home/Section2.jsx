@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 import { useSelector, useDispatch } from "react-redux";
 import { setSession } from "../../redux/features/UserSlice";
 import SearchResult from "../searchResult/SearchResult";
+import Categories from "./Categories";
 
 function Section2() {
   const [productos, setProductos] = useState(false);
@@ -86,7 +87,7 @@ function Section2() {
           {error && <Error />}
           {loading && <Loader />}
 
-          <div className="main__section2--cards ms2Cards">
+          <div className="main__section2--cards ms2Cards main__section2--home">
             <button
               className={` previewUrl ${
                 productos.hasPrevPage ? "" : "haspage"
@@ -117,6 +118,7 @@ function Section2() {
           </div>
         </section>
       )}
+      <Categories />
     </>
   );
 }
