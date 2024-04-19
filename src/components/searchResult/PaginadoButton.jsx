@@ -1,8 +1,11 @@
 import React from "react";
 
-function PaginadoButton({ name, setPage }) {
+function PaginadoButton({ name, setPage, page }) {
   return (
-    <button className="buttonPaginate" onClick={() => setPage(name[0])}>
+    <button
+      className={`buttonPaginate ${name == page ? "selectedPaginate" : ""}`}
+      onClick={() => setPage(name)}
+    >
       <span className="buttonPaginate__span">{name}</span>
     </button>
   );

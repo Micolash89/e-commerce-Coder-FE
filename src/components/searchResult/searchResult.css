@@ -1,9 +1,13 @@
+.SearchResultContainer {
+  padding: 15px 0;
+}
+
 .QueryResultDisplay {
   font-size: var(--txt-1);
   color: var(--dark-grey-100);
   font-weight: 600;
   justify-content: space-between;
-  padding: 5px 15px;
+  padding-bottom: 10px;
   align-items: center;
   text-transform: capitalize;
 }
@@ -116,15 +120,23 @@
   align-items: center;
   justify-content: center;
   gap: 15px;
-  margin-bottom: 15px;
 }
 
 .buttonPaginate {
   cursor: pointer;
   padding: 10px;
   font-size: var(--txt-1);
-  color: var(--dark-black-100);
+  color: var(--dark-grey-100);
   background-color: var(--ligth-grey-800);
   border-radius: var(--radius-7);
   font-weight: 600;
+}
+
+.buttonPaginate :hover {
+  color: var(--dark-blue-100);
+}
+
+.selectedPaginate {
+  color: var(--dark-black-100);
+  font-weight: 900;
 }
