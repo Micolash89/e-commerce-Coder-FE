@@ -48,8 +48,6 @@ function Header() {
   };
 
   const handleLogout = () => {
-    ////////////////////me quede aca
-    /*hacer fetch*/
     dispatch(logOutSession());
     Cookies.remove("coderCookieToken");
   };
@@ -63,9 +61,6 @@ function Header() {
         console.log(response.data);
         dispatch(setProducts(response.data.payload));
         navigate(`/search/${query}`);
-        /*redux el array*/
-        /*link*/
-        /*trdirect*/
       });
   };
 

@@ -8,6 +8,7 @@
   align-items: center;
   gap: 15px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .ms3Cards__card--img {
@@ -18,6 +19,9 @@
   height: 132px;
   display: flex;
   justify-content: center;
+}
+.ms3Cards__card--img:hover {
+  border: 1px solid var(--dark-blue-100);
 }
 
 .ms3Cards__card--name {

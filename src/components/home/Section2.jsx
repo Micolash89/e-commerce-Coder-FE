@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSession } from "../../redux/features/UserSlice";
 import SearchResult from "../searchResult/SearchResult";
 import Categories from "./Categories";
+import Banner from "./Banner";
 
 function Section2() {
   const [productos, setProductos] = useState(false);
@@ -79,6 +80,8 @@ function Section2() {
 
   return (
     <>
+      <Banner />
+
       {productos && (
         <section className={`main__section2 flexcolum  ${theme}`}>
           <h3 className="main__section2--h3">
