@@ -66,8 +66,8 @@ function Login() {
 
         <form className="login" onSubmit={handleSubmit}>
           <div className="login__title flexcolum">
-            <h2>Welcome Back</h2>
-            <p>LOGIN TO CONTINUE</p>
+            <h2>Bienvenido de Vuelta</h2>
+            <p>Inicie Sesión para Continuar</p>
           </div>
           <div className="login__input flexcolum">
             <label className="login__input--username flexcolum">
@@ -80,7 +80,7 @@ function Login() {
               />
             </label>
             <label className="login__input--password flexcolum">
-              <span>password</span>
+              <span>Contraseña</span>
               <input
                 name="password"
                 placeholder="******"
@@ -91,7 +91,7 @@ function Login() {
           </div>
 
           <Link to={"/restorepassword"} className="login__a" href="">
-            Forget Password ?
+            Restaurar Contraseña ?
           </Link>
 
           <div className="login__button flexcolum">
@@ -101,7 +101,7 @@ function Login() {
             <div className="login__button--newUser">
               <Link to={"/register"}>
                 {" "}
-                New User ? <strong>SING UP</strong>
+                Usuario Nuevo? <strong>Registrarse</strong>
               </Link>
             </div>
           </div>

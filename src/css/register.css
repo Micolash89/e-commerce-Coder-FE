@@ -80,6 +80,10 @@
   color: var(--dark-grey-500);
   text-transform: uppercase;
 }
+.register__button--newUser > a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--dark-grey-500);
+}
 
 .register__button--newUser a strong {
   color: var(--dark-blue-100);

@@ -39,6 +39,7 @@ function Header() {
     { url: "/cart", text: "Cart" },
     { url: "/registerProduct", text: "Registrar Producto" },
     { url: "/myproducts", text: "Mis Productos" },
+    { url: "/profile", text: "Perfil" },
   ];
 
   const handleLightDarkMode = () => {

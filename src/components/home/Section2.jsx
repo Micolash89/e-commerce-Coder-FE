@@ -85,7 +85,7 @@ function Section2() {
       {productos && (
         <section className={`main__section2 flexcolum  ${theme}`}>
           <h3 className="main__section2--h3">
-            Grab the best deal on <strong>Smartphones</strong>
+            Consigue la mejor oferta en cualquier <strong>Producto</strong>
           </h3>
           {error && <Error />}
           {loading && <Loader />}

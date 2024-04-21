@@ -13,15 +13,14 @@ function CardProduct({ data: { _id, title, price, category }, url }) {
           <span>{title}</span>
           <span>
             {" "}
-            <strong> {price}</strong>
-            ₹74999
+            <strong>$ {price}</strong>
           </span>
         </div>
-        <p>
+        {/* <p>
           56% <br />
           OFF{" "}
-        </p>
-        <span className="ms2Cards__card--span">{category}</span>
+        </p> */}
+        <span className="ms2Cards__card--span"> {category}</span>
       </Link>
     </>
   );

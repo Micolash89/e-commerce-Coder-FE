@@ -1,7 +1,7 @@
 .notification {
   position: absolute;
   width: max-content;
-  scale: 1.2;
+  /* scale: 1.2; */
   left: 0;
   right: 0;
   /* bottom: 1.5rem; */
@@ -30,6 +30,24 @@
   flex-direction: row;
   align-items: center;
   padding: 1rem 0.5rem;
+  color: var(--dark-black-100);
+  font-size: var(--txt-4);
+  text-transform: capitalize;
+}
+
+.notification__body > i {
+  padding: 2px;
+  color: white;
+  border-radius: 50%;
+  margin-right: 2px;
+}
+
+.okIcon {
+  background-color: var(--dark-green-100);
+}
+
+.errorIcon {
+  background-color: var(--dark-red-100);
 }
 
 .notification__progress {

@@ -5,7 +5,7 @@ import { END_POINTS } from "./endPoints";
 import Loader from "./loaders/Loader";
 import Error from "./Error";
 import { messageError, messageOk } from "../redux/features/NotificationSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import register from "../images/register.png";
 
@@ -62,12 +62,12 @@ function Register() {
         </div>
         <form className="register" onSubmit={handleSubmit}>
           <div className="register__title flexcolum">
-            <h2>Register</h2>
-            <p>join to us</p>
+            <h2>Registro</h2>
+            <p>Únete a nosotros</p>
           </div>
           <div className="register__input flexcolum">
             <label className="register__input--username flexcolum">
-              <span>First Name</span>
+              <span>Primer nombre</span>
               <input
                 onChange={handleInputChange}
                 type="text"
@@ -76,7 +76,7 @@ function Register() {
               />
             </label>
             <label className="register__input--lastName flexcolum">
-              <span>Last Name</span>
+              <span>apellido</span>
               <input
                 onChange={handleInputChange}
                 type="text"
@@ -85,7 +85,7 @@ function Register() {
               />
             </label>
             <label className="register__input--age flexcolum">
-              <span>age</span>
+              <span>edad</span>
               <input
                 onChange={handleInputChange}
                 type="number"
@@ -103,7 +103,7 @@ function Register() {
               />
             </label>
             <label className="register__input--password flexcolum">
-              <span>password</span>
+              <span>contraseña</span>
               <input
                 onChange={handleInputChange}
                 name="password"
@@ -112,20 +112,20 @@ function Register() {
               />
             </label>
             <label className="register__input--password flexcolum">
-              <span>Confirm password</span>
+              <span>confirmar contraseña</span>
               <input name="password2" placeholder="******" type="password" />
             </label>
           </div>
 
           <div className="register__button flexcolum">
             <button className="register__button--submit" type="submit">
-              register
+              registrar
             </button>
             <div className="register__button--newUser">
-              <a href="">
+              <Link to={"/login"}>
                 {" "}
-                Alredy User ? <strong>Login</strong>
-              </a>
+                Ya Tienes un Usuario ? <strong>Login</strong>
+              </Link>
             </div>
           </div>
         </form>

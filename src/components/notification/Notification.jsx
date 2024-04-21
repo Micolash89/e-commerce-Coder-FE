@@ -36,7 +36,9 @@ function Notification() {
           /> */}
             <i
               className={`${
-                notificationStatus ? "ri-check-line" : "ri-close-line"
+                notificationStatus
+                  ? "ri-check-line okIcon"
+                  : "ri-close-line  errorIcon"
               }`}
             ></i>
             {notificationMessage}
