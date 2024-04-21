@@ -6,6 +6,9 @@ import Loader from "./loaders/Loader";
 import Error from "./Error";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
+import { messageError, messageOk } from "../redux/features/NotificationSlice";
+import login from "../images/login.png";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -16,7 +19,7 @@ function Login() {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  //const [token, setToken] = useState(null);
+  const dispatch = useDispatch();
 
   const handleInputChange = (event) => {
     setFormData({
@@ -37,9 +40,11 @@ function Login() {
       );
       const token = response.data.token;
       Cookies.set("coderCookieToken", token);
+      dispatch(messageOk("se logueo correctamente"));
       navigate("/");
     } catch (error) {
       setError(true);
+      dispatch(messageError("Error logueo "));
       console.log(error);
     } finally {
       setLoading(false);
@@ -52,6 +57,11 @@ function Login() {
         <div className="sectionLogin__status">
           {loading && <Loader />}
           {error && <Error />}
+          {!loading && !error && (
+            <div className="logoLogin">
+              <img src={login}></img>
+            </div>
+          )}
         </div>
 
         <form className="login" onSubmit={handleSubmit}>

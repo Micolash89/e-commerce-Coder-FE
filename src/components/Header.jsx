@@ -9,10 +9,16 @@ import { logOutSession } from "../redux/features/UserSlice";
 import axios from "axios";
 import { END_POINTS } from "./endPoints";
 import { setProducts } from "../redux/features/SearchResult";
+import { messageOk } from "../redux/features/NotificationSlice";
 
 function Header() {
   const [show, setShow] = useState(false);
   const [query, setQuery] = useState("");
+
+  const user = useSelector((state) => state.user.user);
+  const session = useSelector((state) => state.user.session);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   let cookieTheme = Cookies.get("theme");
 
@@ -20,11 +26,6 @@ function Header() {
     Cookies.set("theme", "true", { expires: 7 });
     cookieTheme = "true";
   }
-
-  const session = useSelector((state) => state.user.session);
-  console.log("session del header", session);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const cookieValue = cookieTheme.includes("true");
 
@@ -43,13 +44,16 @@ function Header() {
   const handleLightDarkMode = () => {
     setThemeMenu(!themeMenu);
     Cookies.set("theme", !themeMenu, { expires: 7 });
-
     handleTheme(!themeMenu ? "ligth" : "dark");
   };
 
   const handleLogout = () => {
-    dispatch(logOutSession());
-    Cookies.remove("coderCookieToken");
+    axios.get(`${END_POINTS.URL()}/api/sessions/logout`).then((response) => {
+      console.log("logout", response.data);
+      Cookies.remove("coderCookieToken");
+      dispatch(messageOk("session cerrada"));
+      dispatch(logOutSession());
+    });
   };
 
   const handleSearch = (e) => {
@@ -70,7 +74,8 @@ function Header() {
         <section className={`header__section1 flexrow ${theme}`}>
           <span className="header__section1--span">
             {" "}
-            Welcome to worldwide Megamart!
+            Bienvenido a Megamart!
+            <span> {session ? user.first_name : ""}</span>
           </span>
           <div className="header__section1--div hsDescription">
             <span className="hsDescription__span">
@@ -117,8 +122,8 @@ function Header() {
               </label>
             </form>
             <div className="header__search--login login hslogin flexrow">
-              <i className="ri-user-3-line"></i>
               <strong className={`flexrow ${session ? "hidden" : " "}`}>
+                <i className="ri-user-3-line"></i>
                 <Link to={"/register"}>Sign Up</Link>
                 <span> / </span>
                 <Link to={"/login"}>Sign In</Link>

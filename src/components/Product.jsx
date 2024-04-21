@@ -5,18 +5,23 @@ import axios from "axios";
 import "../css/product.css";
 import Cookies from "js-cookie";
 import Loading2H from "./loaders/Loading2H";
-import Notification from "./notification/Notification";
+import { useDispatch, useSelector } from "react-redux";
+import { messageError, messageOk } from "../redux/features/NotificationSlice";
+import NoSession from "./noSession/NoSession";
 
 function Product() {
   const [producto, setProduct] = useState({});
   const [cant, setCant] = useState(1);
-  const [notificacion, setNotificacion] = useState(false);
   const { id } = useParams();
   const [products, setProducts] = useState(null);
   const [subtotal, setSubtotal] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
+  const dispatch = useDispatch();
+
+  const session = useSelector((state) => state.user.session);
+  console.log("sessiooooon", session);
   const getProductById = async () => {
     try {
       const response = await axios.get(
@@ -31,6 +36,10 @@ function Product() {
   };
 
   const addToCart = async () => {
+    if (!session) {
+      dispatch(messageError("debes iniciar session"));
+      return;
+    }
     const TokenCookie = Cookies.get("coderCookieToken");
     setLoading(true);
     setError(false);
@@ -48,14 +57,12 @@ function Product() {
         }
       );
       console.log("response: ", response.data);
-      // setUser(response.data.payload.user);
-      // console.log("user: ", user);
-      setNotificacion(true);
-
-      setTimeout(() => {
-        setNotificacion(false);
-        setCant(1);
-      }, 3000);
+      dispatch(
+        messageOk(
+          `Se agrego ${cant} ${cant == 1 ? "producto" : "productos"} al carrito`
+        )
+      );
+      setCant(1);
     } catch (error) {
       console.log(error);
       setError(true);
@@ -178,6 +185,7 @@ function Product() {
           <h4 className="orderSummary__title">Your Cart</h4>
 
           <section className="orderSummary__description flexcolum">
+            <NoSession />
             <div className="flexcolum">
               {/* <img src="" alt="" /> */}
               {/* <div>
@@ -211,7 +219,6 @@ function Product() {
           </div>
         </section>
       </section>
-      {notificacion && <Notification msj={`se agrego ${cant} producto`} />}
     </>
   );
 }

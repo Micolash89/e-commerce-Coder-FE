@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./features/UserSlice";
 import searchReducer from "./features/SearchResult";
+import notificationReducer from "./features/NotificationSlice";
 
 /*
 colocar una variable para las notificaciones cuando redireciona
@@ -11,5 +12,6 @@ export const store = configureStore({
     reducer: {
         user: userReducer,
         search: searchReducer,
+        notification: notificationReducer
     }
 });

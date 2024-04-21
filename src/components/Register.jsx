@@ -2,8 +2,18 @@ import axios from "axios";
 import "../css/register.css";
 import { useState } from "react";
 import { END_POINTS } from "./endPoints";
+import Loader from "./loaders/Loader";
+import Error from "./Error";
+import { messageError, messageOk } from "../redux/features/NotificationSlice";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import register from "../images/register.png";
 
 function Register() {
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -21,21 +31,35 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
+    setError(false);
     console.log("entré en el handleSubmit");
     axios
       .post(`${END_POINTS.URL()}/api/sessions/registrar`, formData)
       .then((response) => {
         console.log(response.data);
+        dispatch(messageOk("se Registro correctamente"));
+        navigate("/login");
       })
       .catch((error) => {
         console.log(error);
-      });
+        dispatch(messageError("Error Registro"));
+      })
+      .finally(setLoading(false));
   };
 
   return (
     <>
-      <section className="sectionRegister">
+      <section className="sectionRegister flexrow">
+        <div className="sectionRegister__status">
+          {loading && <Loader />}
+          {error && <Error />}
+          {!loading && !error && (
+            <div className="logoLogin">
+              <img src={register}></img>
+            </div>
+          )}
+        </div>
         <form className="register" onSubmit={handleSubmit}>
           <div className="register__title flexcolum">
             <h2>Register</h2>

@@ -19,6 +19,7 @@ import Main from "./components/main/Main";
 import "./css/breakpoints.css";
 import PathLocation from "./components/PathLocation/PathLocation";
 import SearchResult from "./components/searchResult/SearchResult";
+import Notification from "./components/notification/Notification";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
             </Routes>
           </PathLocation>
         </Main>
+        <Notification />
         <Footer />
       </ThemeProvider>
     </>

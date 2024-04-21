@@ -102,3 +102,23 @@
   align-items: center;
   justify-content: center;
 }
+
+.sectionRegister__status {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sectionRegister__status > .logoLogin {
+  overflow: hidden;
+  width: 350px;
+  height: 100%;
+}
+.sectionRegister__status > .logoLogin > img {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-2);
+  object-fit: cover;
+  object-position: -300px;
+}

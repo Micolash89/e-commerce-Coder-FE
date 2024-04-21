@@ -4,11 +4,15 @@ import CartItem from "./CartItem";
 import Cookies from "js-cookie";
 import { END_POINTS } from "../endPoints";
 import axios from "axios";
+import NoSession from "../noSession/NoSession";
+import { useSelector } from "react-redux";
 
 function Cart() {
   const [products, setProducts] = useState(null);
   const [subtotal, setSubtotal] = useState(0);
   const [deleteButton, setDeleteButton] = useState(false);
+
+  const session = useSelector((state) => state.user.session);
 
   const placeOrder = async () => {
     const TokenCookie = Cookies.get("coderCookieToken");
@@ -77,7 +81,8 @@ function Cart() {
       {
         <section className="cartView flexrow">
           <section className="cart cartView__cart flexcolum">
-            {products &&
+            {session &&
+              products &&
               products.map((product, index) => (
                 <CartItem
                   key={index + product.product.title}
@@ -92,10 +97,12 @@ function Cart() {
           </section>
 
           <section className="orderSummary flexcolum">
+            <NoSession />
             <h4 className="orderSummary__title">Order Summary</h4>
             <section className="orderSummary__description flexcolum">
               <div className="flexcolum">
-                {products &&
+                {session &&
+                  products &&
                   products.map((product, index) => (
                     <div key={`${index}-items`} className="flexrow">
                       <span>Sub Total:</span>

@@ -22,12 +22,16 @@ button {
   background-color: var(--ligth-grey-200);
   color: var(--dark-grey-100);
   font-size: var(--txt-1);
-
   transition: background-color 0.6s, color 0.6s;
 }
 
 .header__section1--span {
   font-weight: 300;
+}
+
+.header__section1--span > span {
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .hsDescription__span {
@@ -63,7 +67,7 @@ button {
   align-items: center;
   top: 30px;
 
-  background-color: rgba(255, 255, 255, 0.192);
+  background-color: var(--ligth-grey-900);
   backdrop-filter: blur(10px);
   box-shadow: 10px 5px 10px var(--box-shadow);
   height: max-content;
@@ -172,6 +176,26 @@ button {
   left: -1000px;
 }
 
+.header__search--login > strong > i {
+  color: var(--dark-blue-100);
+  font-size: var(--txt-2);
+  font-weight: 400;
+}
+
+/*hover/active button/a header*/
+.header__search--login > strong > a:hover,
+.header__search--login > div > button > strong:hover,
+.header__search > a > strong:hover,
+.header__search--theme > button > i:hover {
+  color: var(--dark-blue-100);
+}
+.header__search--login > strong > a:active,
+.header__search--login > div > button > strong:active,
+.header__search > a > strong:active,
+.header__search--theme > button > i:active {
+  color: var(--dark-black-100);
+}
+
 .hslogin {
   justify-content: center;
   align-items: center;
@@ -191,6 +215,9 @@ button {
 /*logout*/
 .header__search--login > div {
   align-items: center;
+}
+.header__search--login > div > button {
+  cursor: pointer;
 }
 
 .hslogin > div > button > strong {
