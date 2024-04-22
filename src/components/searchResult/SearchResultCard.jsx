@@ -1,7 +1,9 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import noUrl from "../../assets/image_3.png";
 
-function SearchResultCard({ product: { title, stock, price, _id } }) {
+function SearchResultCard({
+  product: { title, stock, price, _id, url, status },
+}) {
   return (
     <>
       <Link
@@ -9,27 +11,42 @@ function SearchResultCard({ product: { title, stock, price, _id } }) {
         className="ms2Cards__card flexcolum SearchResultList__card"
       >
         <div className="ms2Cards__card--div SearchResultList__card--imgContainer">
-          <img src="images/image 3.png" alt="producto" />
+          <img src={url || noUrl} alt="producto" />
+          {!status && (
+            <div className="noDisponible">
+              <span>no disponible</span>
+            </div>
+          )}
         </div>
 
         <div className="ms2Cards__card--div  flexcolum SearchResultList__card--description">
-          <span>({stock})</span>
+          <span>({status ? stock : 0})</span>
           <span>{title}</span>
           <span>
             {" "}
             <strong> $ {price}</strong>
           </span>
         </div>
-        <p>
+        {/* <p>
           56% <br />
           OFF{" "}
-        </p>
+        </p> */}
         <span
-          className={`ms2Cards__card--span .SearchResultList__card--stock ${
-            stock > 0 ? "" : ".SearchResultList__card--noStock "
+          className={`ms2Cards__card--span SearchResultList__card--stock ${
+            stock > 0 && status ? "" : "SearchResultList__card--noStock "
           } `}
         >
-          <i className="ri-check-line"></i> - In Stock
+          {stock > 0 && status ? (
+            <>
+              <i className="ri-check-line"></i>
+              <span> En Stock</span>
+            </>
+          ) : (
+            <>
+              <i className="ri-close-line"></i>
+              <span> Sin Stock</span>
+            </>
+          )}
         </span>
       </Link>
     </>

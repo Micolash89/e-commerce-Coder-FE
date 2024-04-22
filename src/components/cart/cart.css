@@ -10,6 +10,7 @@
   padding: 10px;
   width: 65%;
   gap: 15px;
+  transition: background-color 0.6s;
 }
 
 .cart__card {
@@ -17,13 +18,27 @@
   border-radius: var(--radius-2);
   padding: 15px;
   position: relative;
+  transition: background-color 0.6s;
 }
 
 .ccp {
-  background-color: var(--ligth-grey-500);
-  padding: 30px;
+  background-color: var(--ligth-grey-200);
   align-items: center;
   border-radius: var(--radius-2);
+  overflow: hidden;
+  max-width: 110px;
+  max-height: 110px;
+  min-height: 110px;
+  min-width: 110px;
+  transition: background-color 0.6s;
+}
+
+.ccp__img {
+  overflow: hidden;
+}
+.ccp__img {
+  border-radius: var(--radius-2);
+  object-fit: contain;
 }
 
 .cart__card--info {
@@ -48,6 +63,10 @@
   width: fit-content;
   padding: 3px 7px;
   border-radius: var(--radius-5);
+}
+
+.cci {
+  gap: 5px;
 }
 
 .cci > div:nth-child(3) > span,
@@ -180,7 +199,7 @@
   /* border: 1px solid black; */
   width: 20px;
   height: 20px;
-  background-color: var(--ligth-grey-500);
+  background-color: var(--dark-red-100);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -188,12 +207,18 @@
   right: 10px;
   font-size: var(--txt-10);
   cursor: pointer;
-  transition: scale 0.5s, background-color 0.5s;
+  transition: scale 0.5s, background-color 0.5s, color 0.6s;
+  /* color: var(--ligth-grey-500); */
+  color: black;
 }
 
 .cart__card--remove:hover {
   background-color: var(--dark-red-100);
-  color: var(--ligth-grey-500);
   scale: 1.5;
   transition: background-color 0.5s;
+}
+
+.cci__shipping {
+  padding: 3px !important;
+  font-size: var(--txt-12) !important;
 }

@@ -1,8 +1,16 @@
 import axios from "axios";
 import { useState } from "react";
 import { END_POINTS } from "./endPoints";
+import { useDispatch } from "react-redux";
+import { messageError, messageOk } from "../redux/features/NotificationSlice";
+import Loading2H from "./loaders/Loading2H";
 
 function RegisterProduct() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -10,6 +18,7 @@ function RegisterProduct() {
     price: 0,
     category: "",
     stock: 0,
+    url: "",
   });
 
   const handleInputChange = (event) => {
@@ -21,27 +30,53 @@ function RegisterProduct() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
+    setError(false);
     console.log("entré en el handleSubmit");
-    console.log(formData);
+
     await axios
       .post(`${END_POINTS.URL()}/api/products`, formData, {
         withCredentials: true,
       })
       .then((response) => {
         console.log(response.data);
+        dispatch(messageOk("se registro un producto"));
+        setFormData({
+          title: "",
+          description: "",
+          code: "",
+          price: 0,
+          category: "",
+          stock: 0,
+          url: "",
+        });
       })
       .catch((error) => {
         console.log(error);
+        setError(true);
+        dispatch(messageError("Registro de producto fallido"));
+      })
+      .finally(() => {
+        setLoading(false);
+        window.scrollTo(0, 0);
       });
   };
 
   return (
     <>
       <section className="sectionRegister">
+        <div className="imgPrewiev">
+          {formData.url && (
+            <img
+              className="imgPrewiev__img"
+              src={`${formData.url}`}
+              alt="imagen previa"
+            />
+          )}
+        </div>
         <form className="register" onSubmit={handleSubmit}>
           <div className="register__title flexcolum">
-            <h2>Register Product</h2>
+            <h2>Registrar Producto</h2>
           </div>
           <div className="register__input flexcolum">
             <label className="register__input--username flexcolum">
@@ -54,7 +89,7 @@ function RegisterProduct() {
               />
             </label>
             <label className="register__input--lastName flexcolum">
-              <span>description</span>
+              <span>Descripción</span>
               <input
                 onChange={handleInputChange}
                 type="text"
@@ -63,7 +98,7 @@ function RegisterProduct() {
               />
             </label>
             <label className="register__input--age flexcolum">
-              <span>code</span>
+              <span>código</span>
               <input
                 onChange={handleInputChange}
                 type="string"
@@ -72,7 +107,7 @@ function RegisterProduct() {
               />
             </label>
             <label className="register__input--email flexcolum">
-              <span>price</span>
+              <span>Precio</span>
               <input
                 onChange={handleInputChange}
                 type="number"
@@ -81,7 +116,7 @@ function RegisterProduct() {
               />
             </label>
             <label className="register__input--password flexcolum">
-              <span>category</span>
+              <span>Categoria</span>
               <input
                 onChange={handleInputChange}
                 name="category"
@@ -98,11 +133,27 @@ function RegisterProduct() {
                 type="number"
               />
             </label>
+            <label className="register__input--password flexcolum">
+              <span>imagen URL </span>
+              <input
+                onChange={handleInputChange}
+                name="url"
+                placeholder="https/www.ejemplo.com"
+                type="url"
+              />
+            </label>
           </div>
 
           <div className="register__button flexcolum">
-            <button className="register__button--submit" type="submit">
-              register
+            <button
+              className={`register__button--submit ${loading ? "rbs" : ""} `}
+              type="submit"
+            >
+              {!loading ? (
+                <span>Registrar</span>
+              ) : (
+                <Loading2H className="sps2__loading " />
+              )}
             </button>
           </div>
         </form>

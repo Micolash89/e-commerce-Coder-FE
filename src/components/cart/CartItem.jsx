@@ -2,8 +2,21 @@ import axios from "axios";
 import { END_POINTS } from "../endPoints";
 import Cookies from "js-cookie";
 import Notification from "../notification/Notification";
+import { useDispatch } from "react-redux";
+import { messageOk } from "../../redux/features/NotificationSlice";
 
-function CartItem({ title, price, quantity, stock, id, setDeleteButton }) {
+function CartItem({
+  title,
+  price,
+  quantity,
+  stock,
+  id,
+  setDeleteButton,
+  url,
+  status,
+}) {
+  const dispatch = useDispatch();
+
   const removeProduct = async () => {
     const TokenCookie = Cookies.get("coderCookieToken");
     console.log("dentre");
@@ -21,6 +34,8 @@ function CartItem({ title, price, quantity, stock, id, setDeleteButton }) {
 
       console.log(response.data);
       setDeleteButton(true);
+      dispatch(messageOk("se elimino el producto del carrito"));
+      window.scrollTo(0, 0);
     } catch (error) {
       console.log(error);
     }
@@ -31,12 +46,12 @@ function CartItem({ title, price, quantity, stock, id, setDeleteButton }) {
       <section className="cart__card flexrow">
         <div className="cart__card--product ccp flexcolum">
           <div className="ccp__img">
-            <img src="images/image 3.png" alt="" />
+            <img src={url} alt={title} title={title} />
           </div>
-          <p className="ccp__info">
+          {/* <p className="ccp__info">
             SAVE
             <strong>$199.00</strong>
-          </p>
+          </p> */}
         </div>
 
         <div className="cart__card--remove" onClick={removeProduct}>
@@ -44,25 +59,28 @@ function CartItem({ title, price, quantity, stock, id, setDeleteButton }) {
         </div>
 
         <div className="cart__card--info cci flexcolum">
-          <p>{title}</p>
-          <span>${price}</span>
-          <div>
+          <p>
+            {title} X <span>{quantity}</span>
+          </p>
+          <span>${price} X unid.</span>
+          {/* <div>
             <span>
               <button>-</button>
-              <span>{quantity}</span>
+             
               <button>+</button>
             </span>
-          </div>
+          </div> */}
           <div className="flexrow">
             <span
-              className="
-            freeShipping"
+              className={`sps2__shipping  cci__shipping ${
+                status ? "freeShipping" : "nofreeShipping"
+              } `}
             >
-              free Shipping
+              {status ? "disponible" : "no disponible"}
             </span>
           </div>
           <span className="inStock">
-            {stock != 0 ? (
+            {stock != 0 && status ? (
               <>
                 <i className="ri-check-line"></i>
                 in stock : {stock}

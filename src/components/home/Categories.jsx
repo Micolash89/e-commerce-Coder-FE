@@ -24,7 +24,7 @@ function Categories() {
       {category && (
         <section className="main__section3">
           <h3 className="main__section3--h3">
-            Shop From <strong>Top Categories</strong>
+            Compre en las <strong>categorías principales</strong>
           </h3>
           <div className="main__section3--cards ms3Cards flexrow">
             {category.map((categ, index) => (

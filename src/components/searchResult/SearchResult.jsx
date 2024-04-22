@@ -30,6 +30,7 @@ function SearchResult() {
       arr.push(i + 1);
     }
     setCantPaginas(arr);
+    window.scrollTo(0, 0);
   }, [cantPaginate, total]);
 
   return (

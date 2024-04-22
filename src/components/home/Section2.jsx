@@ -9,7 +9,6 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useSelector, useDispatch } from "react-redux";
 import { setSession } from "../../redux/features/UserSlice";
-import SearchResult from "../searchResult/SearchResult";
 import Categories from "./Categories";
 import Banner from "./Banner";
 

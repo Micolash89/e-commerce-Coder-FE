@@ -8,6 +8,7 @@ import Loading2H from "./loaders/Loading2H";
 import { useDispatch, useSelector } from "react-redux";
 import { messageError, messageOk } from "../redux/features/NotificationSlice";
 import NoSession from "./noSession/NoSession";
+import noUrl from "../assets/image_3.png";
 
 function Product() {
   const [producto, setProduct] = useState({});
@@ -21,7 +22,7 @@ function Product() {
   const dispatch = useDispatch();
 
   const session = useSelector((state) => state.user.session);
-  console.log("sessiooooon", session);
+
   const getProductById = async () => {
     try {
       const response = await axios.get(
@@ -43,8 +44,6 @@ function Product() {
     const TokenCookie = Cookies.get("coderCookieToken");
     setLoading(true);
     setError(false);
-
-    console.log("cantidad: ", cant);
     try {
       const response = await axios.post(
         `${END_POINTS.URL()}/api/carts/products/${id}`,
@@ -100,6 +99,7 @@ function Product() {
 
   useEffect(() => {
     getProductById();
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
@@ -115,7 +115,11 @@ function Product() {
       <section className="singleProduct">
         <section className="singleProduct__section sps1">
           <div className="sps1__picture">
-            <img src="images/3 → prod8.jpg.png" alt="imagen producto" />
+            <img
+              src={producto.url || noUrl}
+              alt={producto.title}
+              title={producto.title}
+            />
           </div>
           {/* <div className="sps1__pictures">
             <img src="" alt="imagen preview" />
@@ -131,14 +135,24 @@ function Product() {
           <ul className="sps2__description">
             <li className="sps2__description--item">
               {" "}
-              descripcion : {producto.description}
+              descripción : {producto.description}
+            </li>
+            <li className="sps2__description--item">
+              {" "}
+              categoría : {producto.description}
             </li>
           </ul>
 
-          <span className="sps2__shipping">free shipping</span>
+          <span
+            className={`sps2__shipping ${
+              producto.status ? "freeShipping" : "nofreeShipping"
+            } `}
+          >
+            {producto.status ? "disponible" : "no disponible"}
+          </span>
 
           <span className="sps2__stock">
-            {producto.stock != 0 ? (
+            {producto.stock != 0 && producto.status ? (
               <>
                 <i className="ri-check-line"></i>in stock {producto.stock}
               </>
@@ -185,7 +199,6 @@ function Product() {
           <h4 className="orderSummary__title">Your Cart</h4>
 
           <section className="orderSummary__description flexcolum">
-            <NoSession />
             <div className="flexcolum">
               {/* <img src="" alt="" /> */}
               {/* <div>
@@ -193,15 +206,21 @@ function Product() {
                 <span></span>
               </div>
               <i className="ri-close-line"></i> */}
-              {products &&
+              {products && session ? (
                 products.map((product, index) => (
                   <div key={`${index}-items`} className="flexrow">
                     <span>
-                      {product.product.title} x {product.quantity}
+                      {product.product.title.length < 10
+                        ? product.product.title
+                        : product.product.title.slice(0, 10) + "..."}{" "}
+                      x {product.quantity}
                     </span>
                     <span>$ {product.quantity * product.product.price}</span>
                   </div>
-                ))}
+                ))
+              ) : (
+                <NoSession />
+              )}
             </div>
             <div className="flexrow">
               <span>Sub Total:</span>

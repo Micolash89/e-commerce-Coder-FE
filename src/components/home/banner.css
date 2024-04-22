@@ -11,6 +11,9 @@
   overflow: hidden;
   width: 100%;
 }
+.main__section1 > div {
+  border-radius: var(--radius-1);
+}
 
 .main__section1:first-child {
   width: 100%;

@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { END_POINTS } from "./endPoints";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Cookies from "js-cookie";
 import Loading2H from "./loaders/Loading2H";
+import { messageError, messageOk } from "../redux/features/NotificationSlice";
+import { useDispatch } from "react-redux";
 
 function ModificarProducts() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const [status, setStatus] = useState(false);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -17,6 +20,7 @@ function ModificarProducts() {
     price: 0,
     category: "",
     stock: 0,
+    url: "",
   });
 
   const handleInputChange = (event) => {
@@ -37,13 +41,16 @@ function ModificarProducts() {
         price: response.data.payload.price,
         category: response.data.payload.category,
         stock: response.data.payload.stock,
+        url: response.data.payload.url,
       });
+      setStatus(response.data.payload.status);
     });
   }, [id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log(formData);
+    setLoading(true);
     console.log("entré en el handleSubmit");
 
     const tokenCookie = Cookies.get("coderCookieToken");
@@ -58,9 +65,17 @@ function ModificarProducts() {
       })
       .then((response) => {
         console.log(response.data);
+        setStatus(true);
+        dispatch(messageOk("se modifico un producto"));
       })
       .catch((error) => {
         console.log(error);
+
+        dispatch(messageError("error al modificar"));
+      })
+      .finally(() => {
+        setLoading(false);
+        window.scrollTo(0, 0);
       });
   };
 
@@ -77,7 +92,8 @@ function ModificarProducts() {
       })
       .then((response) => {
         console.log(response.data);
-        navigate("/myproducts");
+        setStatus(false);
+        window.scrollTo(0, 0);
       })
       .catch((error) => {
         console.log(error);
@@ -90,6 +106,15 @@ function ModificarProducts() {
   return (
     <>
       <section className="sectionRegister">
+        <div className="imgPrewiev">
+          {formData.url && (
+            <img
+              className="imgPrewiev__img"
+              src={`${formData.url}`}
+              alt="imagen previa"
+            />
+          )}
+        </div>
         <form className="register" onSubmit={handleSubmit}>
           <div className="register__title flexcolum">
             <h2>Modificar Producto</h2>
@@ -156,11 +181,39 @@ function ModificarProducts() {
                 value={formData.stock}
               />
             </label>
+            <label className="register__input--password flexcolum">
+              <span>imagen URL </span>
+              <input
+                onChange={handleInputChange}
+                name="url"
+                placeholder="https/www.ejemplo.com"
+                type="url"
+                value={formData.url}
+              />
+            </label>
+            <label className="register__input--password flexcolum">
+              <span>estado del producto * </span>
+              <input
+                disabled={true}
+                name="status"
+                placeholder={status ? "alta" : "baja"}
+                type="text"
+                value={status ? "alta" : "baja"}
+                className={`${status ? "productTrue" : "productFalse"}`}
+              />
+            </label>
           </div>
 
           <div className={`register__button  flexrow `}>
-            <button className="register__button--submit" type="submit">
-              Modificar
+            <button
+              className={`register__button--submit ${loading ? "rbd" : ""}`}
+              type="submit"
+            >
+              {!loading ? (
+                <span>modificar</span>
+              ) : (
+                <Loading2H className="sps2__loading " />
+              )}
             </button>
             {/* cambiar que cambie de alta o baja dependiendo del estado del producto */}
             <button
@@ -173,6 +226,10 @@ function ModificarProducts() {
               {loading && <Loading2H className="rbd__loading" />}
             </button>
           </div>
+          <span>
+            * Para dar de alta un producto selecione modificar <br />* Para dar
+            de baja un producto seleccione eliminar{" "}
+          </span>
         </form>
       </section>
     </>

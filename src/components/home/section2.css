@@ -80,7 +80,10 @@ body {
   border: 1px solid var(--ligth-grey-100);
   background-color: var(--ligth-grey-200);
   border-radius: var(--radius-1) var(--radius-1) 0 0;
-  padding: 7px 0;
+  /* padding: 7px 0; */
+  max-height: 171px;
+  overflow: hidden;
+  min-height: 171px;
 }
 
 .ms2Cards__card--div:nth-child(2) {

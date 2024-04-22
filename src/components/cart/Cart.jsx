@@ -56,9 +56,11 @@ function Cart() {
 
   const getSubtotal = async () => {
     let sub = 0;
-    products.forEach(
-      (product) => (sub += product.quantity * product.product.price)
-    );
+    products.forEach((product) => {
+      sub += product.product.status
+        ? product.quantity * product.product.price
+        : 0;
+    });
 
     setSubtotal(sub);
   };
@@ -91,6 +93,8 @@ function Cart() {
                   quantity={product.quantity}
                   stock={product.product.stock}
                   id={product.product._id}
+                  url={product.product.url}
+                  status={product.product.status}
                   setDeleteButton={setDeleteButton}
                 />
               ))}
@@ -105,8 +109,21 @@ function Cart() {
                   products &&
                   products.map((product, index) => (
                     <div key={`${index}-items`} className="flexrow">
-                      <span>Sub Total:</span>
-                      <span>${product.quantity * product.product.price}</span>
+                      {product.product.status ? (
+                        <>
+                          <span>
+                            {product.product.title.length < 8
+                              ? product.product.title + " "
+                              : product.product.title.slice(0, 8) + "... "}
+                            X {product.quantity}
+                          </span>
+                          <span>
+                            ${product.quantity * product.product.price}
+                          </span>
+                        </>
+                      ) : (
+                        <></>
+                      )}
                     </div>
                   ))}
               </div>

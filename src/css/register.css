@@ -126,3 +126,60 @@
   object-fit: cover;
   object-position: -300px;
 }
+
+/*register product*/
+
+.rbs {
+  width: 154px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding-bottom: 100px; */
+}
+
+.imgPrewiev {
+  /*terminar probar imagen registrar y mostrar en el home , modificar la base de datos agregar atributo url a todos lo productos*/
+  height: 100% !important;
+  margin: auto 0;
+  padding: 0 50px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.imgPrewiev,
+.imgPrewiev__img {
+  border-radius: var(--radius-2);
+}
+
+.imgPrewiev__img {
+  max-width: 500px;
+}
+
+/*modify product*/
+
+.productTrue,
+.productFalse {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.productTrue:disabled {
+  border: 1px solid var(--dark-green-100);
+}
+.productTrue {
+  color: var(--dark-green-100);
+  border: 1px solid var(--dark-green-100);
+}
+
+.productFalse:disabled {
+  border: 1px solid var(--dark-red-100);
+}
+.productFalse {
+  color: var(--dark-red-100);
+  border: 1px solid var(--dark-red-100);
+}
+
+.register > span {
+  font-size: var(--txt-12);
+}

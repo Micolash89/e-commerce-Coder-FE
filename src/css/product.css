@@ -1,17 +1,25 @@
 .singleProduct {
   display: grid;
-
   grid-template-columns: 1fr 1fr 0.5fr;
   grid-template-rows: 1fr;
   width: auto;
   height: auto;
-
   padding: 50px;
 }
 
 .sps1 {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
+  padding: 15px;
+}
+
+.sps1__picture {
+  border-radius: var(--radius-5);
+  overflow: hidden;
+}
+
+.sps1__picture > img {
+  border-radius: var(--radius-5);
 }
 
 .sps2 {
@@ -150,9 +158,6 @@
   gap: 15px;
 }
 
-.sps2__stock {
-}
-
 .sps3__button button {
   width: fit-content;
   min-width: 130px;
@@ -162,6 +167,10 @@
 .freeShipping {
   background-color: var(--dark-green-200) !important;
   color: var(--dark-green-100);
+}
+.nofreeShipping {
+  background-color: var(--dark-red-200) !important;
+  color: var(--dark-red-100);
 }
 
 .freeGift {
