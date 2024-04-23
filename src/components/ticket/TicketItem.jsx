@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Product from "./../Product";
 
 function TicketItem({ ticket }) {
   const format = (date, locale, options) =>
@@ -31,19 +30,8 @@ function TicketItem({ ticket }) {
             <strong>{ticket.code}</strong>
           </h4>
           <ul className="tsi__list flexrow">
-            {ticket.products.map((product, index) =>
-              index < 5 ? (
-                <li
-                  className="tsi__list--items"
-                  key={"products ticket" + product.product._id}
-                >
-                  {" "}
-                  {product.product.title}{" "}
-                </li>
-              ) : (
-                ""
-              )
-            )}
+            {ticket.products.length}{" "}
+            {ticket.products.length > 1 ? "items" : "item"}
             {/* <li className="tsi__list--items"> </li>
             <li className="tsi__list--items"> celular </li>
             <li className="tsi__list--items"> pc </li> */}

@@ -13,6 +13,9 @@ function TicketDetail() {
   const [ticket, setTicket] = useState([]);
   const [fecha, setFecha] = useState();
 
+  const format = (date, locale, options) =>
+    new Intl.DateTimeFormat(locale, options).format(date);
+
   useEffect(() => {
     const cookieToken = Cookies.get("coderCookieToken");
 
@@ -27,17 +30,20 @@ function TicketDetail() {
         console.log(res.data);
         setTicket(res.data.payload);
 
-        const format = (date, locale, options) =>
-          new Intl.DateTimeFormat(locale, options).format(date);
-        const day = new Date(ticket.purchase_datetime);
-
         // const fecha = format(day, "es");
-        const fecha = format(day, "es", { dateStyle: "long" });
-        setFecha(fecha);
-        console.log(fecha);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(() => {});
   }, []);
+
+  useEffect(() => {
+    if (ticket && ticket.length != 0) {
+      const day = new Date(ticket.purchase_datetime);
+      console.log(ticket.purchase_datetime);
+      console.log("dia", format(day, "es", { dateStyle: "full" }));
+      setFecha(format(day, "es", { dateStyle: "full" }));
+    }
+  }, [ticket]);
 
   return (
     <>
@@ -57,6 +63,9 @@ function TicketDetail() {
               <span>
                 <strong>Fecha: </strong>
                 {fecha ? fecha : "no hay fecha"}
+                {/* {format(new Date(ticket.purchase_datetime), "es", {
+                  dateStyle: "long",
+                })} */}
               </span>
             </section>
 

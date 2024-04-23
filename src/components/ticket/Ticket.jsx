@@ -30,15 +30,17 @@ function Ticket() {
 
   return (
     <>
-      <section className="ticketBox flexcolum">
-        <h3 className="ticketBox__title">Mis Tickets</h3>
-        <div className="ticketCard flexcolum">
-          {tickets.length > 0 &&
-            tickets.map((ticket) => (
-              <TicketItem key={ticket._id} ticket={ticket} />
-            ))}
-        </div>
-      </section>
+      {tickets.length > 0 && (
+        <section className="ticketBox flexcolum">
+          <h3 className="ticketBox__title">Mis Tickets</h3>
+          <div className="ticketCard flexcolum">
+            {tickets.length > 0 &&
+              tickets.map((ticket) => (
+                <TicketItem key={ticket._id} ticket={ticket} />
+              ))}
+          </div>
+        </section>
+      )}
     </>
   );
 }
