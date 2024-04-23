@@ -1,9 +1,9 @@
 import axios from "axios";
 import { END_POINTS } from "../endPoints";
 import Cookies from "js-cookie";
-import Notification from "../notification/Notification";
 import { useDispatch } from "react-redux";
 import { messageOk } from "../../redux/features/NotificationSlice";
+import noUrl from "../../assets/image_3.png";
 
 function CartItem({
   title,
@@ -46,12 +46,8 @@ function CartItem({
       <section className="cart__card flexrow">
         <div className="cart__card--product ccp flexcolum">
           <div className="ccp__img">
-            <img src={url} alt={title} title={title} />
+            <img src={url || noUrl} alt={title} title={title} />
           </div>
-          {/* <p className="ccp__info">
-            SAVE
-            <strong>$199.00</strong>
-          </p> */}
         </div>
 
         <div className="cart__card--remove" onClick={removeProduct}>
@@ -63,13 +59,7 @@ function CartItem({
             {title} X <span>{quantity}</span>
           </p>
           <span>${price} X unid.</span>
-          {/* <div>
-            <span>
-              <button>-</button>
-             
-              <button>+</button>
-            </span>
-          </div> */}
+
           <div className="flexrow">
             <span
               className={`sps2__shipping  cci__shipping ${

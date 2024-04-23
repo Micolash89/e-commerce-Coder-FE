@@ -75,6 +75,27 @@ function Header() {
       });
   };
 
+  useEffect(() => {
+    const cookieToken = Cookies.get("coderCookieToken");
+
+    if (cookieToken) {
+      axios
+        .get(`${END_POINTS.URL()}/api/sessions/current`, {
+          withCredentials: true,
+          headers: {
+            Authorization: `coderCookieToken=${cookieToken}`,
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+          dispatch(setSession(response.data.payload.user));
+        })
+        .catch((err) => {
+          console.log("usuario no loguado", err);
+        });
+    }
+  }, []);
+
   return (
     <>
       <header className={`header flexcolum  ${theme} `}>

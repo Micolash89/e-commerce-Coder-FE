@@ -1,28 +1,42 @@
+import { useEffect, useState } from "react";
 import "../ticket/ticket.css";
+import TicketItem from "./TicketItem";
+import axios from "axios";
+import { END_POINTS } from "../endPoints";
+import Cookies from "js-cookie";
+
+/*axios a los tickets del usuario  logueado*/
 
 function Ticket() {
+  const [tickets, setTickets] = useState([]);
+
+  useEffect(() => {
+    const tokenCoder = Cookies.get("coderCookieToken");
+
+    axios
+      .get(`${END_POINTS.URL()}/api/tickets/owntickets`, {
+        withCredentials: true,
+        headers: {
+          Authorization: `coderCookieToken=${tokenCoder}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setTickets(res.data.payload);
+        console.log("tickets", tickets);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <>
       <section className="ticketBox flexcolum">
         <h3 className="ticketBox__title">Mis Tickets</h3>
-        <div className="ticketCard flexrow">
-          <section className="ticketCard__section flexrow">
-            <div className="ticketCard__section--product  tsp flexcolum">
-              <div className="tsp__img">
-                <img src="images/image 3.png" alt="title" title="title" />
-              </div>
-            </div>
-
-            <div className="ticketCard__section--info tsi  flexcolum">
-              <h4 className="tsi__p">dsa X dsa</h4>
-              <span className="tsi__span">$das X unid.</span>
-              <ul className="tsi__list">
-                <li className="tsi__list--items">television</li>
-                <li className="tsi__list--items">celular</li>
-                <li className="tsi__list--items">pc</li>
-              </ul>
-            </div>
-          </section>
+        <div className="ticketCard flexcolum">
+          {tickets.length > 0 &&
+            tickets.map((ticket) => (
+              <TicketItem key={ticket._id} ticket={ticket} />
+            ))}
         </div>
       </section>
     </>
