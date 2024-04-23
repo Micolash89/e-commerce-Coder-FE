@@ -40,6 +40,7 @@ function Header() {
     { url: "/registerProduct", text: "Registrar Producto" },
     { url: "/myproducts", text: "Mis Productos" },
     { url: "/profile", text: "Perfil" },
+    { url: "/tickets", text: "Mis Tickets" },
   ];
 
   const handleLightDarkMode = () => {

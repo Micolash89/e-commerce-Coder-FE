@@ -34,11 +34,9 @@
 }
 
 .ccp__img {
-  overflow: hidden;
-}
-.ccp__img {
   border-radius: var(--radius-2);
   object-fit: contain;
+  overflow: hidden;
 }
 
 .cart__card--info {

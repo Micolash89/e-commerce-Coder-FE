@@ -22,6 +22,7 @@ import PathLocation from "./components/PathLocation/PathLocation";
 import SearchResult from "./components/searchResult/SearchResult";
 import Notification from "./components/notification/Notification";
 import EditProfile from "./components/editProfile/EditProfile";
+import Ticket from "./components/ticket/Ticket";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
               <Route exact path="/modify/:id" element={<ModificarProducts />} />
               <Route exact path="/search/:query" element={<SearchResult />} />
               <Route exact path="/profile" element={<EditProfile />} />
+              <Route exact path="/tickets" element={<Ticket />} />
               {/* <Route exact path="/search/?query" element={<ModificarProducts />} /> */}
               <Route
                 exact
