@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { messageError, messageOk } from "../redux/features/NotificationSlice";
 import login from "../images/login.png";
+import { setSession } from "../redux/features/UserSlice";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -39,8 +40,9 @@ function Login() {
         formData
       );
       const token = response.data.token;
-      Cookies.set("coderCookieToken", token);
+      Cookies.set("coderCookieToken", token, { expires: 7 });
       dispatch(messageOk("se logueo correctamente"));
+      dispatch(setSession(response.data.user));
       navigate("/");
     } catch (error) {
       setError(true);

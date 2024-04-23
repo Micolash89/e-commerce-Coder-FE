@@ -6,3 +6,8 @@
 .editProfile__input {
   width: 50%;
 }
+
+.register__button--submit:disabled {
+  background-color: var(--dark-blue-300);
+  box-shadow: none;
+}

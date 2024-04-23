@@ -83,7 +83,7 @@ function EditProfile() {
           </div>
           <div className="register__input editProfile__input flexcolum">
             <label className="register__input--username flexcolum">
-              <span>primer nombre</span>
+              <span>nombre</span>
               <input
                 onChange={handleInputChange}
                 type="text"
@@ -93,7 +93,7 @@ function EditProfile() {
               />
             </label>
             <label className="register__input--lastName flexcolum">
-              <span>Last Name</span>
+              <span>apellido</span>
               <input
                 onChange={handleInputChange}
                 type="text"
@@ -113,7 +113,7 @@ function EditProfile() {
               />
             </label>
             <label className="register__input--age editProfile__input--age flexcolum">
-              <span>age</span>
+              <span>edad</span>
               <input
                 onChange={handleInputChange}
                 type="number"
@@ -127,7 +127,16 @@ function EditProfile() {
           </div>
 
           <div className="register__button flexcolum">
-            <button className="register__button--submit" type="submit">
+            <button
+              className="register__button--submit"
+              type="submit"
+              disabled={
+                formData.first_name == user.first_name &&
+                formData.last_name == user.last_name &&
+                formData.age == user.age &&
+                formData.email == user.email
+              }
+            >
               Save
             </button>
             <div className="register__button--newUser">

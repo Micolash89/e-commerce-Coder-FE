@@ -49,7 +49,7 @@ function ModificarProducts() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+
     setLoading(true);
     console.log("entré en el handleSubmit");
 
@@ -65,8 +65,8 @@ function ModificarProducts() {
       })
       .then((response) => {
         console.log(response.data);
-        setStatus(true);
         dispatch(messageOk("se modifico un producto"));
+        setStatus(true);
       })
       .catch((error) => {
         console.log(error);
@@ -93,10 +93,12 @@ function ModificarProducts() {
       .then((response) => {
         console.log(response.data);
         setStatus(false);
+        dispatch(messageOk("Baja del producto"));
         window.scrollTo(0, 0);
       })
       .catch((error) => {
         console.log(error);
+        dispatch(messageError("error al modificar el estado del producto"));
       })
       .finally(() => {
         setLoading(false);
@@ -140,7 +142,7 @@ function ModificarProducts() {
                 value={formData.description}
               />
             </label>
-            <label className="register__input--age flexcolum">
+            <label className="register__input--code ric flexcolum">
               <span>code</span>
               <input
                 onChange={handleInputChange}
@@ -149,6 +151,7 @@ function ModificarProducts() {
                 placeholder="#####"
                 value={formData.code}
                 disabled={true}
+                className="ric__input"
               />
             </label>
             <label className="register__input--email flexcolum">
@@ -192,7 +195,7 @@ function ModificarProducts() {
               />
             </label>
             <label className="register__input--password flexcolum">
-              <span>estado del producto * </span>
+              <span>estado del producto *</span>
               <input
                 disabled={true}
                 name="status"

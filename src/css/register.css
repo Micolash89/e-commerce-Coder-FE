@@ -175,6 +175,7 @@
 .productFalse:disabled {
   border: 1px solid var(--dark-red-100);
 }
+
 .productFalse {
   color: var(--dark-red-100);
   border: 1px solid var(--dark-red-100);
@@ -182,4 +183,8 @@
 
 .register > span {
   font-size: var(--txt-12);
+}
+
+.ric__input:disabled {
+  color: var(--dark-black-100);
 }

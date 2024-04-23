@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../css/header.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import HeaderLi from "./HeaderLi";
 import Cookies from "js-cookie";
 import { ThemeContext } from "./context/ThemeContext";
 import { useDispatch, useSelector } from "react-redux";
-import { logOutSession } from "../redux/features/UserSlice";
+import { logOutSession, setSession } from "../redux/features/UserSlice";
 import axios from "axios";
 import { END_POINTS } from "./endPoints";
 import { setProducts } from "../redux/features/SearchResult";
@@ -49,12 +49,17 @@ function Header() {
   };
 
   const handleLogout = () => {
-    axios.get(`${END_POINTS.URL()}/api/sessions/logout`).then((response) => {
-      console.log("logout", response.data);
-      Cookies.remove("coderCookieToken");
-      dispatch(messageOk("session cerrada"));
-      dispatch(logOutSession());
-    });
+    axios
+      .get(`${END_POINTS.URL()}/api/sessions/logout`)
+      .then((response) => {
+        console.log("logout", response.data);
+      })
+      .finally(() => {
+        dispatch(messageOk("session cerrada"));
+        Cookies.remove("coderCookieToken");
+        dispatch(logOutSession());
+        navigate("/login");
+      });
   };
 
   const handleSearch = (e) => {

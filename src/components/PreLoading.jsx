@@ -3,22 +3,13 @@ import "../css/preLoading.css";
 import axios from "axios";
 import { END_POINTS } from "./endPoints";
 import Error from "./Error";
-
 function PreLoading() {
   const [display, setDisplay] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(0);
   const [string, setString] = useState(".");
-  const fetchRetry = async () => {
-    // try {
-    //   const response = await axios.get(`${END_POINTS.URL()}/api/products`);
-    //   console.log("response del loading", response.data);
-    //   setDisplay(true);
 
-    // } catch (error) {
-    //   console.log(error);
-    //   setError(true);
-    // }
+  const fetchRetry = async () => {
     setDisplay(false);
 
     axios

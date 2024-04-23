@@ -1,4 +1,6 @@
 import "../css/footer.css";
+import apple from "../assets/appStore.png";
+import google from "../assets/googlePlay.png";
 
 function Footer() {
   let year = new Date().getFullYear();
@@ -25,11 +27,11 @@ function Footer() {
               <div className="fls1__div flexrow">
                 <a className="fls1__div--a" href="">
                   <i className="ri-apple-line"></i>
-                  <img src="images/image 11.png" alt="app aple" />
+                  <img src={apple} alt="app aple" />
                 </a>
                 <a className="fls1__div--a" href="">
                   <i className="ri-google-play-line"></i>
-                  <img src="images/imageg.png" alt="app google Play" />
+                  <img src={google} alt="app google Play" />
                 </a>
               </div>
             </div>

@@ -1,3 +1,4 @@
+import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import "../cart/cart.css";
 import CartItem from "./CartItem";
@@ -6,17 +7,24 @@ import { END_POINTS } from "../endPoints";
 import axios from "axios";
 import NoSession from "../noSession/NoSession";
 import { useSelector } from "react-redux";
+import {
+  messageError,
+  messageOk,
+} from "../../redux/features/NotificationSlice";
+import Loading2H from "../loaders/Loading2H";
 
 function Cart() {
   const [products, setProducts] = useState(null);
   const [subtotal, setSubtotal] = useState(0);
   const [deleteButton, setDeleteButton] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const session = useSelector((state) => state.user.session);
+  const dispatch = useDispatch();
+  const TokenCookie = Cookies.get("coderCookieToken");
 
   const placeOrder = async () => {
-    const TokenCookie = Cookies.get("coderCookieToken");
-
+    setLoading(true);
     axios
       .post(
         `${END_POINTS.URL()}/api/carts/purchase`,
@@ -30,15 +38,20 @@ function Cart() {
       )
       .then((response) => {
         console.log("response", response);
+        setProducts(response.data.productsLeft);
+        dispatch(messageOk("se realizo la compra"));
       })
       .catch((error) => {
         console.log(error);
+        dispatch(messageError("ocurrio un error"));
+      })
+      .finally(() => {
+        setLoading(false);
+        window.scrollTo(0, 0);
       });
   };
 
   const getCart = async () => {
-    const TokenCookie = Cookies.get("coderCookieToken");
-
     try {
       const response = await axios.get(`${END_POINTS.URL()}/api/carts/`, {
         withCredentials: true,
@@ -83,8 +96,7 @@ function Cart() {
       {
         <section className="cartView flexrow">
           <section className="cart cartView__cart flexcolum">
-            {session &&
-              products &&
+            {session && products && products.length != 0 ? (
               products.map((product, index) => (
                 <CartItem
                   key={index + product.product.title}
@@ -97,7 +109,13 @@ function Cart() {
                   status={product.product.status}
                   setDeleteButton={setDeleteButton}
                 />
-              ))}
+              ))
+            ) : (
+              <div className="cartView__empty">
+                <span>no hay productos en el carrito</span>
+                <i className="ri-shopping-cart-line"></i>
+              </div>
+            )}
           </section>
 
           <section className="orderSummary flexcolum">
@@ -132,8 +150,15 @@ function Cart() {
                 {<span>${subtotal}</span>}
               </div>
             </section>
-            <button className="orderSummary__button" onClick={placeOrder}>
-              Place Order
+            <button
+              className={`orderSummary__button ${loading ? "oSb" : ""}`}
+              onClick={placeOrder}
+            >
+              {!loading ? (
+                <span>Realizar pedido</span>
+              ) : (
+                <Loading2H className="sps2__loading " />
+              )}
             </button>
           </section>
         </section>

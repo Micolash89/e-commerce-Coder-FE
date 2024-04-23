@@ -8,7 +8,6 @@ import { ThemeContext } from "../context/ThemeContext";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useSelector, useDispatch } from "react-redux";
-import { setSession } from "../../redux/features/UserSlice";
 import Categories from "./Categories";
 import Banner from "./Banner";
 
@@ -18,12 +17,9 @@ function Section2() {
   const [page, setPage] = useState("");
   const [error, setError] = useState(false);
   const { theme } = useContext(ThemeContext);
-  const tokenCookie = Cookies.get("coderCookieToken");
 
   const session = useSelector((state) => state.user.session);
   const user = useSelector((state) => state.user.user);
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     setError(false);
@@ -40,21 +36,6 @@ function Section2() {
       })
       .finally(() => {
         setLoading(false);
-      });
-
-    axios
-      .get(`${END_POINTS.URL()}/api/sessions/current`, {
-        withCredentials: true,
-        headers: {
-          Authorization: `coderCookieToken=${tokenCookie}`,
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
-        dispatch(setSession(response.data.payload.user));
-      })
-      .catch((error) => {
-        console.log("usuario no logueado", error);
       });
   }, []);
 
