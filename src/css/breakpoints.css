@@ -92,7 +92,7 @@
   }
 
   .fls1__div1 {
-    display: flex;
+    display: flex !important;
     text-align: center;
   }
 
