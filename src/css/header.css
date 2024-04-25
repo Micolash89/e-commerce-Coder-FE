@@ -271,8 +271,8 @@ button {
 }
 
 @media (max-width: 1009px) {
-  .header__search--label {
-    /* min-width: 0; */
+  .header__section2 {
+    padding: 20px 0;
   }
 }
 
