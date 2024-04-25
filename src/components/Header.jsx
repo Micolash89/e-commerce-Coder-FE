@@ -118,7 +118,7 @@ function Header() {
             </span>
           </div>
         </section>
-        <section className="header__section2 flexrow">
+        <section className=" flexrow header__section2">
           <div className="header__section2--div menu">
             <ul
               className={`menu__list  ${show ? "showMenu" : "showHidde"}`}
