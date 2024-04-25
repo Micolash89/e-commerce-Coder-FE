@@ -117,7 +117,7 @@
 
   .fls1__div,
   .fls1__div1 {
-    justify-content: space-evenly;
+    justify-content: space-evenly !important;
   }
 
   .fls1__div--a img {
