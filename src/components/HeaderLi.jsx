@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function HeaderLi({ item: { url, text } }) {
+function HeaderLi({ item: { url, text, icon } }) {
   return (
     <>
       <Link to={`${url}`} className="menu__item">
-        <li>{text}</li>
+        <li>
+          {icon} {text}
+        </li>
       </Link>
     </>
   );

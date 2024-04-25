@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { messageError, messageOk } from "../redux/features/NotificationSlice";
 import NoSession from "./noSession/NoSession";
 import noUrl from "../assets/image_3.png";
+import { cartAdd } from "../redux/features/CartSlice";
 
 function Product() {
   const [producto, setProduct] = useState({});
@@ -61,6 +62,7 @@ function Product() {
           `Se agrego ${cant} ${cant == 1 ? "producto" : "productos"} al carrito`
         )
       );
+      dispatch(cartAdd(cant));
       setCant(1);
     } catch (error) {
       console.log(error);

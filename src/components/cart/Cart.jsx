@@ -12,6 +12,7 @@ import {
   messageOk,
 } from "../../redux/features/NotificationSlice";
 import Loading2H from "../loaders/Loading2H";
+import { cartAdd, cartSet } from "../../redux/features/CartSlice";
 
 function Cart() {
   const [products, setProducts] = useState(null);
@@ -37,9 +38,19 @@ function Cart() {
         }
       )
       .then((response) => {
-        console.log("response", response);
+        console.log("response purchase", response);
         setProducts(response.data.productsLeft);
-        dispatch(messageOk("se realizo la compra"));
+
+        dispatch(cartSet());
+        if (response.data.productsLeft.length > 0) {
+          response.data.productsLeft.forEach((product) => {
+            dispatch(cartAdd(product.quantity));
+          });
+
+          dispatch(messageOk("algunos productos no estan disponibles"));
+        } else {
+          dispatch(messageOk("se realizo la compra"));
+        }
       })
       .catch((error) => {
         console.log(error);

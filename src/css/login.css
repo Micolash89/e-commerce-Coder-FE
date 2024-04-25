@@ -67,7 +67,7 @@
   padding: 15px 40px;
   border-radius: var(--radius-2);
   background-color: var(--dark-blue-100);
-  color: var(--ligth-grey-500);
+  color: white;
   cursor: pointer;
   text-transform: uppercase;
   font-size: var(--txt-1);
@@ -140,8 +140,6 @@
     border-radius: var(--radius-1);
     backdrop-filter: blur(10px);
     box-shadow: 3px 3px 7px 3px var(--box-shadow);
-    /* align-items: center;
-    justify-content: center; */
     position: absolute;
   }
 

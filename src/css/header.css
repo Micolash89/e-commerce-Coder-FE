@@ -65,18 +65,15 @@ button {
   position: absolute;
   flex-direction: column !important;
   align-items: center;
-  top: 30px;
-
+  top: 40px;
   background-color: var(--ligth-grey-900);
   backdrop-filter: blur(10px);
   box-shadow: 10px 5px 10px var(--box-shadow);
   height: max-content;
   width: 250px;
-  z-index: 999;
+  z-index: 88;
   align-items: center;
   justify-content: flex-start;
-  /* gap: 30px; */
-
   color: var(--dark-black-100);
   left: -1100px;
   transition: top 0.2s;
@@ -86,18 +83,14 @@ button {
 
 .menu__item {
   transition: background-color 0.6s, color 0.6s;
-  padding: 15px 0;
+  padding: 15px;
   width: 100%;
-  text-align: center;
+  text-align: left;
   box-shadow: 0px 1px 10px 0px var(--box-shadow);
   color: var(--dark-black-100);
 }
 
 .menu__item:hover {
-  /* text-decoration: underline;
-  text-decoration-color: var(--dark-blue-100);
-  text-underline-position: above;
-  text-underline-position: unset; */
   background-color: var(--ligth-grey-500);
 }
 
@@ -128,7 +121,6 @@ button {
 }
 
 .header__search--label {
-  /* padding: 15px; */
   display: flex;
   padding: 10px;
   border-radius: var(--radius-3);
@@ -180,6 +172,10 @@ button {
   color: var(--dark-blue-100);
   font-size: var(--txt-2);
   font-weight: 400;
+}
+
+.hslogin > strong > a > i {
+  display: none;
 }
 
 /*hover/active button/a header*/
@@ -270,6 +266,27 @@ button {
   transition: background-color 0.6s, color 0.6s;
 }
 
+/*cart count*/
+.header__search--cart {
+  position: relative;
+}
+
+.cartCount {
+  position: absolute;
+  top: 15px;
+  background-color: var(--dark-red-100);
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  font-size: var(--txt-1);
+  text-align: center;
+  color: black;
+}
+
+.cartCountdisplay {
+  display: none;
+}
+
 @media (max-width: 1050px) {
   .header__section2 {
     padding: 20px 0;
@@ -298,6 +315,11 @@ button {
     display: none;
   }
 
+  .hslogin > strong > a > i {
+    display: inline-block;
+    color: var(--dark-black-100);
+  }
+
   .header__search--login > strong > a {
     position: absolute;
     min-width: 150px;
@@ -305,18 +327,18 @@ button {
     width: auto;
     background-color: var(--ligth-grey-900);
     backdrop-filter: blur(10px);
-    font-size: var(--txt-3);
-    box-shadow: -4px 4px 10px 7px var(--box-shadow);
+    font-size: var(--txt-2);
+    box-shadow: -4px 4px 10px 0px var(--box-shadow);
     padding: 5px;
     z-index: 20;
-
+    color: var(--dark-black-100);
     transition: right 0.6s;
   }
   .header__search--login > strong > a:hover {
     background-color: var(--ligth-grey-500);
   }
   .header__search--login > strong > a:nth-child(2) {
-    top: 90px;
+    top: 80px;
   }
   .header__search--login > strong > a:last-child {
     top: 40px;
@@ -329,11 +351,11 @@ button {
   }
 
   .hslogin {
-    order: 2;
+    order: 2 !important;
   }
 
   .header__search--cart {
-    order: 1;
+    order: 1 !important;
   }
 }
 
@@ -363,6 +385,14 @@ button {
   .header__search--label {
     min-width: 100px;
     width: 100%;
+  }
+
+  .menu__list {
+    width: 100vw;
+  }
+
+  .hslogin > strong > a {
+    width: 75vw;
   }
 }
 

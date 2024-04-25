@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { messageOk } from "../../redux/features/NotificationSlice";
 import noUrl from "../../assets/image_3.png";
+import { cartRemove } from "../../redux/features/CartSlice";
 
 function CartItem({
   title,
@@ -34,6 +35,7 @@ function CartItem({
 
       console.log(response.data);
       setDeleteButton(true);
+      dispatch(cartRemove(quantity));
       dispatch(messageOk("se elimino el producto del carrito"));
       window.scrollTo(0, 0);
     } catch (error) {

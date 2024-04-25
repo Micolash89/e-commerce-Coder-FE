@@ -11,3 +11,32 @@
   background-color: var(--dark-blue-300);
   box-shadow: none;
 }
+
+.editProfileRegister__button--loading {
+  width: 144px;
+  height: 48px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+@media (max-width: 1007px) {
+  .editProfile__input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 553px) {
+  .editProfileRegister__title {
+    align-items: center;
+  }
+
+  .editProfile__input > label > input {
+    width: 100%;
+  }
+
+  .editProfileRegister__button {
+    align-self: center;
+  }
+}

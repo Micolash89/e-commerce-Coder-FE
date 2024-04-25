@@ -14,11 +14,14 @@ import {
 } from "../../redux/features/NotificationSlice";
 import { logOutSession } from "../../redux/features/UserSlice";
 import NoSession from "../noSession/NoSession";
+import Loader from "../loaders/Loader";
+import Loading2H from "../loaders/Loading2H";
 
 function EditProfile() {
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     first_name: "",
@@ -45,7 +48,7 @@ function EditProfile() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     const tokenCookie = Cookies.get("coderCookieToken");
     console.log("entré en el handleSubmit");
     axios
@@ -61,14 +64,18 @@ function EditProfile() {
       )
       .then((response) => {
         console.log(response.data);
-        dispatch(messageOk("Perfil actualizado correctamente"));
+        dispatch(messageOk(`Perfil actualizado correctamente`));
         Cookies.remove("coderCookieToken");
         dispatch(logOutSession());
+        window.scrollTo(0, 0);
         navigate("/login");
       })
       .catch((error) => {
         console.log(error);
         dispatch(messageError("no se pudo actualizar el perfil"));
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -77,9 +84,8 @@ function EditProfile() {
       <section className="sectionRegister">
         <form className="register editProfile" onSubmit={handleSubmit}>
           <NoSession />
-          <div className="register__title flexcolum">
+          <div className="register__title editProfileRegister__title flexcolum">
             <h2>Información de cuenta</h2>
-            {/* <p>join to us</p> */}
           </div>
           <div className="register__input editProfile__input flexcolum">
             <label className="register__input--username flexcolum">
@@ -126,9 +132,11 @@ function EditProfile() {
             </label>
           </div>
 
-          <div className="register__button flexcolum">
+          <div className="register__button  flexcolum">
             <button
-              className="register__button--submit"
+              className={`register__button--submit editProfileRegister__button ${
+                loading ? "editProfileRegister__button--loading" : ""
+              }`}
               type="submit"
               disabled={
                 formData.first_name == user.first_name &&
@@ -137,11 +145,12 @@ function EditProfile() {
                 formData.email == user.email
               }
             >
-              Save
+              {loading ? <Loading2H /> : "Guardar"}
             </button>
-            <div className="register__button--newUser">
+
+            <div className="register__button--newUser ">
               <Link to={"/restorepassword"}>
-                Change <strong>Password</strong>
+                Cambiar <strong>Password</strong>
               </Link>
             </div>
           </div>

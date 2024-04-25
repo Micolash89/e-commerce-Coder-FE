@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { messageError, messageOk } from "../redux/features/NotificationSlice";
 import login from "../images/login.png";
 import { setSession } from "../redux/features/UserSlice";
+import { cartAdd, cartSet } from "../redux/features/CartSlice";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -43,6 +44,7 @@ function Login() {
       Cookies.set("coderCookieToken", token, { expires: 7 });
       dispatch(messageOk("se logueo correctamente"));
       dispatch(setSession(response.data.user));
+      handleCart();
       navigate("/");
     } catch (error) {
       setError(true);
@@ -50,6 +52,30 @@ function Login() {
       console.log(error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleCart = () => {
+    const cookieToken = Cookies.get("coderCookieToken");
+
+    try {
+      axios
+        .get(`${END_POINTS.URL()}/api/carts/`, {
+          withCredentials: true,
+          headers: {
+            Authorization: `coderCookieToken=${cookieToken}`,
+          },
+        })
+        .then((response) => {
+          dispatch(cartSet(0));
+          console.log(response.data);
+          console.log("response: cart", response.data.payload.products);
+          response.data.payload.products.map((item) =>
+            dispatch(cartAdd(item.quantity))
+          );
+        });
+    } catch (error) {
+      console.log(error);
     }
   };
 
