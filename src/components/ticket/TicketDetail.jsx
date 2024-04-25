@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { END_POINTS } from "../endPoints";
 import Cookies from "js-cookie";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import PDFComponent from "../PDF/PDFComponent";
 
 function TicketDetail() {
   const user = useSelector((state) => state.user.user);
@@ -70,6 +72,29 @@ function TicketDetail() {
             </section>
 
             <h2>MegaMart</h2>
+            {/* <div className="ticketPdf">
+              {ticket && (
+                <PDFDownloadLink
+                  document={
+                    <PDFComponent ticket={ticket} fecha={fecha} user={user} />
+                  }
+                  fileName="Ticket.pdf"
+                >
+                  {({ loading, url, error, blob }) =>
+                    loading ? (
+                      <div>cargando...</div> //<a href={url}>Descargar PDF</a>
+                    ) : (
+                      <button
+                        className="ticketPdfButton"
+                        title="descarga el ticket en formato pdf"
+                      >
+                        <i className="ri-file-pdf-2-line"></i>
+                      </button>
+                    )
+                  }
+                </PDFDownloadLink>
+              )}
+            </div> */}
           </header>
           <section className="flexrow">
             <div className="ticketDetail__div detailsPurchaser flexcolum">

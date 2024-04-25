@@ -10,6 +10,8 @@ import Cookies from "js-cookie";
 function Ticket() {
   const [tickets, setTickets] = useState([]);
 
+  // tickets.reverse()
+
   useEffect(() => {
     const tokenCoder = Cookies.get("coderCookieToken");
 

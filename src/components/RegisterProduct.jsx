@@ -8,6 +8,7 @@ import Loading2H from "./loaders/Loading2H";
 function RegisterProduct() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [focus, setFocus] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -64,22 +65,26 @@ function RegisterProduct() {
 
   return (
     <>
-      <section className="sectionRegister">
-        <div className="imgPrewiev">
+      <section className="sectionRegister sectionRegisterProduct">
+        <div className="imgPrewiev sectionRegisterProduct__img">
           {formData.url && (
             <img
-              className="imgPrewiev__img"
+              className={`imgPrewiev__img ${
+                focus
+                  ? "sectionRegisterProduct__img--show"
+                  : "sectionRegisterProduct__img--notshow"
+              }`}
               src={`${formData.url}`}
               alt="imagen previa"
             />
           )}
         </div>
-        <form className="register" onSubmit={handleSubmit}>
+        <form className="register registerProductForm" onSubmit={handleSubmit}>
           <div className="register__title flexcolum">
             <h2>Registrar Producto</h2>
           </div>
-          <div className="register__input flexcolum">
-            <label className="register__input--username flexcolum">
+          <div className="register__input registerProductForm__input flexcolum">
+            <label className=" register__input--productRegister register__input--username flexcolum">
               <span>nombre del producto</span>
               <input
                 onChange={handleInputChange}
@@ -88,7 +93,7 @@ function RegisterProduct() {
                 placeholder="xxxx"
               />
             </label>
-            <label className="register__input--lastName flexcolum">
+            <label className=" register__input--productRegister register__input--lastName flexcolum">
               <span>Descripción</span>
               <input
                 onChange={handleInputChange}
@@ -97,7 +102,7 @@ function RegisterProduct() {
                 placeholder="xxxx"
               />
             </label>
-            <label className="register__input--age flexcolum">
+            <label className=" register__input--productRegister register__input--age flexcolum">
               <span>código</span>
               <input
                 onChange={handleInputChange}
@@ -106,7 +111,7 @@ function RegisterProduct() {
                 placeholder="#####"
               />
             </label>
-            <label className="register__input--email flexcolum">
+            <label className=" register__input--productRegister register__input--email flexcolum">
               <span>Precio</span>
               <input
                 onChange={handleInputChange}
@@ -115,7 +120,7 @@ function RegisterProduct() {
                 placeholder="$$$$$$"
               />
             </label>
-            <label className="register__input--password flexcolum">
+            <label className=" register__input--productRegister register__input--password flexcolum">
               <span>Categoria</span>
               <input
                 onChange={handleInputChange}
@@ -124,7 +129,7 @@ function RegisterProduct() {
                 type="string"
               />
             </label>
-            <label className="register__input--password flexcolum">
+            <label className=" register__input--productRegister register__input--password flexcolum">
               <span>stock</span>
               <input
                 onChange={handleInputChange}
@@ -133,20 +138,26 @@ function RegisterProduct() {
                 type="number"
               />
             </label>
-            <label className="register__input--password flexcolum">
+            <label
+              className={`register__input--productRegister register__input--password flexcolum `}
+            >
               <span>imagen URL </span>
               <input
                 onChange={handleInputChange}
                 name="url"
                 placeholder="https/www.ejemplo.com"
                 type="url"
+                onFocus={() => setFocus(true)}
+                onMouseLeave={() => setFocus(false)}
               />
             </label>
           </div>
 
           <div className="register__button flexcolum">
             <button
-              className={`register__button--submit ${loading ? "rbs" : ""} `}
+              className={`register__button--submit register__button--registerProduct ${
+                loading ? "rbs" : ""
+              } `}
               type="submit"
             >
               {!loading ? (

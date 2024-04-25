@@ -188,3 +188,53 @@
 .ric__input:disabled {
   color: var(--dark-black-100);
 }
+
+@media (max-width: 998px) {
+  .sectionRegister {
+    padding: 50px 0;
+  }
+
+  .register__input--productRegister > input {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 998px) {
+  .sectionRegisterProduct {
+    position: relative;
+  }
+
+  .sectionRegisterProduct__img {
+    position: absolute;
+    padding: 0;
+    top: 30%;
+    right: 25%;
+    height: min-content !important;
+    /* display: none; */
+    /* transition: all ease-in-out */
+    transition: opacity 0.4s;
+    pointer-events: none;
+  }
+
+  .sectionRegisterProduct__img--notshow {
+    opacity: 0 !important;
+  }
+  .sectionRegisterProduct__img--show {
+    border: 1px solid var(--dark-blue-100);
+    opacity: 1 !important;
+  }
+
+  .registerProductForm__input,
+  .registerProductForm {
+    width: 100% !important;
+  }
+  .register__button--registerProduct {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .sectionRegisterProduct__img {
+    right: 15%;
+  }
+}

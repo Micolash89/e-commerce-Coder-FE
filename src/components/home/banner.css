@@ -59,3 +59,36 @@
 .next {
   right: -45px;
 }
+
+/*title*/
+
+.main__section1--title {
+  display: none;
+  font-size: var(--txt-5);
+  text-align: center;
+  margin: auto;
+}
+.main__section1--title > strong {
+  color: var(--dark-blue-100);
+}
+@media (max-width: 472px) {
+  .main__section1 {
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  .main__section1 > div {
+    display: none !important;
+  }
+
+  .main__section1--title {
+    display: block;
+  }
+}
+
+@media (max-width: 368px) {
+  .main__section1--title {
+    display: block;
+    font-size: var(--txt-6);
+  }
+}

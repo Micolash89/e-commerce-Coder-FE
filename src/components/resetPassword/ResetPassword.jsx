@@ -1,10 +1,19 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { END_POINTS } from "../endPoints";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  messageError,
+  messageOk,
+} from "../../redux/features/NotificationSlice";
 
 function ResetPassword() {
   const { token } = useParams();
+
+  const dispath = useDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     password: "",
@@ -21,7 +30,7 @@ function ResetPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("entré en el handleSubmit");
-    console.log(formData);
+
     axios
       .post(
         `${END_POINTS.URL()}/api/sessions/restorepassword/${token}`,
@@ -29,9 +38,12 @@ function ResetPassword() {
       )
       .then((response) => {
         console.log(response.data);
+        dispath(messageOk("se restablecio la contraseña correctamente"));
+        navigate("/login");
       })
       .catch((error) => {
         console.log(error);
+        dispath(messageError("error al restablecer la contraseña"));
       });
   };
 
@@ -54,7 +66,7 @@ function ResetPassword() {
               />
             </label>
             <label className="register__input--password flexcolum">
-              <span>Confirm password</span>
+              <span>confirmar password</span>
               <input
                 onChange={handleInputChange}
                 name="confirm_password"
@@ -66,13 +78,13 @@ function ResetPassword() {
 
           <div className="register__button flexcolum">
             <button className="register__button--submit" type="submit">
-              register
+              Reset Password
             </button>
             <div className="register__button--newUser">
-              <a href="">
+              <Link to={"/login"}>
                 {" "}
-                Alredy User ? <strong>Login</strong>
-              </a>
+                Ya Tienes un Usuario ? <strong>Login</strong>
+              </Link>
             </div>
           </div>
         </form>

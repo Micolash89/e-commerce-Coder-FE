@@ -32,9 +32,6 @@ function TicketItem({ ticket }) {
           <ul className="tsi__list flexrow">
             {ticket.products.length}{" "}
             {ticket.products.length > 1 ? "items" : "item"}
-            {/* <li className="tsi__list--items"> </li>
-            <li className="tsi__list--items"> celular </li>
-            <li className="tsi__list--items"> pc </li> */}
           </ul>
         </div>
         <div className="ticketCard__section__total">

@@ -1,3 +1,5 @@
+@import url("../css/breakpoints.css");
+
 .footer {
   padding: 100px 100px 50px;
   background-color: var(--dark-blue-100);
@@ -74,6 +76,12 @@
   font-weight: 300;
   padding: 25px 0 0 0;
   border-top: 1px solid var(--dark-blue-300);
+}
+.footer__span > a {
+  color: white;
+}
+.footer__span > a:hover {
+  color: var(--dark-blue-300);
 }
 
 .fls1__div--a i {

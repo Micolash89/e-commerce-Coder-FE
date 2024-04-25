@@ -22,11 +22,11 @@ function Categories() {
   return (
     <>
       {category && (
-        <section className="main__section3">
+        <section className="main__section3 categories">
           <h3 className="main__section3--h3">
             Compre en las <strong>categorías principales</strong>
           </h3>
-          <div className="main__section3--cards ms3Cards flexrow">
+          <div className="main__section3--cards ms3Cards categories__list flexrow">
             {category.map((categ, index) => (
               <CategorieList key={`categoria ${index}`} name={categ} />
             ))}

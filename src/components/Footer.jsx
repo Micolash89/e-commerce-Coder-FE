@@ -3,7 +3,7 @@ import apple from "../assets/appStore.png";
 import google from "../assets/googlePlay.png";
 
 function Footer() {
-  let year = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
     <>
@@ -62,7 +62,15 @@ function Footer() {
           </section>
         </section>
         <span className="footer__span">
-          © {year} All rights reserved. Reliance Retail Ltd.
+          © {year} All rights reserved.{" "}
+          <a
+            href="https://github.com/Micolash89/e-commerce-Coder-FrontEnd"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            {" "}
+            micolash89.
+          </a>
         </span>
       </footer>
     </>

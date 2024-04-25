@@ -1,9 +1,17 @@
 import { useState } from "react";
 import axios from "axios";
 import { END_POINTS } from "../endPoints";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  messageError,
+  messageOk,
+} from "../../redux/features/NotificationSlice";
 
 function ForgetPassword() {
   const [email, setEmail] = useState("");
+
+  const dispath = useDispatch();
 
   const handleInputChange = (event) => {
     setEmail(
@@ -25,9 +33,11 @@ function ForgetPassword() {
       })
       .then((response) => {
         console.log(response.data);
+        dispath(messageOk("se envio un mail a su casilla de correo"));
       })
       .catch((error) => {
         console.log(error);
+        dispath(messageError("error al enviar el mail"));
       });
   };
 
@@ -53,13 +63,13 @@ function ForgetPassword() {
 
           <div className="register__button flexcolum">
             <button className="register__button--submit" type="submit">
-              Send Email
+              Enviar Email
             </button>
             <div className="register__button--newUser">
-              <a href="">
+              <Link to={"/login"}>
                 {" "}
-                Alredy User ? <strong>Login</strong>
-              </a>
+                Ya Tienes un Usuario ? <strong>Login</strong>
+              </Link>
             </div>
           </div>
         </form>

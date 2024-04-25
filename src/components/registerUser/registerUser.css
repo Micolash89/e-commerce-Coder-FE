@@ -1,0 +1,52 @@
+@media (max-width: 956px) {
+  .sectionRegisterUser {
+    padding: 15px 0;
+    position: relative;
+  }
+
+  .sectionRegisterUser > form {
+    padding: 0;
+  }
+  .sectionRegisterUser__input > label > input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 714px) {
+  .sectionRegisterUserForm {
+    width: 100%;
+  }
+
+  .sectionRegisterUser__logo {
+    display: none;
+  }
+  .sectionRegisterUser > .sectionRegister__status {
+    position: absolute;
+  }
+
+  .sectionRegisterUser__status {
+    background-color: var(--ligth-grey-1000);
+    top: 30%;
+    left: 40%;
+    width: fit-content;
+    padding: 30px;
+    border-radius: var(--radius-1);
+    backdrop-filter: blur(10px);
+    scale: 1.2;
+  }
+}
+@media (max-width: 600px) {
+  .sectionRegisterUserButton {
+    align-items: center;
+  }
+
+  .sectionRegisterUserForm > .register__title {
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (max-width: 400px) {
+  .sectionRegisterUser__status {
+    left: 30%;
+  }
+}

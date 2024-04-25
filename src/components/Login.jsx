@@ -103,7 +103,7 @@ function Login() {
             <div className="login__button--newUser">
               <Link to={"/register"}>
                 {" "}
-                Usuario Nuevo? <strong>Registrarse</strong>
+                Usuario Nuevo? <strong>Registrate</strong>
               </Link>
             </div>
           </div>

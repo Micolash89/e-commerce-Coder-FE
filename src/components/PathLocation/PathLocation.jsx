@@ -16,7 +16,11 @@ function PathLocation({ children }) {
             <span className="location__urls--ruta">
               <Link to="/">Home</Link>
               {arrRutas.map((ruta, index) => {
-                return <strong key={ruta + index}>{` / ${ruta}`}</strong>;
+                return (
+                  <strong key={ruta + index}>{` / ${
+                    ruta.length < 20 ? ruta : ruta.slice(0, 20) + "..."
+                  }`}</strong>
+                );
               })}
             </span>
           </div>

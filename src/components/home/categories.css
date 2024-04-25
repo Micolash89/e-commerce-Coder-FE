@@ -34,3 +34,23 @@
   font-weight: 500;
   line-height: 20px;
 }
+
+/*categories*/
+
+.categories__list {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 986px) {
+  .categories__list {
+    justify-content: left;
+    gap: 15px;
+  }
+}
+@media (max-width: 279px) {
+  .categories__list {
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+}

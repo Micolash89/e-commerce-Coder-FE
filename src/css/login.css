@@ -113,3 +113,51 @@
   object-fit: cover;
   object-position: center;
 }
+
+@media (max-width: 1162px) {
+  .sectionLogin {
+    padding: 50px 0;
+  }
+
+  .login__input--username > input,
+  .login__input--password > input {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 512px) {
+  .sectionLogin {
+    flex-direction: column !important;
+    position: relative;
+  }
+
+  .sectionLogin__status {
+    padding: 0;
+    order: 2;
+    left: 30%;
+    top: 30%;
+    background: var(--ligth-grey-1000);
+    border-radius: var(--radius-1);
+    backdrop-filter: blur(10px);
+    box-shadow: 3px 3px 7px 3px var(--box-shadow);
+    /* align-items: center;
+    justify-content: center; */
+    position: absolute;
+  }
+
+  .logoLogin {
+    display: none;
+  }
+  .login {
+    width: 100%;
+    order: 1;
+  }
+
+  .login__title {
+    align-items: center;
+  }
+
+  .login__button--submit {
+    width: 100%;
+  }
+}

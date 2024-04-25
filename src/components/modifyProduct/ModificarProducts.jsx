@@ -1,17 +1,22 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { END_POINTS } from "./endPoints";
 import { useParams } from "react-router-dom";
 import Cookies from "js-cookie";
-import Loading2H from "./loaders/Loading2H";
-import { messageError, messageOk } from "../redux/features/NotificationSlice";
 import { useDispatch } from "react-redux";
+import { END_POINTS } from "../endPoints";
+import {
+  messageError,
+  messageOk,
+} from "../../redux/features/NotificationSlice";
+import "../modifyProduct/modifyProduct.css";
+import Loading2H from "../loaders/Loading2H";
 
 function ModificarProducts() {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const [status, setStatus] = useState(false);
+  const [focus, setFocus] = useState(false);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -107,8 +112,14 @@ function ModificarProducts() {
 
   return (
     <>
-      <section className="sectionRegister">
-        <div className="imgPrewiev">
+      <section className="sectionRegister sectionRegisterModify">
+        <div
+          className={`imgPrewiev ${
+            focus
+              ? "sectionRegisterModify__img"
+              : "sectionRegisterModify__noimg"
+          }`}
+        >
           {formData.url && (
             <img
               className="imgPrewiev__img"
@@ -117,11 +128,14 @@ function ModificarProducts() {
             />
           )}
         </div>
-        <form className="register" onSubmit={handleSubmit}>
+        <form
+          className="register sectionRegisterModify__form"
+          onSubmit={handleSubmit}
+        >
           <div className="register__title flexcolum">
             <h2>Modificar Producto</h2>
           </div>
-          <div className="register__input flexcolum">
+          <div className="register__input flexcolum modifyProduct__form">
             <label className="register__input--username flexcolum">
               <span>nombre del producto</span>
               <input
@@ -192,6 +206,8 @@ function ModificarProducts() {
                 placeholder="https/www.ejemplo.com"
                 type="url"
                 value={formData.url}
+                onFocus={() => setFocus(true)}
+                onMouseLeave={() => setFocus(false)}
               />
             </label>
             <label className="register__input--password flexcolum">
@@ -207,7 +223,9 @@ function ModificarProducts() {
             </label>
           </div>
 
-          <div className={`register__button  flexrow `}>
+          <div
+            className={`register__button   flexrow register__button--modify`}
+          >
             <button
               className={`register__button--submit ${loading ? "rbd" : ""}`}
               type="submit"
@@ -218,7 +236,6 @@ function ModificarProducts() {
                 <Loading2H className="sps2__loading " />
               )}
             </button>
-            {/* cambiar que cambie de alta o baja dependiendo del estado del producto */}
             <button
               className={`register__button--submit register__button--deleted ${
                 loading ? "rbd" : ""
