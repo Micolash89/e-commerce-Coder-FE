@@ -60,22 +60,21 @@
   }
 }
 
-@media (max-width: 738px) {
-  .main {
-    padding: 0 !important;
-  }
-}
-@media (max-width: 738px) {
-  .header__section1 {
-    display: none !important;
-  }
-}
-
-@media (max-width: 598px) {
+@media (max-width: 777px) {
   .footer__links {
     flex-wrap: wrap;
   }
 }
+
+@media (max-width: 738px) {
+  .header__section1 {
+    display: none !important;
+  }
+  .main {
+    padding: 0 !important;
+  }
+}
+
 @media (max-width: 478px) {
   .header__search--label {
     min-width: 100px;
