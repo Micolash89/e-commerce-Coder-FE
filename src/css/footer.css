@@ -87,3 +87,9 @@
 .fls1__div--a i {
   display: none;
 }
+
+@media (max-width: 478px) {
+  .fls1__div--a > i {
+    display: flex;
+  }
+}
