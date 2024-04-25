@@ -14,7 +14,8 @@ import { messageOk } from "../redux/features/NotificationSlice";
 function Header() {
   const [show, setShow] = useState(false);
   const [query, setQuery] = useState("");
-
+  const [modalLogin, setmodalLogin] = useState(false);
+  console.log(modalLogin);
   const user = useSelector((state) => state.user.user);
   const session = useSelector((state) => state.user.session);
   const dispatch = useDispatch();
@@ -151,10 +152,25 @@ function Header() {
             </form>
             <div className="header__search--login login hslogin flexrow">
               <strong className={`flexrow ${session ? "hidden" : " "}`}>
-                <i className="ri-user-3-line"></i>
-                <Link to={"/register"}>Sign Up</Link>
+                <i
+                  className="ri-user-3-line"
+                  onClick={() => setmodalLogin(!modalLogin)}
+                ></i>
+                <Link
+                  to={"/register"}
+                  className={`${modalLogin ? "showLogin" : ""}`}
+                  onMouseLeave={() => setmodalLogin(false)}
+                >
+                  Registrar
+                </Link>
                 <span> / </span>
-                <Link to={"/login"}>Sign In</Link>
+                <Link
+                  to={"/login"}
+                  className={`${modalLogin ? "showLogin" : ""}`}
+                  onMouseLeave={() => setmodalLogin(false)}
+                >
+                  Login
+                </Link>
               </strong>
               <div className={`flexrow ${session ? " " : "hidden"}`}>
                 <button

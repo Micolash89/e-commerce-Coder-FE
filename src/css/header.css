@@ -270,7 +270,7 @@ button {
   transition: background-color 0.6s, color 0.6s;
 }
 
-@media (max-width: 1009px) {
+@media (max-width: 1050px) {
   .header__section2 {
     padding: 20px 0;
   }
@@ -287,8 +287,53 @@ button {
     width: 100%;
   }
 
-  .header__search--login strong {
+  .header__search--login {
+    position: relative;
+  }
+
+  .header__search--login > strong > a,
+  .header__search--login > strong > span,
+  .header__search--login > div > button > strong,
+  .header__search--cart > strong {
     display: none;
+  }
+
+  .header__search--login > strong > a {
+    position: absolute;
+    min-width: 150px;
+    height: auto;
+    width: auto;
+    background-color: var(--ligth-grey-900);
+    backdrop-filter: blur(10px);
+    font-size: var(--txt-3);
+    box-shadow: -4px 4px 10px 7px var(--box-shadow);
+    padding: 5px;
+    z-index: 20;
+
+    transition: right 0.6s;
+  }
+  .header__search--login > strong > a:hover {
+    background-color: var(--ligth-grey-500);
+  }
+  .header__search--login > strong > a:nth-child(2) {
+    top: 90px;
+  }
+  .header__search--login > strong > a:last-child {
+    top: 40px;
+  }
+
+  .showLogin {
+    transition: right 0.6s;
+    display: inline-block !important;
+    right: 10% !important;
+  }
+
+  .hslogin {
+    order: 2;
+  }
+
+  .header__search--cart {
+    order: 1;
   }
 }
 
