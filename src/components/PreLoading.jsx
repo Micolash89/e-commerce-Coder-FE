@@ -30,13 +30,11 @@ function PreLoading() {
 
   useEffect(() => {
     setTimeout(() => {
-      // loading < 100 && !display ? setLoading(loading + 1) : "";
       if (loading < 100 && !display) {
         setLoading(loading + 1);
         setString(string.length < 3 ? string + "." : ".");
       }
     }, 600);
-    console.log("dentro");
   }, [loading]);
 
   return (

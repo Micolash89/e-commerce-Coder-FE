@@ -31,8 +31,6 @@ function TicketDetail() {
       .then((res) => {
         console.log(res.data);
         setTicket(res.data.payload);
-
-        // const fecha = format(day, "es");
       })
       .catch((err) => console.error(err))
       .finally(() => {});
@@ -52,7 +50,7 @@ function TicketDetail() {
       {ticket && (
         <section className="ticketDetail flexcolum">
           <header className="detailHeader flexrow">
-            <section className="detailHeader__order flexcolum">
+            <section className=" flexcolum detailHeader__order">
               <span>
                 <strong>confirmación de orden</strong>
               </span>

@@ -13,6 +13,10 @@ button {
 
 .header {
   border-bottom: 1px solid var(--ligth-grey-100);
+  /* position: sticky;
+  top: 0;
+  background-color: var(--dark-black-100);
+  z-index: 8888; */
 }
 
 .header__section1 {

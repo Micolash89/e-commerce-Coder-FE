@@ -77,8 +77,14 @@
     padding: 0;
   }
 
+  .fls1__h4,
+  .fls1__div2--h4 {
+    text-align: center;
+  }
+
   .fls1__div1 {
     display: flex !important;
+    text-align: center;
     text-align: center;
   }
 

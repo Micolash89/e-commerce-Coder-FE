@@ -114,8 +114,8 @@ function Product() {
 
   return (
     <>
-      <section className="singleProduct">
-        <section className="singleProduct__section sps1">
+      <section className="singleProduct mediaSingleProduct">
+        <section className="singleProduct__section sps1 mediaSingleProductSps1">
           <div className="sps1__picture">
             <img
               src={producto.url || noUrl}
@@ -129,7 +129,7 @@ function Product() {
             <img src="" alt="imagen preview" />
           </div> */}
         </section>
-        <section className="singleProduct__section sps2 flexcolum">
+        <section className="singleProduct__section sps2 flexcolum mediaSingleProductSps2">
           <h2 className="sps2__name">{producto.title}</h2>
 
           <p className="sps2__price">${producto.price}</p>
@@ -233,7 +233,7 @@ function Product() {
           <div className="sps3__button flexrow">
             <Link to={"/cart"}>
               <button className="orderSummary__button">
-                {<span>View cart</span>}
+                {<span>ver Cart</span>}
               </button>
             </Link>
             <button className="orderSummary__button">Checkout</button>

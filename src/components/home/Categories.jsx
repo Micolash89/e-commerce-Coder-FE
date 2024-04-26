@@ -3,6 +3,7 @@ import "../home/categories.css";
 import CategorieList from "./CategorieList";
 import axios from "axios";
 import { END_POINTS } from "../endPoints";
+import ImageSlice from "./ImageSlice";
 
 function Categories() {
   const [category, setCategory] = useState(false);
@@ -28,8 +29,11 @@ function Categories() {
           </h3>
           <div className="main__section3--cards ms3Cards categories__list flexrow">
             {category.map((categ, index) => (
-              <CategorieList key={`categoria ${index}`} name={categ} />
+              <>
+                <CategorieList key={`categoria ${index}`} name={categ} />
+              </>
             ))}
+            {/* <ImageSlice item={category} /> */}
           </div>
         </section>
       )}

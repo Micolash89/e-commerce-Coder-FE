@@ -221,11 +221,60 @@
   box-shadow: none;
 }
 
+@media (max-width: 867px) {
+  .ticketDetail {
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .ticketProductCard {
+    flex-direction: column !important;
+  }
+  .ticketProductCard > div:last-child::before {
+    content: "Sub Total: ";
+  }
+}
+@media (max-width: 703px) {
+  .productsDetail > div:first-child > span:last-child {
+    display: none;
+  }
+}
+
 @media (max-width: 776px) {
   .ticketCard {
     width: 100%;
   }
 }
+
+@media (max-width: 603px) {
+  .ticketProductCard__info > p:first-child {
+    font-size: var(--txt-2);
+  }
+}
+
+@media (max-width: 529px) {
+  .detailHeader {
+    flex-direction: column !important;
+    align-items: flex-start;
+  }
+  .detailHeader__order {
+    order: 2;
+  }
+  .detailHeader > h2 {
+    order: 1 !important;
+  }
+}
+
+@media (max-width: 463px) {
+  .ticketProductCard > section > div:first-child {
+    max-width: 50px !important;
+    min-width: 50px;
+    min-height: 50px;
+    height: fit-content;
+    width: 50px !important;
+  }
+}
+
 @media (max-width: 344px) {
   .ticketCard__section {
     flex-wrap: wrap;

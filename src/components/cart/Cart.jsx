@@ -105,7 +105,7 @@ function Cart() {
   return (
     <>
       {
-        <section className="cartView flexrow">
+        <section className="cartView  flexrow cartViewMedia">
           <section className="cart cartView__cart flexcolum">
             {session && products && products.length != 0 ? (
               products.map((product, index) => (
