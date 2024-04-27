@@ -141,7 +141,7 @@ function Product() {
             </li>
             <li className="sps2__description--item">
               {" "}
-              categoría : {producto.description}
+              categoría : {producto.category}
             </li>
           </ul>
 

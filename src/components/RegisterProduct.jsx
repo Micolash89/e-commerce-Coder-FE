@@ -88,6 +88,7 @@ function RegisterProduct() {
               <span>nombre del producto</span>
               <input
                 onChange={handleInputChange}
+                value={formData.title}
                 type="text"
                 name="title"
                 placeholder="xxxx"
@@ -97,6 +98,7 @@ function RegisterProduct() {
               <span>Descripción</span>
               <input
                 onChange={handleInputChange}
+                value={formData.description}
                 type="text"
                 name="description"
                 placeholder="xxxx"
@@ -106,6 +108,7 @@ function RegisterProduct() {
               <span>código</span>
               <input
                 onChange={handleInputChange}
+                value={formData.code}
                 type="string"
                 name="code"
                 placeholder="#####"
@@ -115,6 +118,7 @@ function RegisterProduct() {
               <span>Precio</span>
               <input
                 onChange={handleInputChange}
+                value={formData.price}
                 type="number"
                 name="price"
                 placeholder="$$$$$$"
@@ -124,6 +128,7 @@ function RegisterProduct() {
               <span>Categoria</span>
               <input
                 onChange={handleInputChange}
+                value={formData.category}
                 name="category"
                 placeholder="******"
                 type="string"
@@ -133,6 +138,7 @@ function RegisterProduct() {
               <span>stock</span>
               <input
                 onChange={handleInputChange}
+                value={formData.stock}
                 name="stock"
                 placeholder="******"
                 type="number"
@@ -144,6 +150,7 @@ function RegisterProduct() {
               <span>imagen URL </span>
               <input
                 onChange={handleInputChange}
+                value={formData.url}
                 name="url"
                 placeholder="https/www.ejemplo.com"
                 type="url"

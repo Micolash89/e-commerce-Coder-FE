@@ -21,7 +21,7 @@ function SearchResultCard({
 
         <div className="ms2Cards__card--div  flexcolum SearchResultList__card--description">
           <span>({status ? stock : 0})</span>
-          <span>{title}</span>
+          <span>{title.length < 21 ? title : title.slice(0, 22) + "..."}</span>
           <span>
             {" "}
             <strong> $ {price}</strong>

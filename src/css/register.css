@@ -158,6 +158,10 @@
 
 /*modify product*/
 
+.imgPrewiev > img {
+  max-width: 350px;
+}
+
 .productTrue,
 .productFalse {
   text-transform: uppercase;

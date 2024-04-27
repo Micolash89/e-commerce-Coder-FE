@@ -9,7 +9,7 @@ import { logOutSession, setSession } from "../redux/features/UserSlice";
 import axios from "axios";
 import { END_POINTS } from "./endPoints";
 import { setProducts } from "../redux/features/SearchResult";
-import { messageOk } from "../redux/features/NotificationSlice";
+import { messageError, messageOk } from "../redux/features/NotificationSlice";
 import { cartAdd, cartSet } from "../redux/features/CartSlice";
 
 function Header() {
@@ -104,6 +104,10 @@ function Header() {
   const handleSearch = (e) => {
     e.preventDefault();
 
+    if (query.length < 2) {
+      dispatch(messageError("Ingrese al menos dos letras"));
+      return;
+    }
     axios
       .get(`${END_POINTS.URL()}/api/products/custom/search?search=${query}`)
       .then((response) => {
@@ -208,8 +212,9 @@ function Header() {
                 <i className="ri-search-line"></i>
                 <input
                   type="search"
-                  placeholder="Search essentials, groceries and more..."
+                  placeholder="Buscar Producto"
                   name="search"
+                  minLength={2}
                   onChange={(e) => setQuery(e.target.value)}
                 />
                 <i className="ri-list-check"></i>

@@ -1,10 +1,13 @@
-import React from "react";
-
 function PaginadoButton({ name, setPage, page }) {
+  const handleSetPage = () => {
+    if (name != page) window.scrollTo(0, 0);
+    setPage(name);
+  };
+
   return (
     <button
       className={`buttonPaginate ${name == page ? "selectedPaginate" : ""}`}
-      onClick={() => setPage(name)}
+      onClick={handleSetPage}
     >
       <span className="buttonPaginate__span">{name}</span>
     </button>

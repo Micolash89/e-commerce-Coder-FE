@@ -12,19 +12,29 @@ import Categories from "./Categories";
 import Banner from "./Banner";
 
 function Section2() {
+  const getViewPortWidth = (viewPort) => {
+    if (viewPort >= 1300) return 5;
+    if (viewPort >= 1038) return 4;
+    if (viewPort >= 775) return 3;
+    if (viewPort >= 410) return 2;
+    return 1;
+  };
+
   const [productos, setProductos] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState("");
   const [error, setError] = useState(false);
   const { theme } = useContext(ThemeContext);
+
+  const limit = getViewPortWidth(window.innerWidth);
 
   const session = useSelector((state) => state.user.session);
   const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
     setError(false);
+
     axios
-      .get(`${END_POINTS.URL()}/api/products`)
+      .get(`${END_POINTS.URL()}/api/products?limit=${limit}`)
       .then((response) => {
         setProductos(response.data.payload);
         console.log(response);
@@ -39,15 +49,19 @@ function Section2() {
       });
   }, []);
 
-  useEffect(() => {
-    if (!productos) return;
+  const handlePageSlice = (endpoint) => {
+    if (endpoint == "next" && productos.hasNextPage) {
+      getPage(productos.nextLink);
+    } else {
+      if (productos.hasPrevPage) {
+        getPage(productos.prevLink);
+      }
+    }
+  };
 
-    const url = page == "preview" ? productos.prevLink : productos.nextLink;
-    console.log("url", url);
-    console.log("url", typeof url);
-
+  const getPage = (url) => {
     axios
-      .get(`${END_POINTS.URL()}${url}`)
+      .get(`${END_POINTS.URL()}${url}&&limit=${limit}`)
       .then((response) => {
         console.log("axios", response);
         setProductos(response.data.payload);
@@ -56,7 +70,7 @@ function Section2() {
       .catch((error) => {
         console.log(error);
       });
-  }, [page]);
+  };
 
   return (
     <>
@@ -70,13 +84,17 @@ function Section2() {
           {error && <Error />}
           {loading && <Loader />}
 
-          <div className="main__section2--cards ms2Cards main__section2--home">
+          <div
+            className={`main__section2--cards ms2Cards  ${
+              productos.docs.length < limit ? " " : "main__section2--home"
+            }`}
+          >
             <button
               className={` previewUrl ${
                 productos.hasPrevPage ? "" : "haspage"
               }`}
               onClick={() => {
-                setPage("preview");
+                handlePageSlice("preview");
               }}
               disabled={productos.prevLink == ""}
             >
@@ -92,7 +110,7 @@ function Section2() {
             <button
               className={`nextUrl ${productos.hasNextPage ? "" : "haspage"}`}
               onClick={() => {
-                setPage("next");
+                handlePageSlice("next");
               }}
               disabled={productos.nextLink == ""}
             >

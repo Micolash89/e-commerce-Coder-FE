@@ -96,7 +96,6 @@ function SearchResult() {
               </select>
             </div>
           </div> */}
-            <span>view as</span>
           </header>
           <section className="main__section2--cards ms2Cards  SearchResultList flexrow">
             {products.slice(inicio - 1, fin).map((product, index) => (

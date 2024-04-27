@@ -63,6 +63,7 @@
   }
   
   */
+
 .SearchResultList {
   padding: 30px;
   flex-wrap: wrap;
@@ -75,10 +76,12 @@
 .SearchResultList__card {
   /* max-width: 227px;
     max-height: 295px; */
-  max-width: none;
-  max-height: none;
+  min-width: 225px;
+  min-height: 284px;
+  max-width: 225px;
+  max-height: 284px;
   /* width: 227px; */
-  width: 227px;
+  /* width: 227px; */
   height: auto;
 }
 .SearchResultList__card--description {
@@ -174,4 +177,10 @@
 }
 .noDisponible > span {
   background-color: rgba(255, 255, 255, 0.918);
+}
+
+@media (max-width: 528px) {
+  .SearchResultList {
+    justify-content: center;
+  }
 }

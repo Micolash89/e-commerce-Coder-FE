@@ -8,7 +8,7 @@
 
 .main__section1 > div {
   border-radius: var(--radius-1);
-  /* overflow: hidden; */
+  overflow: hidden;
   width: 100%;
 }
 .main__section1 > div {
