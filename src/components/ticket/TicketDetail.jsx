@@ -1,12 +1,14 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import TicketProductDetail from "./TicketProductDetail";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { END_POINTS } from "../endPoints";
 import Cookies from "js-cookie";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import PDFComponent from "../PDF/PDFComponent";
+import {
+  messageError,
+  messageOk,
+} from "../../redux/features/NotificationSlice";
 
 function TicketDetail() {
   const user = useSelector((state) => state.user.user);
@@ -17,6 +19,8 @@ function TicketDetail() {
 
   const format = (date, locale, options) =>
     new Intl.DateTimeFormat(locale, options).format(date);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const cookieToken = Cookies.get("coderCookieToken");
@@ -35,6 +39,35 @@ function TicketDetail() {
       .catch((err) => console.error(err))
       .finally(() => {});
   }, []);
+
+  const handleFPD = () => {
+    const cookieToken = Cookies.get("coderCookieToken");
+    axios
+      .get(`${END_POINTS.URL()}/api/pdf/generatepdf/${ticket._id}`, {
+        withCredentials: true,
+        headers: {
+          Cookies: `coderCookieToken=${cookieToken}`,
+        },
+        responseType: "blob",
+      })
+      .then((res) => {
+        const url = window.URL.createObjectURL(new Blob([res.data]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "ticket.pdf"); // Nombre del archivo descargado
+        document.body.appendChild(link);
+        link.click();
+        link.parentNode.removeChild(link); // Elimina el enlace después de la descarga
+        window.URL.revokeObjectURL(url); // Libera la URL del objeto
+        window.scrollTo(0, 0);
+        dispatch(messageOk("se descargo el PDF"));
+      })
+      .catch((err) => {
+        dispatch(messageError("ocurrio un error al generar PDF"));
+        console.error(err);
+      })
+      .finally(() => {});
+  };
 
   useEffect(() => {
     if (ticket && ticket.length != 0) {
@@ -70,29 +103,15 @@ function TicketDetail() {
             </section>
 
             <h2>MegaMart</h2>
-            {/* <div className="ticketPdf">
-              {ticket && (
-                <PDFDownloadLink
-                  document={
-                    <PDFComponent ticket={ticket} fecha={fecha} user={user} />
-                  }
-                  fileName="Ticket.pdf"
-                >
-                  {({ loading, url, error, blob }) =>
-                    loading ? (
-                      <div>cargando...</div> //<a href={url}>Descargar PDF</a>
-                    ) : (
-                      <button
-                        className="ticketPdfButton"
-                        title="descarga el ticket en formato pdf"
-                      >
-                        <i className="ri-file-pdf-2-line"></i>
-                      </button>
-                    )
-                  }
-                </PDFDownloadLink>
-              )}
-            </div> */}
+            <div className="ticketPdf">
+              <button
+                className="ticketPdfButton"
+                title="descarga el ticket en formato pdf"
+                onClick={handleFPD}
+              >
+                <i className="ri-file-pdf-2-line"></i>
+              </button>
+            </div>
           </header>
           <section className="flexrow">
             <div className="ticketDetail__div detailsPurchaser flexcolum">
