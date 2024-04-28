@@ -14,6 +14,7 @@
   color: var(--dark-blue-100);
   box-shadow: 0 1px 10px var(--box-shadow);
   transform: translateY(-1.875rem);
+  /* transform: translateY(-2.5rem); */
   opacity: 0;
   visibility: visible;
   animation: fade-in 3s linear;
@@ -82,5 +83,11 @@
 @keyframes progress {
   to {
     transform: scaleX(1);
+  }
+}
+
+@media (max-width: 512px) {
+  .notification {
+    top: 3.5rem;
   }
 }

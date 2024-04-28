@@ -165,6 +165,17 @@
   box-shadow: 2px 2px 5px 3px var(--box-shadow);
 }
 
+.ticketProductCard > section > div:first-child > div > img {
+  height: 100%;
+  object-fit: cover;
+}
+.ticketProductCard > section > div:first-child > div {
+  height: 100%;
+}
+.ticketProductCard > section > div:first-child {
+  height: 100%;
+}
+
 .ticketProductCard__info {
   margin: 0;
 }
@@ -267,11 +278,15 @@
 
 @media (max-width: 463px) {
   .ticketProductCard > section > div:first-child {
-    max-width: 50px !important;
     min-width: 50px;
     min-height: 50px;
-    height: fit-content;
+    height: 100% !important;
     width: 50px !important;
+  }
+  .ticketProductCard > section > div:first-child > div > img {
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: contain;
   }
 }
 

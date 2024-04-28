@@ -1,5 +1,7 @@
 # E-Commerce Page
 
+---
+
 El proyecto es un e-commerce diseñado para ofrecer una experiencia de compra intuitiva y personalizable.
 
 ## Deploy
@@ -85,6 +87,9 @@ A continuación se detallan las tecnologias utilizadas en este proyecto:
 A continuación se muestran algunas capturas de pantalla del proyecto:
 
 <p  align="center">
+    <img src="https://i.imgur.com/zZp8O14.jpeg" alt="HomePage" width=50% />
+    <img src="https://i.imgur.com/s2pl84g.jpeg" alt="HomePage" width=50% />
+    <img src="https://i.imgur.com/KoaawhH.jpeg" alt="HomePage" width=50% />
     <img src="https://i.imgur.com/72YK9wv.jpeg" alt="HomePage" width=50% />
     <img src="https://i.imgur.com/4TBzkom.jpeg" alt="HomePage" width=50% />
     <img src="https://i.imgur.com/9yqUJxP.jpeg" alt="HomePage" width=50% />
@@ -99,5 +104,16 @@ A continuación se muestran algunas capturas de pantalla del proyecto:
 1. Clonar este repositorio.
 2. Instalar las dependencias utilizando `npm install`.
 3. Ejecutar el proyecto utilizando `npm run dev`.
+
+---
+
+### Desarrollado por:
+
+- [@Micolash89](https://github.com/Micolash89) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/javier-espindola/)
+
+#### Colaboradores:
+
+- [@ma3rtin](https://github.com/ma3rtin)
+- [@Mat-Insaurralde](https://github.com/Mat-Insaurralde/) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/javier-insaurralde-3aa783274/)
 
 ---

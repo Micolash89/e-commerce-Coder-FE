@@ -72,8 +72,6 @@ function TicketDetail() {
   useEffect(() => {
     if (ticket && ticket.length != 0) {
       const day = new Date(ticket.purchase_datetime);
-      console.log(ticket.purchase_datetime);
-      console.log("dia", format(day, "es", { dateStyle: "full" }));
       setFecha(format(day, "es", { dateStyle: "full" }));
     }
   }, [ticket]);

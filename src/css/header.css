@@ -13,10 +13,6 @@ button {
 
 .header {
   border-bottom: 1px solid var(--ligth-grey-100);
-  /* position: sticky;
-  top: 0;
-  background-color: var(--dark-black-100);
-  z-index: 8888; */
 }
 
 .header__section1 {
@@ -115,6 +111,10 @@ button {
   transition: background-color 0.6s, color 0.6s;
 }
 
+.menu__button > a > i {
+  display: none;
+}
+
 /*search*/
 
 .header__search {
@@ -122,6 +122,10 @@ button {
   gap: 7px;
   background-color: var(--ligth-grey-500);
   transition: background-color 0.6s, color 0.6s;
+}
+
+.header__search > form > label > i:last-child {
+  display: none;
 }
 
 .header__search--label {
@@ -279,8 +283,8 @@ button {
   position: absolute;
   top: 15px;
   background-color: var(--dark-red-100);
-  width: 17px;
-  height: 17px;
+  width: 19px;
+  height: 19px;
   border-radius: 50%;
   font-size: var(--txt-1);
   text-align: center;
@@ -298,10 +302,6 @@ button {
 }
 
 @media (max-width: 968px) {
-  .menu__button strong {
-    display: none;
-  }
-
   /*ver despues*/
   .header__search--label {
     min-width: max-content;
@@ -369,12 +369,37 @@ button {
   }
 }
 
+@media (max-width: 512px) {
+  .menu__button > a > strong {
+    display: none;
+  }
+  .menu__button {
+    display: flex;
+
+    flex-wrap: nowrap;
+  }
+  .menu__button > a > i {
+    display: inline-block;
+    color: var(--dark-blue-100);
+    font-weight: 100;
+    font-size: var(--txt-3);
+  }
+}
+
 @media (max-width: 477px) {
   .header {
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: var(--dark-black-100);
+    z-index: 8888;
   }
+
+  /* .menu__button strong {
+    display: none;
+  } */
 
   .login {
     width: auto !important;

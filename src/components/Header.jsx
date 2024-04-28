@@ -203,6 +203,7 @@ function Header() {
               ></i>
               <Link to={"/"}>
                 <strong>MegaMart</strong>
+                <i className="ri-home-4-line"></i>
               </Link>
             </h1>
           </div>

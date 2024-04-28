@@ -116,7 +116,7 @@ function Product() {
     <>
       <section className="singleProduct mediaSingleProduct">
         <section className="singleProduct__section sps1 mediaSingleProductSps1">
-          <div className="sps1__picture">
+          <div className="sps1__picture sps1__picture--mediaQuery">
             <img
               src={producto.url || noUrl}
               alt={producto.title}

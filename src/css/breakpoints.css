@@ -8,10 +8,6 @@
 }
 
 @media (max-width: 820px) {
-  .menu__button strong {
-    display: none;
-  }
-
   /*ver despues*/
   .header__search--label {
     min-width: max-content;

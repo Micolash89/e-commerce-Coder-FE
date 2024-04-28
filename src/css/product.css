@@ -260,6 +260,10 @@
   .mediaSingleProductSps2 {
     width: 100%;
   }
+
+  .sps1__picture--mediaQuery {
+    opacity: 0.5;
+  }
 }
 
 @media (max-width: 474px) {
