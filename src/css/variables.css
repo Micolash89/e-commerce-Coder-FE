@@ -3,10 +3,12 @@
   --dark-blue-200: #212844; /*bg*/
   --dark-blue-300: #05abf3;
   --dark-blue-400: #008fcc91; /*primary*/
+  --dark-blue-500: #008fcca9; /*primary*/
 
   --dark-black-100: #000000;
   --dark-black-200: rgba(0, 0, 0, 0.459);
   --dark-black-300: #222222;
+  --dark-black-400: rgba(0, 0, 0, 0.712);
 
   --dark-grey-100: #666666; /*text*/
   --dark-grey-200: #888888;

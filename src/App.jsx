@@ -24,6 +24,7 @@ import Notification from "./components/notification/Notification";
 import EditProfile from "./components/editProfile/EditProfile";
 import Ticket from "./components/ticket/Ticket";
 import TicketDetail from "./components/ticket/TicketDetail";
+import ButtonUp from "./components/buttonUP/ButtonUp";
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
               <Route path="/*" element={<Page404 />} />
             </Routes>
           </PathLocation>
+          <ButtonUp />
         </Main>
         <Notification />
         <Footer />

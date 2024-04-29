@@ -47,10 +47,13 @@ img {
   transition: background-color 0.6s, color 0.6s !important;
 }
 
+/*=============== SCROLL BAR ===============*/
+
 .dark {
   --ligth-grey-500: rgb(34, 34, 34) !important;
   --ligth-grey-200: #5a5858a4 !important;
   --dark-black-100: #ffffff !important;
+  --dark-black-400: rgba(223, 221, 221, 0.712) !important;
   --ligth-grey-400: rgb(45, 46, 46);
   transition: background-color 0.6s, color 0.6s !important;
   --dark-grey-100: #dfdfdf;
@@ -60,4 +63,30 @@ img {
   --ligth-grey-900: rgba(19, 18, 18, 0.192);
   --ligth-grey-800: #76777c;
   --ligth-grey-700: #706d6d;
+}
+
+.dark::-webkit-scrollbar {
+  background-color: black;
+}
+
+.dark::-webkit-scrollbar-thumb {
+  background-color: black;
+}
+
+.dark::-webkit-scrollbar-thumb:hover {
+  background-color: black;
+}
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+
+  background-color: var(--ligth-grey-600);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--dark-blue-500);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--dark-blue-300);
 }
