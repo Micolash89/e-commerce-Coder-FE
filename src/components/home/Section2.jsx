@@ -1,8 +1,8 @@
-import CardProduct from "../CardProduct";
+import CardProduct from "../product/CardProduct";
 import "../home/section2.css";
 import { useContext, useEffect, useState } from "react";
 import Loader from "../loaders/Loader";
-import Error from "../Error";
+import Error from "../error/Error";
 import { END_POINTS } from "../endPoints";
 import { ThemeContext } from "../context/ThemeContext";
 import axios from "axios";

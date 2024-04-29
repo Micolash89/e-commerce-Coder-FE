@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import phone from "../assets/image_3.png";
+import phone from "../../assets/image_3.png";
 
 function CardProduct({ data, url }) {
   return (

@@ -1,9 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
-import { END_POINTS } from "./endPoints";
+import { END_POINTS } from "../endPoints";
 import { useDispatch } from "react-redux";
-import { messageError, messageOk } from "../redux/features/NotificationSlice";
-import Loading2H from "./loaders/Loading2H";
+import {
+  messageError,
+  messageOk,
+} from "../../redux/features/NotificationSlice";
+import Loading2H from "../loaders/Loading2H";
 
 function RegisterProduct() {
   const [loading, setLoading] = useState(false);

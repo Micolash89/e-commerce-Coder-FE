@@ -1,16 +1,19 @@
 import { useState } from "react";
-import "../css/login.css";
+import "../login/login.css";
 import axios from "axios";
-import { END_POINTS } from "./endPoints";
-import Loader from "./loaders/Loader";
-import Error from "./Error";
+import { END_POINTS } from "../endPoints";
+import Loader from "../loaders/Loader";
+import Error from "../error/Error";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
-import { messageError, messageOk } from "../redux/features/NotificationSlice";
-import login from "../images/login.png";
-import { setSession } from "../redux/features/UserSlice";
-import { cartAdd, cartSet } from "../redux/features/CartSlice";
+import {
+  messageError,
+  messageOk,
+} from "../../redux/features/NotificationSlice";
+import login from "../../images/login.png";
+import { setSession } from "../../redux/features/UserSlice";
+import { cartAdd, cartSet } from "../../redux/features/CartSlice";
 
 function Login() {
   const [formData, setFormData] = useState({

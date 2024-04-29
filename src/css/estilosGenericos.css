@@ -79,7 +79,6 @@ img {
 
 ::-webkit-scrollbar {
   width: 0.6rem;
-
   background-color: var(--ligth-grey-600);
 }
 

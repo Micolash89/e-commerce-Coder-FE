@@ -1,9 +1,9 @@
 import CardProduct from "./CardProduct";
-import "../components/home/section2.css";
+import "../../components/home/section2.css";
 import { useEffect, useState } from "react";
-import Loader from "./loaders/Loader";
-import Error from "./Error";
-import { END_POINTS } from "./endPoints";
+import Loader from "../loaders/Loader";
+import Error from "../error/Error";
+import { END_POINTS } from "../endPoints";
 import axios from "axios";
 import Cookies from "js-cookie";
 

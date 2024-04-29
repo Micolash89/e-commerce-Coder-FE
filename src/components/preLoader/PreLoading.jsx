@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import "../css/preLoading.css";
+import "../preLoader/preLoading.css";
 import axios from "axios";
-import { END_POINTS } from "./endPoints";
-import Error from "./Error";
+import { END_POINTS } from "../endPoints";
+import Error from "../error/Error";
 function PreLoading() {
   const [display, setDisplay] = useState(false);
   const [error, setError] = useState(false);

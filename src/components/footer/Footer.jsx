@@ -1,6 +1,6 @@
-import "../css/footer.css";
-import apple from "../assets/appStore.png";
-import google from "../assets/googlePlay.png";
+import "../footer/footer.css";
+import apple from "../../assets/appStore.png";
+import google from "../../assets/googlePlay.png";
 
 function Footer() {
   const year = new Date().getFullYear();

@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { END_POINTS } from "./endPoints";
+import { END_POINTS } from "../endPoints";
 import axios from "axios";
-import "../css/product.css";
+import "../product/product.css";
 import Cookies from "js-cookie";
-import Loading2H from "./loaders/Loading2H";
+import Loading2H from "../loaders/Loading2H";
 import { useDispatch, useSelector } from "react-redux";
-import { messageError, messageOk } from "../redux/features/NotificationSlice";
-import NoSession from "./noSession/NoSession";
-import noUrl from "../assets/image_3.png";
-import { cartAdd } from "../redux/features/CartSlice";
+import {
+  messageError,
+  messageOk,
+} from "../../redux/features/NotificationSlice";
+import NoSession from "../noSession/NoSession";
+import noUrl from "../../assets/image_3.png";
+import { cartAdd } from "../../redux/features/CartSlice";
 
 function Product() {
   const [producto, setProduct] = useState({});

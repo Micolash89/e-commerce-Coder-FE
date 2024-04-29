@@ -4,7 +4,7 @@ import "../registerUser/registerUser.css";
 import { useState } from "react";
 import { END_POINTS } from "../endPoints";
 import Loader from "../loaders/Loader";
-import Error from "../Error";
+import Error from "../error/Error";
 import {
   messageError,
   messageOk,

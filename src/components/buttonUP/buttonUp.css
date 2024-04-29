@@ -2,15 +2,11 @@
   position: fixed;
   right: 1.25rem;
   bottom: -50%;
-  /* background-color: var(--container-color);
-  box-shadow: 0 12px 24px var(--shadow-color); */
   display: inline-flex;
   padding: 6px;
   font-size: var(--txt-8);
   color: black;
-  /* z-index: var(--z-tooltip); */
   z-index: 800;
-  /* bottom: 3rem; */
   transition: bottom 0.4s, transform 0.4s, background-color 0.4s;
   box-shadow: 0 12px 24px var(--box-shadow);
   background-color: var(--ligth-grey-200);

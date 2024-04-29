@@ -1,16 +1,19 @@
 import { Link, useNavigate } from "react-router-dom";
-import "../css/header.css";
+import "../header/header.css";
 import { useContext, useEffect, useState } from "react";
-import HeaderLi from "./HeaderLi";
+import HeaderLi from "../header/HeaderLi";
 import Cookies from "js-cookie";
-import { ThemeContext } from "./context/ThemeContext";
+import { ThemeContext } from "../context/ThemeContext";
 import { useDispatch, useSelector } from "react-redux";
-import { logOutSession, setSession } from "../redux/features/UserSlice";
+import { logOutSession, setSession } from "../../redux/features/UserSlice";
 import axios from "axios";
-import { END_POINTS } from "./endPoints";
-import { setProducts } from "../redux/features/SearchResult";
-import { messageError, messageOk } from "../redux/features/NotificationSlice";
-import { cartAdd, cartSet } from "../redux/features/CartSlice";
+import { END_POINTS } from "../endPoints";
+import { setProducts } from "../../redux/features/SearchResult";
+import {
+  messageError,
+  messageOk,
+} from "../../redux/features/NotificationSlice";
+import { cartAdd, cartSet } from "../../redux/features/CartSlice";
 
 function Header() {
   const [show, setShow] = useState(false);
@@ -39,25 +42,11 @@ function Header() {
   let rutas = [
     { url: "/", text: "Home", icon: <i className="ri-home-3-line"></i> },
     {
-      url: "/current",
-      text: "Dashboard",
-      icon: <i className="ri-settings-3-line"></i>,
-    },
-    {
       url: "/cart",
       text: "Cart",
       icon: <i className="ri-shopping-cart-2-line"></i>,
     },
-    {
-      url: "/registerProduct",
-      text: "Registrar Producto",
-      icon: <i className="ri-file-edit-line"></i>,
-    },
-    {
-      url: "/myproducts",
-      text: "Mis Productos",
-      icon: <i className="ri-survey-line"></i>,
-    },
+
     {
       url: "/profile",
       text: "Perfil",
@@ -69,6 +58,19 @@ function Header() {
       icon: <i className="ri-shopping-bag-line"></i>,
     },
   ];
+
+  if (user.role != "user") {
+    rutas.push({
+      url: "/registerProduct",
+      text: "Registrar Producto",
+      icon: <i className="ri-file-edit-line"></i>,
+    });
+    rutas.push({
+      url: "/myproducts",
+      text: "Mis Productos",
+      icon: <i className="ri-survey-line"></i>,
+    });
+  }
 
   const modalLoginChange = () => {
     if (show) setShow(false);
@@ -196,11 +198,13 @@ function Header() {
             </ul>
             <h1 className="menu__button ">
               {" "}
-              <i
-                className="ri-menu-line"
-                onMouseOver={menuShow}
-                onClick={menuShow}
-              ></i>
+              {session && (
+                <i
+                  className="ri-menu-line"
+                  onMouseOver={menuShow}
+                  onClick={menuShow}
+                ></i>
+              )}
               <Link to={"/"}>
                 <strong>MegaMart</strong>
                 <i className="ri-home-4-line"></i>
