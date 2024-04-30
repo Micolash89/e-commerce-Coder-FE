@@ -35,10 +35,14 @@
 
 .ccp__img {
   border-radius: var(--radius-2);
-  object-fit: contain;
+  height: 100%;
   overflow: hidden;
 }
 
+.ccp2 > .ccp__img > img {
+  height: 100%;
+  object-fit: cover;
+}
 .cart__card--info {
   justify-content: space-evenly;
   padding: 0 0 0 15px;
@@ -283,4 +287,16 @@
     display: flex;
     flex-wrap: wrap;
   }
+}
+
+@media (max-width: 356px) {
+  .cartMercadoPago {
+    padding: 15px 7px;
+  }
+}
+/*mercado pago*/
+
+.cartMercadoPago {
+  min-width: 325px !important;
+  /* width: 280px; */
 }

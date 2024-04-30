@@ -147,7 +147,7 @@ function ModificarProducts() {
               />
             </label>
             <label className="register__input--lastName flexcolum">
-              <span>description</span>
+              <span>descripción</span>
               <input
                 onChange={handleInputChange}
                 type="text"
@@ -157,7 +157,7 @@ function ModificarProducts() {
               />
             </label>
             <label className="register__input--code ric flexcolum">
-              <span>code</span>
+              <span>código</span>
               <input
                 onChange={handleInputChange}
                 type="string"
@@ -169,7 +169,7 @@ function ModificarProducts() {
               />
             </label>
             <label className="register__input--email flexcolum">
-              <span>price</span>
+              <span>precio</span>
               <input
                 onChange={handleInputChange}
                 type="number"
@@ -179,7 +179,7 @@ function ModificarProducts() {
               />
             </label>
             <label className="register__input--password flexcolum">
-              <span>category</span>
+              <span>categoria</span>
               <input
                 onChange={handleInputChange}
                 name="category"

@@ -7,7 +7,7 @@ El proyecto es un e-commerce diseñado para ofrecer una experiencia de compra in
 ## Deploy
 
 - El frontend está desplegado en GitHub Pages.
-  - [Enlace al despliegue](https://micolash89.github.io/e-commerce-Coder-FrontEnd/)
+  - <img src="https://github.com/tandpfun/skill-icons/raw/main/icons/React-Dark.svg" width="50" height="50"> [Enlace al despliegue](https://micolash89.github.io/e-commerce-Coder-FrontEnd/)
 - Repositorio del backend.
   - [Enlace al backend](https://github.com/Micolash89/e-commerce-NodeJs)
 
@@ -90,13 +90,11 @@ A continuación se muestran algunas capturas de pantalla del proyecto:
     <img src="https://i.imgur.com/zZp8O14.jpeg" alt="HomePage" width=50% />
     <img src="https://i.imgur.com/s2pl84g.jpeg" alt="HomePage" width=50% />
     <img src="https://i.imgur.com/KoaawhH.jpeg" alt="HomePage" width=50% />
-    <img src="https://i.imgur.com/72YK9wv.jpeg" alt="HomePage" width=50% />
     <img src="https://i.imgur.com/4TBzkom.jpeg" alt="HomePage" width=50% />
-    <img src="https://i.imgur.com/9yqUJxP.jpeg" alt="HomePage" width=50% />
-    <img src="https://i.imgur.com/q48uIfN.jpeg" alt="HomePage" width=50% />
     <img src="https://i.imgur.com/ZMeXqBH.jpeg" alt="HomePage" width=50% />
+    <img src="https://i.imgur.com/oReLlrz.jpeg" alt="HomePage" width=50% />
+    <img src="https://i.imgur.com/9yqUJxP.jpeg" alt="HomePage" width=50% />
     <img src="https://i.imgur.com/oDoXBTj.jpeg" alt="HomePage" width=50% />
-
 </p>
 
 ## Instrucciones de Ejecución

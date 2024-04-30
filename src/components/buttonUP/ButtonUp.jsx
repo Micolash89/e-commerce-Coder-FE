@@ -11,8 +11,6 @@ function ButtonUp() {
     });
   };
 
-  console.log("scroll" + window.scrollY);
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 400) {

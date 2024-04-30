@@ -14,22 +14,30 @@ import {
 import Loading2H from "../loaders/Loading2H";
 import { cartAdd, cartSet } from "../../redux/features/CartSlice";
 
+import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
+import { useLocation } from "react-router-dom";
+
 function Cart() {
+  initMercadoPago("APP_USR-b3c2e5a9-dd51-4158-8b48-f3264463e5c9", {
+    locale: "es-AR",
+  });
   const [products, setProducts] = useState(null);
   const [subtotal, setSubtotal] = useState(0);
   const [deleteButton, setDeleteButton] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [preferenceId, setPreferenceId] = useState(false);
 
   const session = useSelector((state) => state.user.session);
   const dispatch = useDispatch();
   const TokenCookie = Cookies.get("coderCookieToken");
+  const location = useLocation();
 
-  const placeOrder = async () => {
+  const placeOrder = async (status) => {
     setLoading(true);
     axios
       .post(
         `${END_POINTS.URL()}/api/carts/purchase`,
-        {},
+        { status },
         {
           withCredentials: true,
           headers: {
@@ -102,6 +110,47 @@ function Cart() {
     if (products) getSubtotal();
   }, [products]);
 
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    let payment_id = queryParams.get("payment_id");
+    if (!payment_id) return;
+    placeOrder("aceptado");
+  }, []);
+
+  const createPreference = async () => {
+    const items = products
+      .filter((item) => item.product.status)
+      .map((item) => ({
+        title: item.product.title,
+        quantity: item.quantity,
+        price: item.product.price,
+      }));
+
+    console.log(items);
+
+    try {
+      const response = await axios.post(
+        `${END_POINTS.URL()}/api/mercadopago/create_preference`,
+        {
+          items: items,
+        }
+      );
+      console.log("response: ", response.data);
+      const { id } = response.data;
+
+      return id;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleBuy = async () => {
+    setLoading(true);
+    const id = await createPreference();
+    if (id) setPreferenceId(id);
+    setLoading(false);
+  };
+
   return (
     <>
       {
@@ -119,6 +168,7 @@ function Cart() {
                   url={product.product.url}
                   status={product.product.status}
                   setDeleteButton={setDeleteButton}
+                  setPreferenceId={setPreferenceId}
                 />
               ))
             ) : (
@@ -129,7 +179,11 @@ function Cart() {
             )}
           </section>
 
-          <section className="orderSummary flexcolum">
+          <section
+            className={`orderSummary flexcolum ${
+              preferenceId ? "cartMercadoPago" : ""
+            }`}
+          >
             <NoSession />
             <h4 className="orderSummary__title">Order Summary</h4>
             <section className="orderSummary__description flexcolum">
@@ -161,16 +215,35 @@ function Cart() {
                 {<span>${subtotal}</span>}
               </div>
             </section>
-            <button
-              className={`orderSummary__button ${loading ? "oSb" : ""}`}
-              onClick={placeOrder}
-            >
-              {!loading ? (
-                <span>Realizar pedido</span>
-              ) : (
-                <Loading2H className="sps2__loading " />
-              )}
-            </button>
+            {!preferenceId && (
+              <button
+                className={`orderSummary__button ${loading ? "oSb" : ""}`}
+                onClick={() => placeOrder("pendiente")}
+              >
+                {!loading ? (
+                  <span>Resevar pedido</span>
+                ) : (
+                  <Loading2H className="sps2__loading " />
+                )}
+              </button>
+            )}
+            {!preferenceId ? (
+              <button
+                className={`orderSummary__button ${loading ? "oSb" : ""}`}
+                onClick={handleBuy}
+              >
+                {!loading ? (
+                  <span>Mercado Pago</span>
+                ) : (
+                  <Loading2H className="sps2__loading " />
+                )}
+              </button>
+            ) : (
+              <Wallet
+                initialization={{ preferenceId: preferenceId }}
+                customization={{ texts: { valueProp: "smart_option" } }}
+              />
+            )}
           </section>
         </section>
       }

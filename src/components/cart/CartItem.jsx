@@ -15,12 +15,13 @@ function CartItem({
   setDeleteButton,
   url,
   status,
+  setPreferenceId,
 }) {
   const dispatch = useDispatch();
 
   const removeProduct = async () => {
     const TokenCookie = Cookies.get("coderCookieToken");
-    console.log("dentre");
+
     try {
       const response = await axios.delete(
         `${END_POINTS.URL()}/api/carts/products/${id}`,
@@ -35,6 +36,7 @@ function CartItem({
 
       console.log(response.data);
       setDeleteButton(true);
+      setPreferenceId(false);
       dispatch(cartRemove(quantity));
       dispatch(messageOk("se elimino el producto del carrito"));
       window.scrollTo(0, 0);
@@ -46,7 +48,7 @@ function CartItem({
   return (
     <>
       <section className="cart__card flexrow">
-        <div className="cart__card--product ccp flexcolum">
+        <div className="cart__card--product ccp ccp2 flexcolum">
           <div className="ccp__img">
             <img src={url || noUrl} alt={title} title={title} />
           </div>

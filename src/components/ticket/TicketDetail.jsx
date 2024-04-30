@@ -94,9 +94,10 @@ function TicketDetail() {
               <span>
                 <strong>Fecha: </strong>
                 {fecha ? fecha : "no hay fecha"}
-                {/* {format(new Date(ticket.purchase_datetime), "es", {
-                  dateStyle: "long",
-                })} */}
+              </span>
+              <span>
+                <strong>Estado: </strong>
+                {ticket.status}
               </span>
             </section>
 
@@ -157,6 +158,16 @@ function TicketDetail() {
             </div>
           </section>
 
+          {ticket.status == "aceptado" && (
+            <span>
+              nota:<strong>se pago con Mercado Pago</strong>
+            </span>
+          )}
+          {ticket.status == "pendiente" && (
+            <span>
+              nota: <strong>se reservo pero aun no se pago</strong>
+            </span>
+          )}
           <span>
             E-commerce MegaMart. Gracias por comprar con nosotros. Enviaremos
             una confirmación cuando tus productos sean enviados. Esperamos verte
