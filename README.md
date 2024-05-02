@@ -7,9 +7,9 @@ El proyecto es un e-commerce diseñado para ofrecer una experiencia de compra in
 ## Deploy
 
 - El frontend está desplegado en GitHub Pages.
-  - <img src="https://github.com/tandpfun/skill-icons/raw/main/icons/React-Dark.svg" width="50" height="50"> [Enlace al despliegue](https://micolash89.github.io/e-commerce-Coder-FrontEnd/)
+  - <img src="https://cdn-icons-png.freepik.com/256/1006/1006771.png" width="20" height="20"> [Enlace al despliegue](https://micolash89.github.io/e-commerce-Coder-FrontEnd/)
 - Repositorio del backend.
-  - [Enlace al backend](https://github.com/Micolash89/e-commerce-NodeJs)
+  - <img src="https://w7.pngwing.com/pngs/914/758/png-transparent-github-social-media-computer-icons-logo-android-github-logo-computer-wallpaper-banner-thumbnail.png" width="30" height="30"> [Enlace al backend](https://github.com/Micolash89/e-commerce-NodeJs)
 
 ## Características Principales
 
