@@ -232,6 +232,21 @@
   box-shadow: none;
 }
 
+.ticketBox__empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--txt-13);
+  text-transform: capitalize;
+  font-weight: 500;
+  padding: 25px 0;
+}
+.ticketBox__empty > span > i {
+  color: var(--dark-blue-100);
+  font-size: var(--txt-3);
+  font-weight: 600;
+}
+
 @media (max-width: 867px) {
   .ticketDetail {
     margin: 10px 0;

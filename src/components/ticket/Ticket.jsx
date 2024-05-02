@@ -26,6 +26,7 @@ function Ticket() {
         console.log(res.data);
         setTickets(res.data.payload);
         console.log("tickets", tickets);
+        console.log(tickets.length);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -42,6 +43,14 @@ function Ticket() {
               ))}
           </div>
         </section>
+      )}
+      {tickets.length == 0 && (
+        <div className="ticketBox__empty">
+          <span>
+            no hay tickets en este momento.
+            <i className="ri-shopping-bag-line"></i>
+          </span>
+        </div>
       )}
     </>
   );

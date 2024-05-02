@@ -54,6 +54,7 @@ El proyecto es un e-commerce diseñado para ofrecer una experiencia de compra in
 
 - Menús desplegables para una navegación intuitiva.
 - Funcionalidad de búsqueda para facilitar la búsqueda de productos.
+- Se ofrece la posibilidad de registrar los pagos mediante **mercado pago**.
 
 ## Dependencias
 
