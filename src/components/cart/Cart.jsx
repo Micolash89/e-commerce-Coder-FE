@@ -126,9 +126,9 @@ function Cart() {
         price: item.product.price,
       }));
 
-    console.log(items);
-
     try {
+      if (items.length == 0) throw new Error("no hay elementos en el carrito");
+
       const response = await axios.post(
         `${END_POINTS.URL()}/api/mercadopago/create_preference`,
         {
@@ -141,6 +141,7 @@ function Cart() {
       return id;
     } catch (error) {
       console.log(error);
+      dispatch(messageError("no hay elementos en el carrito"));
     }
   };
 

@@ -5,12 +5,8 @@ import axios from "axios";
 import { END_POINTS } from "../endPoints";
 import Cookies from "js-cookie";
 
-/*axios a los tickets del usuario  logueado*/
-
 function Ticket() {
   const [tickets, setTickets] = useState([]);
-
-  // tickets.reverse()
 
   useEffect(() => {
     const tokenCoder = Cookies.get("coderCookieToken");
@@ -26,7 +22,6 @@ function Ticket() {
         console.log(res.data);
         setTickets(res.data.payload);
         console.log("tickets", tickets);
-        console.log(tickets.length);
       })
       .catch((err) => console.log(err));
   }, []);
